@@ -56,12 +56,16 @@ npm run typecheck
 npm run lint
 npm run test:claims
 npm run test:a11y
+npm run test:live-checkout
 npm run check:package
 npm run check:copy
 npm audit --audit-level=high
 npm run build
 unzip -t dist/site/downloads/app-flow-reader-chrome.zip
 ```
+
+`test:live-checkout` checks the production catalog entry, the Sociobot
+checkout redirect, and the hosted Dodo page. It does not submit a payment.
 
 The build produces `dist/site/`, `dist/extension/`, and the packaged extension at `dist/site/downloads/app-flow-reader-chrome.zip`.
 

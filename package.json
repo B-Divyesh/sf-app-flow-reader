@@ -17,6 +17,7 @@
     "test:e2e": "playwright test",
     "test:claims": "playwright test --grep @claim:",
     "test:a11y": "playwright test --grep @a11y",
+    "test:live-checkout": "node scripts/check-live-checkout.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "tsc --noEmit",
     "check:package": "node scripts/check-package.mjs",
