@@ -1,46 +1,41 @@
-# Handoff — adversarial first-read review 2
+# Handoff — polish round 2
 
 Date: 28 August 2026 UTC
 
 ## Outcome
 
-Review only; no product code was changed. The review is recorded in
-`review-2.md` and the result is **FAIL** with three minor findings:
+All findings in `review-1.md`, `review-2.md`, prior verification reports, and `polish-1.md` are closed. Repair commit `89feeab25c3e4163af4353b8474694e2b7aeeb7b` is pushed to `main` and deployed to <https://app-flow-reader.sociobot.in>.
 
-1. Reader-facing install copy retains unexplained extension/browser jargon.
-2. The direct static 404 page does not include the shared header navigation.
-3. The direct static 404 page lacks Apple-touch, theme-color, and Twitter-image metadata.
+This round completed the last three review findings: plain-language installation instructions, the shared navigation skeleton on the direct 404, and complete direct-404 metadata. The static 404 also received a dark-mode footer contrast repair and 44 px touch-target treatment discovered by the new direct-route checks.
 
-## Verification performed
+## Exact verification evidence
 
-- Fresh live Chromium reads at 390 × 844 and 1440 × 900.
-- Live sample demo: immediate realistic sample route, edit/reset/leave/re-entry,
-  durable-storage checks, same-origin network check, and offline reload after
-  service-worker priming.
-- All 13 commands in `.factory/claims.json` run separately from fresh clone
-  `/tmp/app-flow-reader-review-2.Aurin2` after `npm ci`; all passed.
-- Full `npm test` passed (6 unit tests plus full Playwright matrix; expected
-  extension/mobile skips only). `npm run typecheck`, `npm run lint`,
-  `npm run check:copy`, and `npm run build` passed.
-- Live route metadata, history/h1 focus, 404 status, checkout redirect, link
-  crawl, and light/dark reduced-motion Axe checks were completed.
+- Fresh clone `/tmp/app-flow-reader-clean.ZBOwhg`: `npm ci` passed.
+- Each of the 13 commands from `.factory/claims.json` passed separately; retained output: `.factory/evidence/polish-2/clean-claims.log`.
+- Full clean-clone suite passed: `npm test`, `npm run test:a11y`, `npm run typecheck`, `npm run lint`, `npm run check:copy`, `npm run check:package`, `npm audit --audit-level=high`, `npm run build`, and `unzip -t dist/site/downloads/app-flow-reader-chrome.zip`. Retained output: `.factory/evidence/polish-2/clean-full-suite.log`.
+- Live `verify-url.sh` checks passed for `/`, `/?demo=1`, `/privacy`, and `/terms`; all have one h1/main, `lang=en`, route title, no console errors, no missing alt text, and no unlabeled buttons. Evidence: `.factory/evidence/polish-2/live-*/verify.json`.
+- Cold live browser QA passed desktop and 390 px demo, including isolation, same-origin traffic, offline reload, target sizing, no overflow, and zero serious/critical Axe findings. Evidence: `.factory/evidence/polish-2/live-browser-qa.json`.
+- Cold live missing-route check passed with HTTP 404, shared header navigation, Apple touch icon, Twitter image, theme colors, no undersized targets or overflow, and zero serious/critical dark-mode Axe findings. Evidence: `.factory/evidence/polish-2/live-404.json` and screenshots beside it.
+- Live checkout smoke passed without payment submission: `npm run test:live-checkout` returned a hosted Dodo checkout redirect.
+- Lighthouse mobile: performance 100, accessibility 100, best practices 100, SEO 100; LCP 793 ms, CLS 0, TBT 0. Evidence: `.factory/evidence/polish-2/lighthouse-mobile.json`.
 
-## How to repeat
+## Deploy and repeat
 
 ```sh
 npm ci
 npm test
-npm run test:claims
+npm run test:a11y
 npm run typecheck
 npm run lint
+npm run test:claims
+npm run check:package
 npm run check:copy
-npm run build
+npm audit --audit-level=high
+npm run build:site
 ```
 
-Review the live site at <https://app-flow-reader.sociobot.in>, entering the
-sample through `/?demo=1` and the static error route through any missing URL.
+Deploy `dist/site/` to the configured `sf-app-flow-reader` Static Web App production environment. It includes the packaged extension ZIP under `dist/site/downloads/`.
 
-## Next steps
+## Known gaps
 
-Implement the three documented findings, particularly the shared static 404
-header and metadata, then re-run this first-read review.
+None.

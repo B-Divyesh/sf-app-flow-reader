@@ -1,0 +1,14 @@
+{
+  "url": "https://app-flow-reader.sociobot.in/terms",
+  "loadMs": 712,
+  "errors": [],
+  "a11y": {
+    "title": "Terms — App Flow Reader",
+    "lang": "en",
+    "h1": 1,
+    "main": true,
+    "imgsMissingAlt": 0,
+    "buttonsUnlabeled": 0,
+    "textLength": 954
+  }
+}

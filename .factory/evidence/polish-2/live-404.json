@@ -1,0 +1,42 @@
+{
+  "desktop": {
+    "status": 404,
+    "title": "Page not found — App Flow Reader",
+    "h1": "This step is not in the flow",
+    "main": 1,
+    "nav": [
+      "Demo",
+      "How it works",
+      "Privacy",
+      "Download"
+    ],
+    "appleTouch": "/apple-touch-icon.png",
+    "twitterImage": "https://app-flow-reader.sociobot.in/og-image.png",
+    "smallTargets": [],
+    "overflow": false,
+    "serious": [],
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ]
+  },
+  "mobile390": {
+    "status": 404,
+    "title": "Page not found — App Flow Reader",
+    "h1": "This step is not in the flow",
+    "main": 1,
+    "nav": [
+      "Demo",
+      "How it works",
+      "Privacy",
+      "Download"
+    ],
+    "appleTouch": "/apple-touch-icon.png",
+    "twitterImage": "https://app-flow-reader.sociobot.in/og-image.png",
+    "smallTargets": [],
+    "overflow": false,
+    "serious": [],
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ]
+  }
+}
