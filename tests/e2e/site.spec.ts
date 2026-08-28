@@ -123,6 +123,7 @@ test('routes update title, history, heading focus, and deployment policy has a r
     { route: '/terms', rewrite: '/index.html' },
   ]));
   expect(config.responseOverrides).toEqual({ '404': { rewrite: '/index.html' } });
+  expect(config.globalHeaders['Content-Security-Policy']).toContain("connect-src 'self' https://api.sociobot.in");
 });
 
 test('@a11y every route passes axe in light, dark, and reduced-motion modes', async ({ page }) => {
