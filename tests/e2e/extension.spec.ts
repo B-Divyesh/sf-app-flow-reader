@@ -161,7 +161,7 @@ test('@claim:route-controls supports pause, resume, notes, exports, and confirme
   } finally { await closeExtension(harness); }
 });
 
-test('@claim:mv3-package builds a versioned Manifest V3 extension with only the license verification host', async ({ browserName }, testInfo) => {
+test('@claim:mv3-package builds a versioned Manifest V3 package for Chrome, Edge, Brave, and similar browsers with only the license verification host', async ({ browserName }, testInfo) => {
   test.skip(browserName !== 'chromium' || testInfo.project.name !== 'desktop-chromium');
   const manifest = JSON.parse(await (await import('node:fs/promises')).readFile('dist/extension/manifest.json', 'utf8'));
   expect(manifest.manifest_version).toBe(3);

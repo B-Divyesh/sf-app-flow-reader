@@ -30,8 +30,13 @@ Audit date: 28 August 2026. Every landing sentence is at or below 22 words. No b
 | A supporter license adds three decorative cover styles in the extension. | 10 | — |
 | After checkout, an installed extension restores the returned token. | 9 | — |
 | You can also paste it into Supporter styles. | 8 | — |
+| Use in Chrome, Edge, Brave, and similar browsers | 8 | — |
 | Keep the route reader in your toolbar | 7 | — |
 | Download the package, unzip it, then load the folder from the browser extensions page. | 14 | — |
+| Install from the downloaded folder | 5 | — |
+| Open your browser’s extensions page. | 5 | — |
+| Turn on the page’s Developer mode setting. | 7 | — |
+| Choose Load unpacked, then choose the unzipped folder. | 8 | — |
 | Follow saved routes through dense workplace apps. | 7 | — |
 
 ## First-screen read-aloud

@@ -27,9 +27,9 @@ Open `?demo=1` and use Back and Next to follow a five-step monthly expense route
 
 1. Download `app-flow-reader-chrome.zip` from the live site.
 2. Unzip it.
-3. Open `chrome://extensions` in Chrome, Edge, Brave, or another Chromium-based browser.
-4. Turn on **Developer mode**.
-5. Select **Load unpacked**, then choose the unzipped folder.
+3. Open your browser’s extensions page in Chrome, Edge, Brave, or a similar browser.
+4. Turn on that page’s **Developer mode** setting.
+5. Choose **Load unpacked**, then choose the unzipped folder.
 
 Name a route in the toolbar popup and select **Start recording**. Complete 3–10 steps. Reopen the popup, select the route, then choose **Follow route**.
 

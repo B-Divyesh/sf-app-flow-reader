@@ -126,11 +126,11 @@ function home(): string {
     </section>
 
     <section class="install" aria-labelledby="install-title">
-      <p class="kicker">Chrome and Chromium browsers</p>
+      <p class="kicker">Use in Chrome, Edge, Brave, and similar browsers</p>
       <h2 id="install-title">Keep the route reader in your toolbar</h2>
       <p>Download the package, unzip it, then load the folder from the browser extensions page.</p>
       <a class="button primary" href="/downloads/app-flow-reader-chrome.zip" download>Download extension</a>
-      <details><summary>Install an unpacked extension</summary><ol><li>Open <code>chrome://extensions</code>.</li><li>Turn on Developer mode.</li><li>Select Load unpacked and choose the unzipped folder.</li></ol></details>
+      <details><summary>Install from the downloaded folder</summary><ol><li>Open your browser’s extensions page.</li><li>Turn on the page’s <strong>Developer mode</strong> setting.</li><li>Choose <strong>Load unpacked</strong>, then choose the unzipped folder.</li></ol></details>
     </section>
   </main>`;
 }

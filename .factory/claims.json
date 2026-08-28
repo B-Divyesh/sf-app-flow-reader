@@ -78,8 +78,8 @@
   },
   {
     "id": "mv3-package",
-    "claim": "App Flow Reader is a Manifest V3 browser extension.",
-    "where": "README development details",
+    "claim": "The downloadable package is a Manifest V3 extension for Chrome, Edge, Brave, and similar browsers.",
+    "where": "landing install section, README install section, README development details",
     "test": "npm run test:e2e -- --grep @claim:mv3-package",
     "sandbox": "inspect the freshly built packaged extension manifest"
   },

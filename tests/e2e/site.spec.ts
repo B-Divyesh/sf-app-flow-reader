@@ -13,6 +13,8 @@ test('landing page names the low-vision job and keeps the product skeleton', asy
   await expect(page.locator('.lede')).toContainText('progressive low vision');
   await expect(page.getByRole('link', { name: 'Try it with sample data' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Download extension', exact: true })).toHaveAttribute('href', '/downloads/app-flow-reader-chrome.zip');
+  await expect(page.getByText('Use in Chrome, Edge, Brave, and similar browsers')).toBeVisible();
+  await expect(page.getByText('Install from the downloaded folder')).toBeVisible();
   expect(errors).toEqual([]);
 });
 
@@ -61,7 +63,7 @@ test('@claim:demo-isolated changes the sample in memory with no cross-origin req
 test('@claim:no-tracking loads public pages without analytics, external fonts, or third-party scripts', async ({ page }) => {
   const external: string[] = [];
   page.on('request', (request) => { if (new URL(request.url()).origin !== 'http://127.0.0.1:4173') external.push(request.url()); });
-  for (const route of ['/', '/privacy', '/terms']) await page.goto(route);
+  for (const route of ['/', '/privacy', '/terms', '/404.html']) await page.goto(route);
   expect(external).toEqual([]);
   expect(await page.locator('script[src^="http"], link[href^="http"][rel="stylesheet"]').count()).toBe(0);
 });
@@ -133,12 +135,27 @@ test('routes update titles, social metadata, history, heading focus, and deploym
   ]));
   expect(config.responseOverrides).toEqual({ '404': { rewrite: '/404.html' } });
   expect(config.globalHeaders['Content-Security-Policy']).toContain("connect-src 'self' https://api.sociobot.in");
+  const static404 = await (await import('node:fs/promises')).readFile('public/site/404.html', 'utf8');
+  expect(static404).toContain('<header class="site-header">');
+  expect(static404).toContain('aria-label="Main navigation"');
+  for (const href of ['/?demo=1', '/#how-it-works', '/privacy', '/downloads/app-flow-reader-chrome.zip']) expect(static404).toContain(`href="${href}"`);
+  expect(static404).toContain('<meta name="theme-color" content="#f1ebdd" media="(prefers-color-scheme: light)" />');
+  expect(static404).toContain('<meta name="theme-color" content="#101923" media="(prefers-color-scheme: dark)" />');
+  expect(static404).toContain('<link rel="apple-touch-icon" href="/apple-touch-icon.png" />');
+  expect(static404).toContain('<meta name="twitter:image" content="https://app-flow-reader.sociobot.in/og-image.png" />');
+  expect(static404).toContain('<main id="main" tabindex="-1">');
+  await page.goto('/404.html');
+  await expect(page).toHaveTitle('Page not found — App Flow Reader');
+  await expect(page.locator('main')).toHaveCount(1);
+  await expect(page.locator('h1')).toHaveCount(1);
+  await expect(page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Demo' })).toBeVisible();
+  await expect(page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Download' })).toHaveAttribute('href', '/downloads/app-flow-reader-chrome.zip');
 });
 
 test('@a11y every route passes axe in light, dark, and reduced-motion modes', async ({ page }) => {
   for (const colorScheme of ['light', 'dark'] as const) {
     await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
-    for (const route of ['/', '/demo', '/privacy', '/terms', '/missing-path']) {
+    for (const route of ['/', '/demo', '/privacy', '/terms', '/missing-path', '/404.html']) {
       await page.goto(route);
       const results = await new AxeBuilder({ page }).analyze();
       const severe = results.violations.filter((violation) => ['serious', 'critical'].includes(violation.impact ?? ''));
@@ -149,7 +166,7 @@ test('@a11y every route passes axe in light, dark, and reduced-motion modes', as
 
 test('390px layout has 44px targets and no horizontal overflow on home and demo', async ({ page, isMobile }) => {
   test.skip(!isMobile);
-  for (const route of ['/', '/demo']) {
+  for (const route of ['/', '/demo', '/404.html']) {
     await page.goto(route);
     if (route === '/') await page.getByRole('button', { name: 'Open navigation' }).click();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
