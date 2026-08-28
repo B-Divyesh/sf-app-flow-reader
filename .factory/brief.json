@@ -1,0 +1,24 @@
+{
+  "product": "App Flow Reader",
+  "slug": "app-flow-reader",
+  "artifact_class": "browser-extension",
+  "summary": "Record browser tasks as ordered steps and export a readable flow.",
+  "audience": ["product managers", "QA testers", "support writers", "designers"],
+  "job_to_be_done": "When I complete a task in a web app, help me preserve the path as concise steps so another person can follow or review it.",
+  "problem": "Screen recordings are slow to scan, screenshots go stale, and manually copying every action interrupts the task.",
+  "scope": {
+    "included": [
+      "MV3 browser extension for Chromium browsers",
+      "start, pause, resume, annotate, and clear a local recording",
+      "capture labeled clicks and page-address changes",
+      "export Markdown and JSON",
+      "static product site with an isolated sample-data demo"
+    ],
+    "excluded": [
+      "typed form values, screenshots, or password capture",
+      "cloud sync, team accounts, analytics, or AI processing",
+      "browser-internal pages where extensions cannot run"
+    ]
+  },
+  "source_note": "The researched brief referenced by the scaffold was absent from candidate 7906a667831be1d92a55871f9a0c8316dbcb95ed. This repair reconstructs the smallest honest scope implied by the product name and required browser-extension class."
+}

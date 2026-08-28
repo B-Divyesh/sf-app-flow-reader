@@ -1,0 +1,54 @@
+:root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #132031; background: #f4f0e6; }
+* { box-sizing: border-box; }
+body { margin: 0; width: 380px; min-height: 540px; background: radial-gradient(#c7c1b4 0.8px, transparent 0.8px) 0 0/16px 16px, #f4f0e6; font-size: 16px; }
+button, a { font: inherit; }
+button { min-height: 44px; border: 1px solid #52616f; border-radius: 4px; padding: 10px 14px; background: #fffdf7; color: #132031; cursor: pointer; font-weight: 700; }
+button:hover { background: #e8e2d4; }
+:focus-visible { outline: 3px solid #ef5b2a; outline-offset: 3px; }
+.skip-link { position: absolute; left: 12px; top: -60px; background: #fff; color: #132031; padding: 10px; z-index: 2; }
+.skip-link:focus { top: 8px; }
+.topbar { min-height: 72px; display: flex; gap: 12px; align-items: center; padding: 14px 18px; color: #fdfaf1; background: #132031; border-bottom: 4px solid #ef5b2a; }
+.topbar strong, .topbar small { display: block; }
+.topbar small { color: #cbd2d7; margin-top: 2px; }
+.mark { display: flex; align-items: center; gap: 3px; }
+.mark span { display: block; width: 7px; height: 7px; border-radius: 50%; background: #f7cc53; }
+.mark span + span::before { content: ''; display: block; width: 7px; border-top: 1px solid #f7cc53; transform: translateX(-7px) translateY(3px); }
+.status-chip { margin-left: auto; border: 1px solid #758391; border-radius: 999px; padding: 5px 9px; font-size: 12px; }
+.status-chip.active { color: #132031; background: #f7cc53; border-color: #f7cc53; }
+main { padding: 26px 22px 20px; }
+.eyebrow { margin: 0 0 7px; color: #9b3718; font: 800 12px/1.2 ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; }
+h1, h2 { font: 750 28px/1.1 Georgia, serif; margin: 0 0 14px; }
+.empty > p:not(.eyebrow) { line-height: 1.5; margin-bottom: 22px; }
+.primary { width: 100%; color: #fff; background: #1d4f91; border-color: #1d4f91; }
+.primary:hover { background: #173e72; }
+.flow-heading { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+.record-button { min-width: 88px; }
+.step-list { list-style: none; margin: 12px 0 20px; padding: 0; }
+.step-list li { position: relative; min-height: 58px; display: flex; gap: 12px; padding-bottom: 13px; }
+.step-list li:not(:last-child)::after { content: ''; position: absolute; left: 15px; top: 31px; bottom: 0; border-left: 2px solid #b9af9b; }
+.step-number { position: relative; z-index: 1; display: grid; place-items: center; width: 32px; height: 32px; flex: 0 0 32px; border: 2px solid #1d4f91; border-radius: 50%; background: #f4f0e6; font: 800 13px ui-monospace, monospace; }
+.step-list strong, .step-list small { display: block; }
+.step-list strong { line-height: 1.35; }
+.step-list small { margin-top: 3px; color: #53616d; }
+.step-note { margin: 7px 0 2px; padding-left: 8px; border-left: 3px solid #f7cc53; font-size: 14px; line-height: 1.4; }
+.note-button { min-height: 38px; margin-top: 4px; padding: 5px 0; color: #174b87; background: transparent; border: 0; text-decoration: underline; text-underline-offset: 3px; }
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.actions .danger { grid-column: 1 / -1; color: #982b2b; border-color: transparent; background: transparent; }
+.muted { color: #53616d; }
+footer { display: flex; justify-content: center; gap: 9px; padding: 14px; color: #4b5864; border-top: 1px solid #c7c1b4; font-size: 13px; }
+footer a { color: #174b87; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+[hidden] { display: none !important; }
+@media (prefers-color-scheme: dark) {
+  :root { color: #f5f0e5; background: #101923; }
+  body { background: radial-gradient(#344251 0.8px, transparent 0.8px) 0 0/16px 16px, #101923; }
+  button { color: #f5f0e5; background: #1b2937; border-color: #8392a0; }
+  button:hover { background: #27394a; }
+  .primary { background: #4d82c2; color: #07111c; }
+  .step-number { background: #101923; border-color: #72a6e2; }
+  .step-list small, .muted, footer { color: #bdc8d1; }
+  footer a { color: #8fc1ff; }
+  .note-button { color: #8fc1ff; }
+  .eyebrow { color: #ff956f; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }

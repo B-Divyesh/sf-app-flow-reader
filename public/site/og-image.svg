@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#aa9f89" opacity=".55"/></pattern></defs>
+  <rect width="1200" height="630" fill="#f1ebdd"/><rect width="1200" height="630" fill="url(#dots)"/>
+  <text x="76" y="105" fill="#d94717" font-family="monospace" font-size="22" font-weight="700" letter-spacing="3">APP FLOW READER</text>
+  <text x="76" y="207" fill="#132031" font-family="Georgia,serif" font-size="70" font-weight="700">Record browser tasks</text><text x="76" y="288" fill="#132031" font-family="Georgia,serif" font-size="70" font-weight="700">as clear steps</text>
+  <path d="M100 405H324L435 499H728L850 405H1080" fill="none" stroke="#1d4f91" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#f1ebdd" stroke="#132031" stroke-width="5"><circle cx="100" cy="405" r="25"/><circle cx="435" cy="499" r="25"/><circle cx="728" cy="499" r="25"/><circle cx="1080" cy="405" r="25"/></g>
+  <circle cx="100" cy="405" r="10" fill="#f4c84b"/><circle cx="1080" cy="405" r="10" fill="#d94717"/>
+  <text x="76" y="575" fill="#52616c" font-family="Arial,sans-serif" font-size="25">Local browser storage · Markdown and JSON · No account</text>
+</svg>

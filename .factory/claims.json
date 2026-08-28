@@ -1,0 +1,37 @@
+[
+  {
+    "id": "click-recording",
+    "claim": "Records labeled clicks and page changes as ordered steps.",
+    "where": "landing headline and How it works; README",
+    "test": "npm run test:e2e -- --grep @claim:click-recording",
+    "sandbox": "fresh Chromium profile with the packaged MV3 extension; start a flow, click the local demo, and inspect extension storage"
+  },
+  {
+    "id": "export-files",
+    "claim": "Exports readable Markdown and JSON files.",
+    "where": "landing facts and install section; demo; README",
+    "test": "npm run test:e2e -- --grep @claim:export-files",
+    "sandbox": "fresh demo at /demo; download both formats and assert the five sample steps"
+  },
+  {
+    "id": "local-storage",
+    "claim": "Your flow stays in browser storage.",
+    "where": "landing facts; privacy; README",
+    "test": "npm run test:e2e -- --grep @claim:local-storage",
+    "sandbox": "fresh Chromium extension profile; start a flow, inspect chrome.storage.local, and assert no external request"
+  },
+  {
+    "id": "no-account",
+    "claim": "No account is needed.",
+    "where": "landing facts; README",
+    "test": "npm run test:e2e -- --grep @claim:no-account",
+    "sandbox": "fresh browser context; open the one-click demo and complete a flow action without account fields or authentication"
+  },
+  {
+    "id": "private-capture",
+    "claim": "The extension does not record screenshots, typed field values, passwords, or browser settings pages.",
+    "where": "landing boundaries; privacy; README",
+    "test": "npm run test:e2e -- --grep @claim:private-capture",
+    "sandbox": "fresh Chromium extension profile; type a unique field value, click the field, inspect stored flow and manifest scope"
+  }
+]
