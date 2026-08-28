@@ -44,4 +44,9 @@ Candidate repaired: `a3e06c2ff2c4e1f8fb0d3c24aa13ae5e29718d2d`
 
 ## Live re-check
 
-Deployment and fresh live checks are recorded in the handoff after the configured static deploy completes.
+Configured static deploy completed as Azure deployment `af5cf3d0-3c71-44e0-a430-1f77744f3a14` from repair commit `a50fa39b68724926b09774a6d926fc46e673bc2d`.
+
+- `https://app-flow-reader.sociobot.in/`, `/?demo=1`, `/privacy`, and `/terms` cold-loaded with HTTP 200, one H1, `lang=en`, a main landmark, no missing image alt text, no unlabeled buttons, and no console/page errors. Evidence: `evidence/polish-1/live-{home,demo,privacy,terms}/verify.json`.
+- Cold live axe via Playwright found zero serious/critical violations for those four routes in both light and dark mode.
+- `https://app-flow-reader.sociobot.in/definitely-missing` returned HTTP 404 and served **Page not found — App Flow Reader**.
+- The direct `?demo=1` route visibly exposes the banner, Reset demo, Leave demo, five-step sample, and the active reader in `evidence/polish-1/live-demo/screenshot-mobile.png`.

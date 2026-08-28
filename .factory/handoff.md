@@ -1,55 +1,60 @@
-# Handoff — adversarial first-read review 1
+# Handoff — polish round 1
 
 Date: 28 August 2026 UTC
 
-Candidate reviewed: `f349d76121f74572ec0b740447751d6d18c78fa3`
+Repair commit: `a50fa39b68724926b09774a6d926fc46e673bc2d`
 
 Live URL: <https://app-flow-reader.sociobot.in>
 
 ## Outcome
 
-**FAIL.** The full review is in [`review-1.md`](review-1.md). No product code was
-modified.
+All findings in `review-1.md` and the retained earlier verification reports are closed. The release keeps the route-notebook visual identity while moving the supporter covers into the actual browser extension, isolating the direct `?demo=1` sandbox, completing the claims contract, and repairing copy, metadata, routing, legal links, and the real 404 response.
 
-Three release blockers remain:
+## What changed
 
-1. The $12 cover styles are implemented only on the website, not in the browser
-   extension that buyers use.
-2. Leaving the demo through **Start for real** and re-entering in the same SPA
-   retains edited demo state, contrary to the documented discard behavior.
-3. Public promises remain unlisted or incompletely asserted in the claims
-   contract.
+- Supporter licenses now restore and verify in the packaged extension. Valid licenses reveal persistent Blueprint, Graphite, and Sunrise popup covers; revoked tokens hide them. The return page transfers a returned token to an installed extension and retains a copy/paste fallback.
+- Demo mode is available from `?demo=1` and `/demo`, has Reset demo and Leave demo, never uses durable storage, and discards changed sample state when it is left or entered again.
+- First-screen facts now state privacy, offline behavior, and the free/$12 price split. Visitor copy uses “dense workplace apps” consistently.
+- Added claim coverage for browser-page boundaries, MV3 packaging, license return, typed-value/screenshot exclusion, actual reader announcement/highlight/control size, and demo leave/re-entry.
+- Route-specific OG/Twitter metadata updates with every SPA route. Static Web Apps serves a designed, semantic `404.html` with HTTP 404.
+- Updated README, catalog description, demo guide, copy audit, privacy/terms wording, mobile demo actions, and legal links.
 
-The review also records two medium and six minor copy/metadata findings.
+## Verification
 
-## Verification performed
-
-- Cold live checks in fresh Chromium contexts at 390 × 844 and 1440 × 900.
-- All ten exact `.factory/claims.json` commands after `npm ci`.
-- `npm test`, `npm run test:a11y`, and `npm run test:live-checkout`.
-- Live demo reset, leave/re-entry, storage isolation, seeded extension-data
-  isolation, network interception, and offline reload.
-- Route titles, descriptions, canonicals, OG metadata, H1/heading structure,
-  focus/history, deep link, 404 status, touch targets, axe, and dead-link crawl.
-- Live/local SHA-256 comparison for JS, CSS, and extension ZIP: all match.
-- Earlier verification findings checked against both current source and live
-  behavior.
-
-## Re-run
+Clean install and local gates:
 
 ```sh
 npm ci
 npm test
+npm run test:claims
 npm run test:a11y
-npm run test:live-checkout
+npm run typecheck
+npm run lint
+npm run check:package
+npm run check:copy
+npm audit --audit-level=high
 npm run build
+unzip -t dist/site/downloads/app-flow-reader-chrome.zip
+npm run test:live-checkout
 ```
 
-Then manually repeat the two blocker reproductions in `review-1.md`: demo
-leave/re-entry, and license activation in the packaged extension.
+Results: all passed. `npm test` has 6 unit tests and 33 passing browser tests (7 expected extension/mobile skips). Every one of the 13 exact commands recorded in `.factory/claims.json` was also run individually after `npm ci` and passed. `npm run test:a11y` passed with 3 tests and 1 expected extension/mobile skip. The final site bundle is 19.22 kB raw / 6.67 kB gzip JS and 17.44 kB raw / 4.63 kB gzip CSS.
 
-## Known gaps / next steps
+Deployment: `/opt/fleet/lib/deploy-static.sh app-flow-reader dist/site` completed with Azure deployment `af5cf3d0-3c71-44e0-a430-1f77744f3a14`.
 
-Implement the three blockers first, then address the remaining findings in ID
-order and rerun the complete adversarial checklist. NVDA was not available in
-this Linux environment; no NVDA conformance claim was evaluated.
+Cold live re-checks:
+
+- `verify-url.sh` passed `/`, `/?demo=1`, `/privacy`, and `/terms`; each returned 200 with no console errors and valid landmark/title/lang checks.
+- Playwright axe found zero serious/critical violations in light and dark modes for all four live routes.
+- `/definitely-missing` returned HTTP 404 with the designed static not-found page.
+- `npm run test:live-checkout` passed without submitting a payment.
+
+Evidence is under `.factory/evidence/polish-1/`, including desktop/mobile product screenshots and the live verifier reports.
+
+## Run and deploy
+
+Use `npm run dev` for the extension and `npm run dev:site` for the site. Build both artifacts with `npm run build`; deploy `dist/site/` as the static artifact. The extension ZIP is `dist/site/downloads/app-flow-reader-chrome.zip`.
+
+## Known gaps
+
+None. NVDA is not available in this Linux worker, and no NVDA conformance claim is made.

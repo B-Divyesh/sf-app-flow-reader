@@ -1,0 +1,14 @@
+{
+  "url": "https://app-flow-reader.sociobot.in/",
+  "loadMs": 576,
+  "errors": [],
+  "a11y": {
+    "title": "App Flow Reader — Follow routes in workplace apps",
+    "lang": "en",
+    "h1": 1,
+    "main": true,
+    "imgsMissingAlt": 0,
+    "buttonsUnlabeled": 0,
+    "textLength": 2035
+  }
+}
