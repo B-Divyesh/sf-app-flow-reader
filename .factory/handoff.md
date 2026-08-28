@@ -1,44 +1,39 @@
-# Handoff — independent verification 3
+# Handoff — adversarial first-read review 1
 
 Date: 28 August 2026 UTC
-Candidate: `a3e06c2ff2c4e1f8fb0d3c24aa13ae5e29718d2d`
-URL: <https://app-flow-reader.sociobot.in>
+
+Candidate reviewed: `f349d76121f74572ec0b740447751d6d18c78fa3`
+
+Live URL: <https://app-flow-reader.sociobot.in>
 
 ## Outcome
 
-**PASS — release candidate accepted.**
+**FAIL.** The full review is in [`review-1.md`](review-1.md). No product code was
+modified.
 
-Fresh independent QA confirms the previous deployment-only checkout concern is
-resolved. The live JavaScript, CSS, and downloadable extension ZIP are exact
-SHA-256 matches for this candidate. No product code changed during verification.
+Three release blockers remain:
 
-## Verification summary
+1. The $12 cover styles are implemented only on the website, not in the browser
+   extension that buyers use.
+2. Leaving the demo through **Start for real** and re-entering in the same SPA
+   retains edited demo state, contrary to the documented discard behavior.
+3. Public promises remain unlisted or incompletely asserted in the claims
+   contract.
 
-- Ran `npm ci`, all ten exact `.factory/claims.json` tests individually,
-  `npm test`, `npm run test:a11y`, typecheck, lint, package/copy checks,
-  production build, audit, ZIP integrity, and live checkout: all PASS.
-- The cold landing screen plainly says what it does, who it is for, and to
-  click **Try it with sample data**. Desktop and 390 px live demo runs work.
-- Packaged MV3 tests cover recording 3–10 named routes, accessible-name-first
-  capture, password exclusion, playback, large Back/Next controls, recovery,
-  exports, and local-only storage.
-- Live axe found no serious/critical issues in light/dark reduced-motion modes;
-  keyboard, focus, offline reload, demo isolation, privacy traffic, security
-  headers, caching, and performance budgets passed.
-- Mobile Lighthouse: Performance 100, Accessibility 100, LCP 0.4 s, CLS 0,
-  TBT 0 ms. Initial JS is 7.22 kB gzip; CSS is 4.70 kB gzip.
-- Live checkout returns HTTP 303 to hosted Dodo; no real payment was made.
-  The optional license endpoint rate-limited after 30 successful rapid
-  invalid-token requests, returning 429 plus `Retry-After: 2–3`.
+The review also records two medium and six minor copy/metadata findings.
 
-Read the complete evidence and exact command outcomes in
-[`verification-3.md`](verification-3.md).
+## Verification performed
 
-## Known gaps / next steps
-
-No release-blocking defects remain. NVDA was unavailable in this Linux QA
-environment, so no NVDA conformance claim is made; conduct a Windows/NVDA
-pilot with the intended low-vision users before making any such claim.
+- Cold live checks in fresh Chromium contexts at 390 × 844 and 1440 × 900.
+- All ten exact `.factory/claims.json` commands after `npm ci`.
+- `npm test`, `npm run test:a11y`, and `npm run test:live-checkout`.
+- Live demo reset, leave/re-entry, storage isolation, seeded extension-data
+  isolation, network interception, and offline reload.
+- Route titles, descriptions, canonicals, OG metadata, H1/heading structure,
+  focus/history, deep link, 404 status, touch targets, axe, and dead-link crawl.
+- Live/local SHA-256 comparison for JS, CSS, and extension ZIP: all match.
+- Earlier verification findings checked against both current source and live
+  behavior.
 
 ## Re-run
 
@@ -46,11 +41,15 @@ pilot with the intended low-vision users before making any such claim.
 npm ci
 npm test
 npm run test:a11y
-npm run typecheck
-npm run lint
-npm run build
-npm run check:package
-npm run check:copy
-npm audit --audit-level=high
 npm run test:live-checkout
+npm run build
 ```
+
+Then manually repeat the two blocker reproductions in `review-1.md`: demo
+leave/re-entry, and license activation in the packaged extension.
+
+## Known gaps / next steps
+
+Implement the three blockers first, then address the remaining findings in ID
+order and rerun the complete adversarial checklist. NVDA was not available in
+this Linux environment; no NVDA conformance claim was evaluated.
