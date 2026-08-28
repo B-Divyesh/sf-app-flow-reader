@@ -4,39 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#132031" />
-    <title>App Flow Reader</title>
+    <title>App Flow Reader — Follow a saved browser route</title>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to flow</a>
+    <a class="skip-link" href="#main">Skip to routes</a>
     <header class="topbar">
       <div class="mark" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div><strong>App Flow Reader</strong><small>Local recorder</small></div>
-      <span id="status-chip" class="status-chip">Stopped</span>
+      <div><strong>App Flow Reader</strong><small>Route reader</small></div>
+      <span id="status-chip" class="status-chip">Ready</span>
     </header>
     <main id="main">
-      <h1 class="sr-only">Record and export an app flow</h1>
-      <section id="empty" class="empty" aria-labelledby="empty-title">
-        <p class="eyebrow">New flow</p>
-        <h2 id="empty-title">Record this app path</h2>
-        <p>Start here, then click through the task. Each step stays in this browser.</p>
+      <h1>Follow a saved browser route</h1>
+      <section class="new-route" aria-labelledby="new-title">
+        <p class="eyebrow">Build a route</p>
+        <h2 id="new-title">Record 3–10 clear steps</h2>
+        <label for="route-name">Route name</label>
+        <input id="route-name" maxlength="70" value="My browser route" />
         <button id="start" class="primary" type="button">Start recording</button>
       </section>
+
+      <section id="route-library" aria-labelledby="library-title">
+        <div class="flow-heading"><div><p class="eyebrow">Saved locally</p><h2 id="library-title">Your routes</h2></div></div>
+        <p id="no-routes" class="muted">Saved routes appear here after the third step.</p>
+        <ul id="route-list" class="route-list"></ul>
+      </section>
+
       <section id="flow" class="flow" hidden aria-labelledby="flow-title">
         <div class="flow-heading">
-          <div><p class="eyebrow">Current flow</p><h2 id="flow-title">Recorded steps</h2></div>
+          <div><p class="eyebrow">Selected route</p><h2 id="flow-title">Route steps</h2></div>
           <button id="toggle" class="record-button" type="button">Resume</button>
         </div>
+        <p id="route-guidance" class="muted"></p>
         <ol id="step-list" class="step-list"></ol>
-        <p id="no-steps" class="muted">Your clicks will appear here.</p>
-        <div class="actions" aria-label="Flow actions">
+        <div id="follow-controls" class="follow-controls" hidden>
+          <p id="current-step"></p>
+          <div><button id="back" type="button">Back</button><button id="next" class="primary" type="button">Next</button></div>
+          <button id="stop-following" class="quiet" type="button">Stop following</button>
+        </div>
+        <div class="actions" aria-label="Route actions">
+          <button id="follow" class="primary" type="button">Follow route</button>
           <button id="export-md" type="button">Export Markdown</button>
           <button id="export-json" type="button">Export JSON</button>
-          <button id="clear" class="quiet danger" type="button">Clear flow</button>
+          <button id="clear" class="quiet danger" type="button" aria-label="Clear flow">Delete route</button>
         </div>
       </section>
       <p id="announcement" class="sr-only" aria-live="polite"></p>
     </main>
-    <footer><span>No account</span><span aria-hidden="true">•</span><a href="https://app-flow-reader.sociobot.in/privacy" target="_blank" rel="noreferrer">Privacy</a></footer>
+    <footer><span>Routes stay local</span><span aria-hidden="true">•</span><a href="https://app-flow-reader.sociobot.in/privacy" target="_blank" rel="noreferrer">Privacy</a></footer>
     <script type="module" src="./main.ts"></script>
   </body>
 </html>

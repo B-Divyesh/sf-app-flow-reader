@@ -2,23 +2,30 @@
   "product": "App Flow Reader",
   "slug": "app-flow-reader",
   "artifact_class": "browser-extension",
-  "summary": "Record browser tasks as ordered steps and export a readable flow.",
-  "audience": ["product managers", "QA testers", "support writers", "designers"],
-  "job_to_be_done": "When I complete a task in a web app, help me preserve the path as concise steps so another person can follow or review it.",
-  "problem": "Screen recordings are slow to scan, screenshots go stale, and manually copying every action interrupts the task.",
+  "summary": "Follow saved routes through dense browser apps.",
+  "audience": [
+    "knowledge workers with progressive low vision",
+    "people who need a repeatable path through dense workplace software"
+  ],
+  "job_to_be_done": "When a work app is visually dense or changes around me, help me follow my saved route one clear step at a time.",
+  "problem": "Remembering and visually finding every control in a repeated workplace task becomes unreliable as vision changes.",
   "scope": {
     "included": [
       "MV3 browser extension for Chromium browsers",
-      "start, pause, resume, annotate, and clear a local recording",
-      "capture labeled clicks and page-address changes",
-      "export Markdown and JSON",
-      "static product site with an isolated sample-data demo"
+      "multiple named routes with 3–10 steps each",
+      "accessibility-name-first capture of page controls",
+      "guided playback with current-step announcements and visible target highlighting",
+      "large high-contrast Back and Next controls",
+      "local-only storage plus Markdown and JSON export",
+      "isolated one-click sample route",
+      "optional one-time supporter license for decorative cover styles"
     ],
     "excluded": [
-      "typed form values, screenshots, or password capture",
+      "password controls, typed values, screenshots, or browser-internal pages",
       "cloud sync, team accounts, analytics, or AI processing",
-      "browser-internal pages where extensions cannot run"
+      "automatic form submission or control activation during playback"
     ]
   },
-  "source_note": "The researched brief referenced by the scaffold was absent from candidate 7906a667831be1d92a55871f9a0c8316dbcb95ed. This repair reconstructs the smallest honest scope implied by the product name and required browser-extension class."
+  "success_measure": "A low-vision worker can select a named route, identify the current instruction and visible target, and move through it with Back and Next.",
+  "provenance": "Restored from the researched acceptance contract quoted by independent verification commit 98b8a791684a7f8e3ad219e1d82ca76189129573. The candidate's product-team recorder reconstruction was rejected by that report."
 }

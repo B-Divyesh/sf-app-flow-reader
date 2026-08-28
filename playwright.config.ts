@@ -12,7 +12,7 @@ export default defineConfig({
   },
   projects: [
     { name: 'desktop-chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'mobile-chromium', use: { ...devices['Pixel 7'] } }
+    { name: 'mobile-chromium', use: { ...devices['Pixel 7'], viewport: { width: 390, height: 844 } } }
   ],
   webServer: {
     command: 'npm run build:site && vite preview --config vite.config.ts --host 127.0.0.1 --port 4173',

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { appendStep, cleanText, createFlow, createStep, fileName, removeStep, toJson, toMarkdown, updateStepNote } from '../../lib/flow';
+import { appendStep, cleanText, createFlow, createStep, fileName, MAX_ROUTE_STEPS, normalizeState, removeStep, toJson, toMarkdown, updateStepNote, upsertRoute } from '../../lib/flow';
 
 describe('flow document', () => {
   it('starts a flow and keeps ordered, distinct steps', () => {
@@ -10,7 +10,7 @@ describe('flow document', () => {
     flow = appendStep(flow, click);
     flow = appendStep(flow, click);
     expect(flow.title).toBe('Invite a teammate');
-    expect(flow.steps.map((step) => step.label)).toEqual(['Started recording', 'Invite']);
+    expect(flow.steps.map((step) => step.label)).toEqual(['Start here', 'Invite']);
   });
 
   it('edits, removes, and serializes steps without executable markup', () => {
@@ -27,5 +27,14 @@ describe('flow document', () => {
     expect(cleanText(`  ${'word '.repeat(50)}`, 20)).toHaveLength(20);
     const step = createStep('click', 'Settings', 'chrome://settings');
     expect(step.url).toBe('');
+  });
+
+  it('caps a route at ten steps and migrates the legacy single-flow state', () => {
+    let flow = createFlow('Monthly report', 'https://example.test');
+    for (let index = 0; index < 20; index += 1) flow = appendStep(flow, createStep('click', `Step ${index}`, 'https://example.test'));
+    expect(flow.steps).toHaveLength(MAX_ROUTE_STEPS);
+    const state = normalizeState({ active: false, flow });
+    expect(state.routes).toEqual([flow]);
+    expect(upsertRoute(state.routes, { ...flow, title: 'Renamed' })).toHaveLength(1);
   });
 });

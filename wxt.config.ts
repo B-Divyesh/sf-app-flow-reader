@@ -6,8 +6,8 @@ export default defineConfig({
   outDir: '.output',
   manifest: {
     name: 'App Flow Reader',
-    description: 'Record app clicks and page changes as a readable flow.',
-    version: '1.0.0',
+    description: 'Save and follow clear routes through dense browser apps.',
+    version: '1.1.0',
     permissions: ['storage', 'activeTab'],
     action: { default_title: 'Open App Flow Reader' },
     icons: {

@@ -1,20 +1,27 @@
 # App Flow Reader
 
-Record browser tasks as ordered steps and export a readable flow.
+Follow saved routes through dense browser apps.
 
-App Flow Reader is a Manifest V3 extension for product managers, QA testers, support writers, and designers. Start on a web page, complete the task once, then export the labeled steps as Markdown or JSON. Your flow stays in Chrome local storage, and no account is needed.
+App Flow Reader is a Manifest V3 extension for knowledge workers with progressive low vision. Record a named route once, then follow its 3–10 steps with current-step announcements, visible target outlines, and large Back and Next controls.
 
 Live site: <https://app-flow-reader.sociobot.in>
 
 Sample-data demo: <https://app-flow-reader.sociobot.in/demo>
 
-## What it records
+## What it does
 
-- The label of a clicked link, button, or form control
-- Page addresses and page-title changes
-- The recording time and order
+- Keeps multiple named routes in Chrome local storage.
+- Uses accessible control names before visible text fallbacks.
+- Ignores password controls and never stores typed values or screenshots.
+- Pauses, resumes, annotates, exports, and deletes routes.
+- Exports complete Markdown and JSON files.
+- Works offline after the site and sample route are first loaded.
 
-It does not record screenshots, passwords, or typed form values. Browser-internal pages such as `chrome://settings` do not allow content scripts.
+The free reader, exports, and accessibility features need no account. Public pages load no analytics, external fonts, or third-party scripts.
+
+## Try the isolated sample
+
+Open `/demo` and use Back and Next to follow a five-step monthly expense route. Changes stay in page memory and do not touch real extension data. **Reset demo** restores the sample.
 
 ## Install the extension
 
@@ -24,50 +31,47 @@ It does not record screenshots, passwords, or typed form values. Browser-interna
 4. Turn on **Developer mode**.
 5. Select **Load unpacked**, then choose the unzipped folder.
 
-Select the toolbar icon on the first page of a task. Choose **Start recording**, complete the task, then open the icon again to pause or export.
+Name a route in the toolbar popup and select **Start recording**. Complete 3–10 steps. Reopen the popup, select the route, then choose **Follow route**.
+
+## Optional supporter license
+
+A $12 one-time supporter license adds Blueprint, Graphite, and Sunrise notebook covers. It never gates the reader, exports, privacy controls, or accessibility features. Sociobot and Dodo handle payment and refunds. A license can be restored on the product site.
 
 ## Develop
 
 Requirements: Node.js 22 and npm 10.
 
 ```sh
-npm install
-npm run dev          # WXT extension development
-npm run dev:site     # static site at http://localhost:5173
+npm ci
+npm run dev
+npm run dev:site
 ```
 
 ## Verify
 
-The deterministic clean-build command from the factory work order is:
-
 ```sh
-npm ci && npm test && npm run build:site
-```
-
-Additional focused checks:
-
-```sh
+npm ci
+npm test
 npm run typecheck
+npm run lint
 npm run test:claims
 npm run test:a11y
 npm run check:package
 npm run check:copy
-npm run package:extension
+npm audit --audit-level=high
+npm run build
+unzip -t dist/site/downloads/app-flow-reader-chrome.zip
 ```
 
-`npm run build:site` produces:
-
-- `dist/site/` — deployable static site
-- `dist/site/downloads/app-flow-reader-chrome.zip` — packaged extension download
-- `dist/extension/` — unpacked Chromium extension
+The build produces `dist/site/`, `dist/extension/`, and the packaged extension at `dist/site/downloads/app-flow-reader-chrome.zip`.
 
 ## Deploy
 
-Deploy `dist/site/` as a static site. Azure Static Web Apps reads `staticwebapp.config.json` from that directory for SPA routes, security headers, and caching.
+Deploy `dist/site/` as the static artifact. Azure Static Web Apps reads `staticwebapp.config.json` for known SPA rewrites, a real 404 catch-all, security headers, and cache policy.
 
 ## Privacy and legal
 
-The privacy policy is at `/privacy`; terms are at `/terms`. No analytics, external fonts, third-party scripts, AI service, or payment provider is used.
+Read `/privacy` and `/terms`. Support: <support@sociobot.in>.
 
 ## License
 

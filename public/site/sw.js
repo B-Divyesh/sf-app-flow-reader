@@ -1,4 +1,4 @@
-const CACHE = 'app-flow-reader-site-v1';
+const CACHE = 'app-flow-reader-site-v2';
 const SHELL = ['/', '/demo', '/privacy', '/terms', '/favicon.svg'];
 
 self.addEventListener('install', (event) => {

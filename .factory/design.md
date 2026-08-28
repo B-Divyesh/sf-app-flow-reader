@@ -2,7 +2,7 @@
 
 ## Direction
 
-The product looks like a field engineer's flow notebook: warm paper, precise blueprint lines, correction marks, and numbered junctions. A recorded path is the subject, so the signature graphic is a ruled line connecting discrete steps. The site avoids generic feature cards and decorative gradients.
+The product looks like a low-vision worker's route notebook: warm paper, precise blueprint lines, correction marks, and oversized numbered junctions. A reliable path is the subject, so the signature graphic is a ruled line connecting discrete steps. The dark reader panel uses unusually strong borders and large controls because it must remain findable inside visually dense workplace software. The site avoids generic feature cards and decorative gradients.
 
 ## Palette
 
@@ -25,15 +25,19 @@ Georgia supplies the editorial, document-like headings. The system UI stack keep
 
 ## Shape and interaction grammar
 
-Flow documents use square paper edges, two-pixel rules, offset ink shadows, numbered circles, and one connecting orange line. Buttons press two pixels into their shadows. Removing a step exposes an Undo bar. Notes open from their source step and return focus through the native dialog model.
+Route documents use square paper edges, two-pixel rules, offset ink shadows, numbered circles, and one connecting orange line. The current step gains a four-pixel orange outline. The injected reader uses a near-black field, a coral edge, and 48 px or larger Back and Next controls. Buttons press two pixels into their shadows. Removing a step exposes an Undo bar. Notes open from their source step and return focus through the native dialog model.
 
 ## Motion policy
 
-Only the primary button press and route scroll use movement. Both describe a state change and finish within 200 ms. `prefers-reduced-motion` removes transforms, smooth scrolling, and transition duration. Nothing loops, flashes, or autoplays.
+Only the primary button press and current-step scroll use movement. Both describe a state change and finish within 200 ms. `prefers-reduced-motion` removes transforms, smooth scrolling, and transition duration. Nothing loops, flashes, or autoplays.
 
 ## Responsive intent
 
-At 390 px, the flow becomes a single ruled column, export actions stack, and supporting desktop chrome disappears behind a labeled menu. Touch targets remain at least 44 px. The task steps, demo state, and export controls remain visible.
+At 390 px, the route becomes a single ruled column, export actions stack, and supporting desktop chrome disappears behind a labeled menu. Touch targets remain at least 44 px. The current instruction and 52 px demo Back and Next controls precede the full route.
+
+## Contrast repair
+
+Dark-mode section markers use `#244f80` behind white text, and the boundaries band uses `#173d67` behind white text. These replace the candidate's pale-blue dark-mode band that produced seven serious axe contrast failures. Automated axe coverage now runs every route in both color schemes.
 
 ## Original asset provenance
 

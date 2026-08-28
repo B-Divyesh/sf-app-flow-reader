@@ -3,9 +3,11 @@
 - URL: `https://app-flow-reader.sociobot.in/demo`
 - Local URL: `http://127.0.0.1:4173/demo`
 - Entry point: select **Try it with sample data** on the first screen.
-- Sample: a five-step flow for inviting an Editor to the fictional Northstar workspace.
-- Actions: edit a note, remove and undo a step, reset, export Markdown, or export JSON.
+- Sample: a five-step route for submitting monthly expenses in the fictional Ledger workplace app.
+- Main action: use the 52 px **Back** and **Next** controls to read one instruction at a time. The current route step has a thick outline.
+- Other actions: edit a note, remove and undo a step, reset, export Markdown, or export JSON.
 - Reset: select **Reset demo** in the persistent yellow demo banner.
 - Leave: select **Start for real** to return to the extension download path.
+- Direct entry: `/demo` starts from the first sample step in a fresh page.
 
-The demo state exists only in the page's JavaScript memory. It does not read or write the extension's `chrome.storage.local` data, localStorage, sessionStorage, IndexedDB, or a backend. Reloading or leaving the page discards changes.
+The demo state exists only in the page's JavaScript memory. It never reads or writes the extension namespace, localStorage, sessionStorage, IndexedDB, or a backend. Reloading or leaving discards every demo change.

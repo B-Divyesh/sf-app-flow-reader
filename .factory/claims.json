@@ -1,37 +1,72 @@
 [
   {
-    "id": "click-recording",
-    "claim": "Records labeled clicks and page changes as ordered steps.",
-    "where": "landing headline and How it works; README",
-    "test": "npm run test:e2e -- --grep @claim:click-recording",
-    "sandbox": "fresh Chromium profile with the packaged MV3 extension; start a flow, click the local demo, and inspect extension storage"
-  },
-  {
-    "id": "export-files",
-    "claim": "Exports readable Markdown and JSON files.",
-    "where": "landing facts and install section; demo; README",
-    "test": "npm run test:e2e -- --grep @claim:export-files",
-    "sandbox": "fresh demo at /demo; download both formats and assert the five sample steps"
-  },
-  {
-    "id": "local-storage",
-    "claim": "Your flow stays in browser storage.",
-    "where": "landing facts; privacy; README",
-    "test": "npm run test:e2e -- --grep @claim:local-storage",
-    "sandbox": "fresh Chromium extension profile; start a flow, inspect chrome.storage.local, and assert no external request"
-  },
-  {
-    "id": "no-account",
-    "claim": "No account is needed.",
-    "where": "landing facts; README",
-    "test": "npm run test:e2e -- --grep @claim:no-account",
-    "sandbox": "fresh browser context; open the one-click demo and complete a flow action without account fields or authentication"
+    "id": "guided-route",
+    "claim": "Saves multiple named 3–10-step routes, announces the current step, highlights its visible page target, and provides large Back and Next controls.",
+    "where": "landing page, demo, extension popup, README",
+    "test": "npm run test:e2e -- --grep @claim:guided-route",
+    "sandbox": "fresh packaged MV3 profile; burst-record a ten-step route, add a second named route, start following, and operate the injected reader"
   },
   {
     "id": "private-capture",
-    "claim": "The extension does not record screenshots, typed field values, passwords, or browser settings pages.",
-    "where": "landing boundaries; privacy; README",
+    "claim": "Uses accessible control names, never stores typed values, and ignores password controls completely.",
+    "where": "landing boundaries, privacy, README",
     "test": "npm run test:e2e -- --grep @claim:private-capture",
-    "sandbox": "fresh Chromium extension profile; type a unique field value, click the field, inspect stored flow and manifest scope"
+    "sandbox": "fresh packaged MV3 profile; click an aria-labelledby button and labeled password input, then inspect extension storage"
+  },
+  {
+    "id": "local-storage",
+    "claim": "Saved routes stay in Chrome local storage and recording makes no external request.",
+    "where": "landing facts, privacy, popup, README",
+    "test": "npm run test:e2e -- --grep @claim:local-storage",
+    "sandbox": "fresh packaged MV3 profile; start and record a real route through the popup and content script while intercepting requests"
+  },
+  {
+    "id": "route-controls",
+    "claim": "A route can be paused, resumed, annotated, exported, and deleted with confirmation.",
+    "where": "README, extension popup",
+    "test": "npm run test:e2e -- --grep @claim:route-controls",
+    "sandbox": "fresh packaged MV3 profile; exercise each operation and inspect saved state and downloads"
+  },
+  {
+    "id": "export-files",
+    "claim": "Exports the complete route as readable Markdown and JSON files.",
+    "where": "demo, README",
+    "test": "npm run test:e2e -- --grep @claim:export-files",
+    "sandbox": "fresh /demo; download both formats and assert all five sample steps"
+  },
+  {
+    "id": "no-account",
+    "claim": "The free reader and sample demo require no account.",
+    "where": "landing facts, README",
+    "test": "npm run test:e2e -- --grep @claim:no-account",
+    "sandbox": "fresh browser context; enter the demo and advance a route step without authentication fields"
+  },
+  {
+    "id": "demo-isolated",
+    "claim": "Demo changes stay in memory and never touch durable or real extension data.",
+    "where": "demo banner, demo guide, privacy",
+    "test": "npm run test:e2e -- --grep @claim:demo-isolated",
+    "sandbox": "fresh /demo; edit sample data and inspect localStorage, sessionStorage, IndexedDB, and all requests"
+  },
+  {
+    "id": "offline-reload",
+    "claim": "The site and sample route work offline after the first visit.",
+    "where": "README",
+    "test": "npm run test:e2e -- --grep @claim:offline-reload",
+    "sandbox": "fresh browser context; prime /demo, switch the context offline, reload, and advance a sample step"
+  },
+  {
+    "id": "no-tracking",
+    "claim": "Public pages load no analytics, external fonts, or third-party scripts.",
+    "where": "README, privacy",
+    "test": "npm run test:e2e -- --grep @claim:no-tracking",
+    "sandbox": "fresh browser context; intercept all home, privacy, and terms requests and inspect script and stylesheet origins"
+  },
+  {
+    "id": "supporter-license",
+    "claim": "A $12 one-time supporter license adds three cover styles; the free reader, exports, and accessibility features stay free.",
+    "where": "landing supporter section, README, terms",
+    "test": "npm run test:e2e -- --grep @claim:supporter-license",
+    "sandbox": "recorded Sociobot verify fixture; accept a returned token, strip it from the URL, verify once, and apply a cover style"
   }
 ]
