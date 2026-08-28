@@ -9,8 +9,8 @@ const routeStatus = document.querySelector<HTMLDivElement>('#route-status')!;
 let demoFlow: Flow = structuredClone(sampleFlow);
 let undoFlow: Flow | null = null;
 let demoIndex = 0;
-const LICENSE_KEY = 'sb_license:app-flow-reader';
-const LICENSE_CACHE_KEY = 'sb_license_check:app-flow-reader';
+let renderedRoute: Route | null = null;
+const LICENSE_KEY = 'app-flow-reader:returned-license';
 
 captureReturnedLicense();
 render(false);
@@ -21,12 +21,15 @@ document.addEventListener('click', (event) => {
   const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[data-route]') : null;
   if (!link || link.origin !== location.origin) return;
   event.preventDefault();
-  history.pushState({}, '', link.pathname);
+  history.pushState({}, '', `${link.pathname}${link.search}${link.hash}`);
   render(true);
 });
 
 function render(focusHeading: boolean) {
   const route = currentRoute();
+  if (renderedRoute === '/demo' && route !== '/demo') resetDemo();
+  if (route === '/demo' && renderedRoute !== '/demo') resetDemo();
+  renderedRoute = route;
   setMetadata(route);
   app.innerHTML = `${header(route)}${route === '/' ? home() : route === '/demo' ? demo() : route === '/privacy' ? privacy() : route === '/terms' ? terms() : notFound()}${footer()}`;
   document.querySelector('main')?.setAttribute('tabindex', '-1');
@@ -49,7 +52,7 @@ function header(route: Route): string {
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">Open navigation</span><span></span><span></span></button>
     <nav id="site-nav" aria-label="Main navigation">
-      <a href="/demo" data-route ${route === '/demo' ? 'aria-current="page"' : ''}>Demo</a>
+      <a href="/?demo=1" data-route ${route === '/demo' ? 'aria-current="page"' : ''}>Demo</a>
       <a href="/#how-it-works">How it works</a>
       <a href="/privacy" data-route ${route === '/privacy' ? 'aria-current="page"' : ''}>Privacy</a>
       <a class="nav-download" href="/downloads/app-flow-reader-chrome.zip" download>Download</a>
@@ -61,17 +64,17 @@ function home(): string {
   return `<main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="kicker">A steady path through busy software</p>
-        <h1 id="hero-title">Follow saved routes through busy web apps</h1>
-        <p class="lede">For people with progressive low vision who need a reliable path through dense workplace software.</p>
+        <p class="kicker">A steady path through dense workplace apps</p>
+        <h1 id="hero-title">Follow saved routes through dense workplace apps</h1>
+        <p class="lede">For people with progressive low vision who need one reliable path through dense workplace apps.</p>
         <div class="hero-actions">
-          <a class="button primary" href="/demo" data-route>Try it with sample data</a>
+          <a class="button primary" href="/?demo=1" data-route>Try it with sample data</a>
           <span>Follow a five-step expense route.</span>
         </div>
         <ul class="plain-facts" aria-label="Product facts">
-          <li><strong>Guided</strong><span>Large Back and Next controls mark each step.</span></li>
-          <li><strong>Local</strong><span>Saved routes stay in browser storage.</span></li>
-          <li><strong>Open</strong><span>No account is needed.</span></li>
+          <li><strong>Private</strong><span>Routes stay on this device.</span></li>
+          <li><strong>Offline</strong><span>The sample reader works after its first visit.</span></li>
+          <li><strong>Free</strong><span>Reader and exports are free; covers cost $12 once.</span></li>
         </ul>
       </div>
       <div class="hero-map" aria-label="Illustration of a five-step expense route">
@@ -116,12 +119,10 @@ function home(): string {
     <section class="supporter" aria-labelledby="supporter-title">
       <p class="kicker">Optional supporter license</p>
       <h2 id="supporter-title">Add notebook cover styles for $12 once</h2>
-      <p>The route reader, exports, and every accessibility feature remain free. A supporter license adds three decorative cover styles.</p>
-      <p>Sociobot and Dodo handle payment and refunds. A refund deactivates the license.</p>
+      <p>The route reader, exports, and every accessibility feature remain free. A supporter license adds three decorative cover styles in the extension.</p>
+      <p>After checkout, an installed extension restores the returned token. You can also paste it into Supporter styles.</p>
       <a class="button secondary" href="https://api.sociobot.in/api/v1/products/app-flow-reader/checkout">Buy supporter license</a>
-      <form id="restore-license"><label for="license-token">Have a license? Paste it here</label><div><input id="license-token" name="license" autocomplete="off"><button type="submit">Restore license</button></div></form>
-      <p id="license-status" role="status">${licenseStatus()}</p>
-      <div id="supporter-styles" ${readLicenseCache()?.valid ? '' : 'hidden'}><p>Choose a notebook cover:</p><button type="button" data-cover="blueprint">Blueprint</button><button type="button" data-cover="graphite">Graphite</button><button type="button" data-cover="sunrise">Sunrise</button></div>
+      ${returnedLicenseNotice()}
     </section>
 
     <section class="install" aria-labelledby="install-title">
@@ -138,9 +139,9 @@ function demo(): string {
   const steps = demoFlow.steps.map((step, index) => `<li class="demo-step ${index === demoIndex ? 'current' : ''}" data-step-id="${step.id}" ${index === demoIndex ? 'aria-current="step"' : ''}>
     <span class="demo-number">${String(index + 1).padStart(2, '0')}</span>
     <div class="demo-step-copy"><span class="step-kind">${step.kind === 'navigate' ? 'Page change' : step.kind === 'start' ? 'Start' : 'Click'}</span><h2>${escapeHtml(step.label)}</h2><p class="step-url">${escapeHtml(new URL(step.url).pathname + new URL(step.url).search)}</p>${step.note ? `<p class="note">${escapeHtml(step.note)}</p>` : ''}</div>
-    <div class="step-actions"><button class="icon-button edit-note" type="button" aria-label="Edit note for ${escapeHtml(step.label)}">Note</button><button class="icon-button remove-step" type="button" aria-label="Remove ${escapeHtml(step.label)}">Remove</button></div>
+    <div class="step-actions"><button class="icon-button edit-note" type="button" aria-label="Edit note for ${escapeHtml(step.label)}">Edit note</button><button class="icon-button remove-step" type="button" aria-label="Remove ${escapeHtml(step.label)}">Remove</button></div>
   </li>`).join('');
-  return `<div class="demo-banner" role="status"><strong>Demo</strong><span>Sample data. Nothing is saved.</span><button id="reset-demo" type="button">Reset demo</button><a href="/" data-route>Start for real</a></div>
+  return `<div class="demo-banner" role="status"><strong>Demo</strong><span>Sample data. Nothing is saved.</span><button id="reset-demo" type="button">Reset demo</button><a href="/" data-route>Leave demo</a></div>
   <main id="main" class="demo-main">
     <header class="demo-heading"><div><p class="kicker">Sample route</p><h1>Follow the monthly expense route</h1><p>Use Back and Next to hear one step at a time. The current step has a thick outline.</p></div><div class="demo-tools"><button id="export-markdown" class="button primary" type="button">Export Markdown</button><button id="export-json" class="button secondary" type="button">Export JSON</button></div></header>
     <section class="demo-reader" aria-labelledby="reader-step"><p id="reader-position">Step ${demoIndex + 1} of ${demoFlow.steps.length}</p><h2 id="reader-step">${escapeHtml(demoFlow.steps[demoIndex]?.label ?? 'Route complete')}</h2><p>${escapeHtml(demoFlow.steps[demoIndex]?.note ?? 'Complete this action, then choose Next.')}</p><div><button id="demo-back" type="button" ${demoIndex === 0 ? 'disabled' : ''}>Back</button><button id="demo-next" class="primary" type="button" ${demoIndex >= demoFlow.steps.length - 1 ? 'disabled' : ''}>Next</button></div></section>
@@ -152,11 +153,11 @@ function demo(): string {
 }
 
 function privacy(): string {
-  return `<main id="main" class="prose"><p class="kicker">Policy</p><h1>Privacy without a cloud account</h1><p class="updated">Effective 28 August 2026</p><h2>What the extension stores</h2><p>App Flow Reader stores route names, action labels, page addresses, notes, and timestamps in Chrome local storage.</p><h2>What it does not collect</h2><p>The extension ignores password controls. It does not collect screenshots, form values, analytics, or advertising identifiers.</p><h2>Where route data goes</h2><p>Route data stays in your browser unless you export and share a file. The demo keeps changes only in memory.</p><h2>License checks</h2><p>If you buy or restore a supporter license, the site stores its token locally and sends it only to api.sociobot.in for verification.</p><h2>Delete your data</h2><p>Select Delete route in the extension. Removing the extension removes its local route data.</p><h2>Questions</h2><p>Email <a href="mailto:privacy@sociobot.in">privacy@sociobot.in</a>.</p></main>`;
+  return `<main id="main" class="prose"><p class="kicker">Policy</p><h1>Privacy without a cloud account</h1><p class="updated">Effective 28 August 2026</p><h2>What the extension stores</h2><p>App Flow Reader stores route names, action labels, page addresses, notes, and timestamps on this device.</p><h2>What it does not collect</h2><p>The extension ignores password controls. It does not store screenshots or typed field values.</p><h2>Where route data goes</h2><p>Route data stays in your browser unless you export and share a file. The demo keeps changes only in memory.</p><h2>Supporter license checks</h2><p>When you restore a supporter token, the extension sends it to api.sociobot.in to check whether it is active.</p><h2>Delete your data</h2><p>Select Delete route in the extension to remove that saved route.</p><h2>Questions</h2><p>Email <a href="mailto:privacy@sociobot.in">privacy@sociobot.in</a>.</p></main>`;
 }
 
 function terms(): string {
-  return `<main id="main" class="prose"><p class="kicker">Terms</p><h1>Terms for using App Flow Reader</h1><p class="updated">Effective 28 August 2026</p><h2>Use of the extension</h2><p>You may use App Flow Reader for browser tasks you are allowed to access. Review exported files before sharing them.</p><h2>Free reader</h2><p>The route reader, exports, and accessibility features are free. They do not require a supporter license.</p><h2>Supporter purchase</h2><p>The $12 supporter license is a one-time purchase for three decorative cover styles. Sociobot and Dodo are the merchant of record and handle refunds. A refund deactivates the license.</p><h2>No warranty</h2><p>The software is provided as is, without warranties. Keep a copy of any route you need to retain.</p><h2>Acceptable use</h2><p>Do not use the extension to collect private information from other people or to bypass access controls.</p><h2>Contact</h2><p>Email <a href="mailto:support@sociobot.in">support@sociobot.in</a>.</p></main>`;
+  return `<main id="main" class="prose"><p class="kicker">Terms</p><h1>Terms for using App Flow Reader</h1><p class="updated">Effective 28 August 2026</p><h2>Use of the extension</h2><p>You may use App Flow Reader for browser tasks you are allowed to access. Review exported files before sharing them.</p><h2>Free reader</h2><p>The route reader, exports, and accessibility features are free. They do not require a supporter license.</p><h2>Supporter purchase</h2><p>The $12 supporter license is a one-time purchase for three decorative cover styles in the extension. Restore the returned token in the extension.</p><h2>No warranty</h2><p>The software is provided as is, without warranties. Keep a copy of any route you need to retain.</p><h2>Acceptable use</h2><p>Do not use the extension to collect private information from other people or to bypass access controls.</p><h2>Contact</h2><p>Email <a href="mailto:support@sociobot.in">support@sociobot.in</a>.</p></main>`;
 }
 
 function notFound(): string {
@@ -164,7 +165,7 @@ function notFound(): string {
 }
 
 function footer(): string {
-  return `<footer class="site-footer"><div><a class="footer-mark" href="/" data-route>App Flow Reader</a><p>Follow saved routes through busy web apps.</p></div><nav aria-label="Footer navigation"><a href="/privacy" data-route>Privacy</a><a href="/terms" data-route>Terms</a><a href="https://hello-factory.sociobot.in" target="_blank" rel="noreferrer" aria-label="Built by Param Factory (opens in a new tab)">Built by Param Factory <span aria-hidden="true">↗</span></a></nav><p class="build">Version 1.1.0 · build 2026.08.28</p></footer>`;
+  return `<footer class="site-footer"><div><a class="footer-mark" href="/" data-route>App Flow Reader</a><p>Follow saved routes through dense workplace apps.</p></div><nav aria-label="Footer navigation"><a href="/privacy" data-route>Privacy</a><a href="/terms" data-route>Terms</a><a href="https://hello-factory.sociobot.in" target="_blank" rel="noreferrer" aria-label="Built by Param Factory (opens in a new tab)">Built by Param Factory <span aria-hidden="true">↗</span></a></nav><p class="build">Version 1.1.0 · build 2026.08.28</p></footer>`;
 }
 
 function bindSharedActions() {
@@ -174,25 +175,10 @@ function bindSharedActions() {
     toggle.setAttribute('aria-expanded', String(!open));
     document.querySelector('#site-nav')?.classList.toggle('open', !open);
   });
-  document.querySelector<HTMLFormElement>('#restore-license')?.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const token = (document.querySelector('#license-token') as HTMLInputElement).value.trim();
-    if (!token) return;
-    localStorage.setItem(LICENSE_KEY, token);
-    localStorage.removeItem(LICENSE_CACHE_KEY);
-    void verifyLicense(true);
-  });
-  document.querySelectorAll<HTMLButtonElement>('[data-cover]').forEach((button) => button.addEventListener('click', () => {
-    const cover = button.dataset.cover ?? 'blueprint';
-    localStorage.setItem('app-flow-reader:cover', cover);
-    document.documentElement.dataset.cover = cover;
-    document.querySelectorAll('[data-cover]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-  }));
-  if (currentRoute() === '/') void verifyLicense(false);
 }
 
 function bindDemoActions() {
-  document.querySelector('#reset-demo')?.addEventListener('click', () => { demoFlow = structuredClone(sampleFlow); undoFlow = null; demoIndex = 0; render(false); announce('Demo reset to five sample steps.'); });
+  document.querySelector('#reset-demo')?.addEventListener('click', () => { resetDemo(); render(false); announce('Demo reset to five sample steps.'); });
   document.querySelector('#demo-back')?.addEventListener('click', () => { demoIndex = Math.max(0, demoIndex - 1); render(false); announce(`Step ${demoIndex + 1} of ${demoFlow.steps.length}. ${demoFlow.steps[demoIndex]?.label}`); focusDemoStep(); });
   document.querySelector('#demo-next')?.addEventListener('click', () => { demoIndex = Math.min(demoFlow.steps.length - 1, demoIndex + 1); render(false); announce(`Step ${demoIndex + 1} of ${demoFlow.steps.length}. ${demoFlow.steps[demoIndex]?.label}`); focusDemoStep(); });
   document.querySelector('#export-markdown')?.addEventListener('click', () => download(fileName(demoFlow, 'md'), toMarkdown(demoFlow), 'text/markdown'));
@@ -225,6 +211,7 @@ function bindDemoActions() {
 }
 
 function currentRoute(): Route {
+  if (location.pathname === '/' && new URLSearchParams(location.search).get('demo') === '1') return '/demo';
   if (location.pathname === '/') return '/';
   if (location.pathname === '/demo') return '/demo';
   if (location.pathname === '/privacy') return '/privacy';
@@ -234,15 +221,22 @@ function currentRoute(): Route {
 
 function setMetadata(route: Route) {
   const values: Record<Route, [string, string]> = {
-    '/': ['App Flow Reader — Follow saved browser routes', 'Save and follow clear routes through dense browser apps.'],
+    '/': ['App Flow Reader — Follow routes in workplace apps', 'Save and follow clear routes through dense workplace apps.'],
     '/demo': ['Demo — App Flow Reader', 'Follow a five-step expense route with isolated sample data.'],
     '/privacy': ['Privacy — App Flow Reader', 'How App Flow Reader keeps flow data in your browser.'],
     '/terms': ['Terms — App Flow Reader', 'Terms for using the App Flow Reader browser extension.'],
     '/not-found': ['Page not found — App Flow Reader', 'Return to App Flow Reader.'],
   };
   document.title = values[route][0];
+  const canonicalPath = route === '/not-found' ? location.pathname : route;
+  const url = `https://app-flow-reader.sociobot.in${canonicalPath}`;
   document.querySelector<HTMLMetaElement>('meta[name="description"]')!.content = values[route][1];
-  document.querySelector<HTMLLinkElement>('link[rel="canonical"]')!.href = `https://app-flow-reader.sociobot.in${route === '/not-found' ? location.pathname : route}`;
+  document.querySelector<HTMLLinkElement>('link[rel="canonical"]')!.href = url;
+  setMeta('meta[property="og:title"]', values[route][0]);
+  setMeta('meta[property="og:description"]', values[route][1]);
+  setMeta('meta[property="og:url"]', url);
+  setMeta('meta[name="twitter:title"]', values[route][0]);
+  setMeta('meta[name="twitter:description"]', values[route][1]);
 }
 
 function download(name: string, contents: string, type: string) {
@@ -264,42 +258,27 @@ function focusDemoStep() {
 }
 
 function captureReturnedLicense() {
-  const cover = localStorage.getItem('app-flow-reader:cover');
-  if (cover) document.documentElement.dataset.cover = cover;
   const params = new URLSearchParams(location.search);
   const token = params.get('license');
   if (!token) return;
-  localStorage.setItem(LICENSE_KEY, token);
-  localStorage.setItem(LICENSE_CACHE_KEY, JSON.stringify({ valid: true, checkedAt: 0 }));
+  sessionStorage.setItem(LICENSE_KEY, token);
   params.delete('license');
   history.replaceState({}, '', `${location.pathname}${params.size ? `?${params}` : ''}${location.hash}`);
 }
 
-function licenseStatus(): string {
-  const cached = readLicenseCache();
-  return cached?.valid ? 'Supporter styles are active on this browser.' : localStorage.getItem(LICENSE_KEY) ? 'Checking this license…' : 'No supporter license is stored.';
+function returnedLicenseNotice(): string {
+  const token = sessionStorage.getItem(LICENSE_KEY);
+  return token ? `<p class="returned-license" data-app-flow-reader-license-return="${escapeHtml(token)}" role="status">Purchase complete. Your installed extension restores this token now. You can also copy it into Supporter styles: <code>${escapeHtml(token)}</code></p>` : '';
 }
 
-function readLicenseCache(): { valid: boolean; checkedAt: number } | null {
-  try { return JSON.parse(localStorage.getItem(LICENSE_CACHE_KEY) ?? 'null'); } catch { return null; }
+function resetDemo() {
+  demoFlow = structuredClone(sampleFlow);
+  undoFlow = null;
+  demoIndex = 0;
 }
 
-async function verifyLicense(force: boolean) {
-  const token = localStorage.getItem(LICENSE_KEY);
-  if (!token) return;
-  const cache = readLicenseCache();
-  if (!force && cache?.checkedAt && Date.now() - cache.checkedAt < 86_400_000) return;
-  const status = document.querySelector('#license-status');
-  try {
-    const response = await fetch(`https://api.sociobot.in/api/v1/products/app-flow-reader/verify?license=${encodeURIComponent(token)}`);
-    const result = await response.json() as { valid: boolean };
-    localStorage.setItem(LICENSE_CACHE_KEY, JSON.stringify({ valid: result.valid, checkedAt: Date.now() }));
-    if (status) status.textContent = result.valid ? 'Supporter styles are active on this browser.' : 'This license is no longer active. You can buy another above.';
-    const styles = document.querySelector<HTMLElement>('#supporter-styles');
-    if (styles) styles.hidden = !result.valid;
-  } catch {
-    if (status) status.textContent = cache?.valid ? 'Supporter styles remain active while the license check is offline.' : 'The license could not be checked. Try again when you are online.';
-  }
+function setMeta(selector: string, content: string) {
+  document.querySelector<HTMLMetaElement>(selector)!.content = content;
 }
 
 function escapeHtml(value: string): string {

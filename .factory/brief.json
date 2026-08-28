@@ -2,7 +2,7 @@
   "product": "App Flow Reader",
   "slug": "app-flow-reader",
   "artifact_class": "browser-extension",
-  "summary": "Follow saved routes through dense browser apps.",
+  "summary": "Follow saved routes through dense workplace apps.",
   "audience": [
     "knowledge workers with progressive low vision",
     "people who need a repeatable path through dense workplace software"

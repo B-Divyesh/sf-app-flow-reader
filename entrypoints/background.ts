@@ -11,6 +11,7 @@ import {
   upsertRoute,
   type RecorderState,
 } from '../lib/flow';
+import { COVER_KEY, isCoverStyle, LICENSE_CHECK_INTERVAL, LICENSE_KEY, type LicenseRecord } from '../lib/license';
 
 let mutationQueue: Promise<unknown> = Promise.resolve();
 let lastContentTabId: number | undefined;
@@ -21,6 +22,23 @@ export default defineBackground(() => {
   browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message?.type === 'afr:get-state') {
       getState().then(sendResponse);
+      return true;
+    }
+    if (message?.type === 'afr:get-license') {
+      getLicense().then(sendResponse);
+      return true;
+    }
+    if (message?.type === 'afr:restore-license') {
+      respondLicense(sendResponse, () => restoreLicense(String(message.token ?? ''), true));
+      return true;
+    }
+    if (message?.type === 'afr:set-cover') {
+      respondLicense(sendResponse, async () => {
+        const current = await getLicense();
+        if (!current.license?.valid || !isCoverStyle(message.cover)) return current;
+        await browser.storage.local.set({ [COVER_KEY]: message.cover });
+        return { ...current, cover: message.cover };
+      });
       return true;
     }
     if (message?.type === 'afr:start') {
@@ -122,6 +140,10 @@ function respond(sendResponse: (response?: unknown) => void, operation: () => Pr
   enqueue(operation).then(sendResponse).catch((error) => sendResponse({ error: error instanceof Error ? error.message : String(error) }));
 }
 
+function respondLicense(sendResponse: (response?: unknown) => void, operation: () => Promise<unknown>) {
+  enqueue(operation).then(sendResponse).catch((error) => sendResponse({ error: error instanceof Error ? error.message : String(error) }));
+}
+
 function enqueue<T>(operation: () => Promise<T>): Promise<T> {
   const result = mutationQueue.then(operation, operation);
   mutationQueue = result.then(() => undefined, () => undefined);
@@ -136,6 +158,32 @@ async function getState(): Promise<RecorderState> {
 async function save(state: RecorderState): Promise<RecorderState> {
   await browser.storage.local.set({ [STORAGE_KEY]: state });
   return state;
+}
+
+async function getLicense(): Promise<{ license: LicenseRecord | null; cover: string | null }> {
+  const values = await browser.storage.local.get([LICENSE_KEY, COVER_KEY]) as Record<string, LicenseRecord | string | undefined>;
+  const license = values[LICENSE_KEY];
+  return {
+    license: license && typeof license === 'object' && typeof license.token === 'string' ? license : null,
+    cover: isCoverStyle(values[COVER_KEY]) ? values[COVER_KEY] : null,
+  };
+}
+
+async function restoreLicense(token: string, force: boolean): Promise<{ license: LicenseRecord | null; cover: string | null }> {
+  const cleaned = token.trim();
+  if (!cleaned) return getLicense();
+  const existing = await getLicense();
+  if (!force && existing.license?.token === cleaned && Date.now() - existing.license.checkedAt < LICENSE_CHECK_INTERVAL) return existing;
+  try {
+    const response = await fetch(`https://api.sociobot.in/api/v1/products/app-flow-reader/verify?license=${encodeURIComponent(cleaned)}`);
+    const result = await response.json() as { valid?: boolean; reason?: string };
+    const license: LicenseRecord = { token: cleaned, valid: result.valid === true, checkedAt: Date.now(), reason: result.reason };
+    await browser.storage.local.set({ [LICENSE_KEY]: license });
+    if (!license.valid) await browser.storage.local.remove(COVER_KEY);
+    return { license, cover: license.valid ? existing.cover ?? null : null };
+  } catch {
+    return existing;
+  }
 }
 
 async function activeTabId(): Promise<number | undefined> {

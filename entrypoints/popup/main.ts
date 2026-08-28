@@ -1,5 +1,6 @@
 import './style.css';
 import { fileName, MAX_ROUTE_STEPS, MIN_ROUTE_STEPS, normalizeState, toJson, toMarkdown, type RecorderState } from '../../lib/flow';
+import { isCoverStyle, type CoverStyle, type LicenseRecord } from '../../lib/license';
 
 const flowSection = getElement('flow');
 const stepList = getElement('step-list');
@@ -7,6 +8,8 @@ const statusChip = getElement('status-chip');
 const toggle = getButton('toggle');
 const announcement = getElement('announcement');
 let current: RecorderState = normalizeState(undefined);
+let license: LicenseRecord | null = null;
+let cover: CoverStyle | null = null;
 
 void refresh();
 
@@ -47,10 +50,33 @@ getButton('clear').addEventListener('click', async () => {
   render();
   announce('Route deleted.');
 });
+getButton('restore-license').addEventListener('click', async () => {
+  const token = (getElement('supporter-token') as HTMLInputElement).value.trim();
+  if (!token) { announce('Paste a supporter license token first.'); return; }
+  applyLicense(await browser.runtime.sendMessage({ type: 'afr:restore-license', token }));
+  announce(license?.valid ? 'Supporter license restored.' : 'This license is not active.');
+});
+document.querySelectorAll<HTMLButtonElement>('button[data-cover]').forEach((button) => button.addEventListener('click', async () => {
+  applyLicense(await browser.runtime.sendMessage({ type: 'afr:set-cover', cover: button.dataset.cover }));
+  if (cover) announce(`${cover.charAt(0).toUpperCase()}${cover.slice(1)} cover applied.`);
+}));
 
 async function refresh() {
   current = normalizeState(await browser.runtime.sendMessage({ type: 'afr:get-state' }));
+  applyLicense(await browser.runtime.sendMessage({ type: 'afr:get-license' }));
   render();
+}
+
+function applyLicense(result: { license?: LicenseRecord | null; cover?: unknown }) {
+  license = result?.license ?? null;
+  cover = isCoverStyle(result?.cover) ? result.cover : null;
+  document.documentElement.dataset.cover = license?.valid && cover ? cover : 'default';
+  const status = getElement('license-status');
+  status.textContent = license?.valid
+    ? 'Supporter styles are active in this extension.'
+    : license?.reason === 'revoked' ? 'This license is no longer active.' : 'No supporter license is stored.';
+  getElement('cover-styles').hidden = !license?.valid;
+  document.querySelectorAll<HTMLButtonElement>('button[data-cover]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.cover === cover)));
 }
 
 async function move(delta: number) {

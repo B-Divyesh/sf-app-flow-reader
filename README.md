@@ -1,16 +1,16 @@
 # App Flow Reader
 
-Follow saved routes through dense browser apps.
+Follow saved routes through dense workplace apps.
 
-App Flow Reader is a Manifest V3 extension for knowledge workers with progressive low vision. Record a named route once, then follow its 3–10 steps with current-step announcements, visible target outlines, and large Back and Next controls.
+App Flow Reader is a browser extension for people with progressive low vision. Record a named route once, then follow its 3–10 steps with current-step announcements, visible target outlines, and large Back and Next controls.
 
 Live site: <https://app-flow-reader.sociobot.in>
 
-Sample-data demo: <https://app-flow-reader.sociobot.in/demo>
+Sample-data demo: <https://app-flow-reader.sociobot.in/?demo=1>
 
-## What it does
+## What App Flow Reader does
 
-- Keeps multiple named routes in Chrome local storage.
+- Keeps multiple named routes on this device.
 - Uses accessible control names before visible text fallbacks.
 - Ignores password controls and never stores typed values or screenshots.
 - Pauses, resumes, annotates, exports, and deletes routes.
@@ -19,15 +19,15 @@ Sample-data demo: <https://app-flow-reader.sociobot.in/demo>
 
 The free reader, exports, and accessibility features need no account. Public pages load no analytics, external fonts, or third-party scripts.
 
-## Try the isolated sample
+## Try the isolated sample route
 
-Open `/demo` and use Back and Next to follow a five-step monthly expense route. Changes stay in page memory and do not touch real extension data. **Reset demo** restores the sample.
+Open `?demo=1` and use Back and Next to follow a five-step monthly expense route. Changes stay in page memory and do not touch real extension data. **Reset demo** restores the sample. **Leave demo** discards edits before returning home.
 
 ## Install the extension
 
 1. Download `app-flow-reader-chrome.zip` from the live site.
 2. Unzip it.
-3. Open `chrome://extensions` in Chrome or another Chromium browser.
+3. Open `chrome://extensions` in Chrome, Edge, Brave, or another Chromium-based browser.
 4. Turn on **Developer mode**.
 5. Select **Load unpacked**, then choose the unzipped folder.
 
@@ -35,9 +35,9 @@ Name a route in the toolbar popup and select **Start recording**. Complete 3–1
 
 ## Optional supporter license
 
-A $12 one-time supporter license adds Blueprint, Graphite, and Sunrise notebook covers. It never gates the reader, exports, privacy controls, or accessibility features. Sociobot and Dodo handle payment and refunds. A license can be restored on the product site.
+A $12 one-time supporter license adds Blueprint, Graphite, and Sunrise notebook covers in the extension. It never gates the reader, exports, privacy controls, or accessibility features. After checkout, an installed extension restores the returned token; you can also paste it into **Supporter styles**.
 
-## Develop
+## Develop locally
 
 Requirements: Node.js 22 and npm 10.
 
@@ -47,7 +47,7 @@ npm run dev
 npm run dev:site
 ```
 
-## Verify
+## Run all checks
 
 ```sh
 npm ci
@@ -64,14 +64,15 @@ npm run build
 unzip -t dist/site/downloads/app-flow-reader-chrome.zip
 ```
 
-`test:live-checkout` checks the production catalog entry, the Sociobot
-checkout redirect, and the hosted Dodo page. It does not submit a payment.
+`test:live-checkout` checks the production catalog entry and checkout redirect. It does not submit a payment.
 
 The build produces `dist/site/`, `dist/extension/`, and the packaged extension at `dist/site/downloads/app-flow-reader-chrome.zip`.
 
-## Deploy
+## Deploy the website
 
 Deploy `dist/site/` as the static artifact. Azure Static Web Apps reads `staticwebapp.config.json` for known SPA rewrites, a real 404 catch-all, security headers, and cache policy.
+
+Manifest V3 is used for the packaged extension. Route state uses `chrome.storage.local`; the optional license check is the only extension network request and runs after a user pastes a token.
 
 ## Privacy and legal
 

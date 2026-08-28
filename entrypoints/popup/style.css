@@ -44,6 +44,20 @@ h2 { font-size: 23px; }
 .step-list strong { line-height: 1.35; }
 .step-list small { margin-top: 3px; color: #53616d; }
 .step-note { margin: 7px 0 2px; padding-left: 8px; border-left: 3px solid #f7cc53; font-size: 14px; line-height: 1.4; }
+.supporter-panel { margin: 22px 18px; padding: 18px; border: 2px solid #132031; background: #fffdf7; }
+.supporter-panel h2 { margin: 0 0 10px; font-size: 24px; }
+.supporter-panel label { display: block; margin: 14px 0 6px; font-weight: 700; }
+.supporter-panel input { min-width: 0; min-height: 44px; flex: 1; padding: 9px; color: #132031; background: #fff; border: 1px solid #52616f; font: inherit; }
+.license-form { display: flex; gap: 8px; }
+.supporter-buy { display: inline-flex; align-items: center; min-height: 44px; color: #132031; font-weight: 800; }
+#cover-styles { margin-top: 12px; padding-top: 12px; border-top: 1px solid #a99e8c; }
+#cover-styles p { margin: 0 0 8px; font-weight: 700; }
+#cover-styles button { margin: 0 6px 6px 0; }
+:root[data-cover="blueprint"] { --popup-paper: #e6f0f8; }
+:root[data-cover="graphite"] { --popup-paper: #dfe3e5; }
+:root[data-cover="sunrise"] { --popup-paper: #fff0dc; }
+html[data-cover]:not([data-cover="default"]) body { background: radial-gradient(#c7c1b4 0.8px, transparent 0.8px) 0 0/16px 16px, var(--popup-paper); }
+html[data-cover]:not([data-cover="default"]) .supporter-panel { background: var(--popup-paper); }
 .note-button { min-height: 38px; margin-top: 4px; padding: 5px 0; color: #174b87; background: transparent; border: 0; text-decoration: underline; text-underline-offset: 3px; }
 .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .actions #follow { grid-column: 1 / -1; }
@@ -73,5 +87,8 @@ footer a { color: #174b87; }
   footer a { color: #8fc1ff; }
   .note-button { color: #8fc1ff; }
   .eyebrow { color: #ff956f; }
+  .supporter-panel { border-color: #f4efe4; background: #1b2937; }
+  .supporter-panel input { color: #f5f0e5; background: #1b2937; border-color: #8392a0; }
+  .supporter-buy { color: #8fc1ff; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }

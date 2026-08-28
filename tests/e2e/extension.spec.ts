@@ -31,12 +31,16 @@ async function state(worker: Worker) {
   return worker.evaluate(async () => (await (globalThis as any).chrome.storage.local.get('app-flow-reader:state'))['app-flow-reader:state']);
 }
 
+async function storage(worker: Worker) {
+  return worker.evaluate(async () => (globalThis as any).chrome.storage.local.get());
+}
+
 async function start(popup: Page, name: string) {
   await popup.getByLabel('Route name').fill(name);
   await popup.getByRole('button', { name: 'Start recording' }).click();
 }
 
-test('@claim:guided-route keeps multiple named routes, caps burst input, and follows with Back and Next', async ({ browserName }, testInfo) => {
+test('@claim:guided-route keeps multiple named routes, caps burst input, announces and highlights each current step, and follows with large Back and Next controls', async ({ browserName }, testInfo) => {
   test.skip(browserName !== 'chromium' || testInfo.project.name !== 'desktop-chromium');
   const harness = await launchExtension();
   try {
@@ -69,16 +73,23 @@ test('@claim:guided-route keeps multiple named routes, caps burst input, and fol
     const saved = await state(harness.worker);
     await harness.page.bringToFront();
     const tabId = await harness.worker.evaluate(async () => (await (globalThis as any).chrome.tabs.query({ active: true, currentWindow: true }))[0]?.id);
-    await harness.popup.evaluate(async ({ id, tabId }) => (globalThis as any).chrome.runtime.sendMessage({ type: 'afr:follow', id, tabId }), { id: saved.flow.id, tabId });
+    await harness.popup.evaluate(async ({ id, tabId }) => (globalThis as any).chrome.runtime.sendMessage({ type: 'afr:follow', id, tabId }), { id: saved.routes[0].id, tabId });
     const reader = harness.page.getByRole('complementary', { name: 'App Flow Reader controls' });
-    await expect(reader).toContainText('Step 1 of 3');
+    await expect(reader).toContainText('Step 1 of 10');
     await reader.getByRole('button', { name: 'Next' }).click();
-    await expect(reader).toContainText('Step 2 of 3');
+    await expect(reader.getByRole('status')).toContainText('Target highlighted.');
+    await expect(harness.page.getByRole('button', { name: 'Boundary step 1', exact: true })).toHaveCSS('outline-width', '4px');
+    for (const label of ['Back', 'Next']) {
+      const box = await reader.getByRole('button', { name: label }).boundingBox();
+      expect(box?.height).toBeGreaterThanOrEqual(48);
+    }
+    await reader.getByRole('button', { name: 'Next' }).click();
+    await expect(reader).toContainText('Step 3 of 10');
     await expect(reader.getByRole('button', { name: 'Back' })).toBeEnabled();
   } finally { await closeExtension(harness); }
 });
 
-test('@claim:private-capture uses accessible names and ignores password controls completely', async ({ browserName }, testInfo) => {
+test('@claim:private-capture uses accessible names, ignores password controls, and stores no typed values or screenshots', async ({ browserName }, testInfo) => {
   test.skip(browserName !== 'chromium' || testInfo.project.name !== 'desktop-chromium');
   const harness = await launchExtension();
   try {
@@ -94,6 +105,16 @@ test('@claim:private-capture uses accessible names and ignores password controls
     expect(serialized).toContain('Save report');
     expect(serialized).not.toContain('Work password');
     expect(serialized).not.toContain('disk icon');
+    expect(serialized).not.toContain('correct horse battery staple');
+    expect(await harness.page.evaluate(() => {
+      const input = document.querySelector('#work-password') as HTMLInputElement;
+      input.value = 'correct horse battery staple';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      return input.value;
+    })).toBe('correct horse battery staple');
+    expect(JSON.stringify(await storage(harness.worker))).not.toContain('correct horse battery staple');
+    const background = await (await import('node:fs/promises')).readFile('entrypoints/background.ts', 'utf8');
+    expect(background).not.toContain('captureVisibleTab');
   } finally { await closeExtension(harness); }
 });
 
@@ -140,14 +161,48 @@ test('@claim:route-controls supports pause, resume, notes, exports, and confirme
   } finally { await closeExtension(harness); }
 });
 
-test('extension manifest stays MV3, local-only, and versioned for updates', async ({ browserName }, testInfo) => {
+test('@claim:mv3-package builds a versioned Manifest V3 extension with only the license verification host', async ({ browserName }, testInfo) => {
   test.skip(browserName !== 'chromium' || testInfo.project.name !== 'desktop-chromium');
   const manifest = JSON.parse(await (await import('node:fs/promises')).readFile('dist/extension/manifest.json', 'utf8'));
   expect(manifest.manifest_version).toBe(3);
   expect(manifest.version).toBe('1.1.0');
   expect(manifest.permissions.sort()).toEqual(['activeTab', 'storage'].sort());
-  expect(manifest.host_permissions ?? []).toEqual([]);
-  expect(JSON.stringify(manifest)).not.toMatch(/https?:\/\/(?!\*\/\*)/);
+  expect(manifest.host_permissions).toEqual(['https://api.sociobot.in/*']);
+  expect(manifest.permissions.sort()).toEqual(['activeTab', 'storage'].sort());
+});
+
+test('@claim:browser-page-boundaries does not run on browser settings pages', async ({ browserName }, testInfo) => {
+  test.skip(browserName !== 'chromium' || testInfo.project.name !== 'desktop-chromium');
+  const manifest = JSON.parse(await (await import('node:fs/promises')).readFile('dist/extension/manifest.json', 'utf8'));
+  expect(manifest.content_scripts[0].matches).toEqual(['http://*/*', 'https://*/*']);
+  expect(manifest.content_scripts[0].matches.join(' ')).not.toContain('chrome://');
+  expect(manifest.permissions).not.toContain('tabs');
+});
+
+test('@claim:supporter-license restores valid licenses in the packaged extension, applies all covers, rejects revoked licenses, and leaves the reader free', async ({ browserName }, testInfo) => {
+  test.skip(browserName !== 'chromium' || testInfo.project.name !== 'desktop-chromium');
+  const harness = await launchExtension();
+  await harness.context.route('https://api.sociobot.in/api/v1/products/app-flow-reader/verify?license=*', async (route) => {
+    const token = new URL(route.request().url()).searchParams.get('license');
+    await route.fulfill({ contentType: 'application/json', body: JSON.stringify(token === 'valid-token' ? { valid: true, reason: 'ok' } : { valid: false, reason: 'revoked' }) });
+  });
+  try {
+    await expect(harness.popup.getByRole('link', { name: 'Buy supporter license — $12' })).toBeVisible();
+    await harness.popup.getByLabel('Supporter license token').fill('valid-token');
+    await harness.popup.getByRole('button', { name: 'Restore license' }).click();
+    await expect(harness.popup.getByRole('status')).toContainText('Supporter styles are active in this extension.');
+    for (const [cover, label] of [['blueprint', 'Use Blueprint cover'], ['graphite', 'Use Graphite cover'], ['sunrise', 'Use Sunrise cover']] as const) {
+      await harness.popup.getByRole('button', { name: label }).click();
+      await expect.poll(async () => (await storage(harness.worker))['app-flow-reader:cover']).toBe(cover);
+      await expect(harness.popup.locator('html')).toHaveAttribute('data-cover', cover);
+    }
+    await harness.popup.getByLabel('Supporter license token').fill('revoked-token');
+    await harness.popup.getByRole('button', { name: 'Restore license' }).click();
+    await expect(harness.popup.getByRole('status')).toContainText('This license is no longer active.');
+    await expect(harness.popup.locator('#cover-styles')).toBeHidden();
+    await start(harness.popup, 'Still free after a revoked license');
+    await expect.poll(async () => (await state(harness.worker)).flow.title).toBe('Still free after a revoked license');
+  } finally { await closeExtension(harness); }
 });
 
 test('@a11y extension popup passes axe in light and dark themes with keyboard focus', async ({ browserName }, testInfo) => {

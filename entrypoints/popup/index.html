@@ -48,9 +48,19 @@
           <button id="clear" class="quiet danger" type="button" aria-label="Clear flow">Delete route</button>
         </div>
       </section>
+      <section class="supporter-panel" aria-labelledby="supporter-title">
+        <p class="eyebrow">Optional supporter styles</p>
+        <h2 id="supporter-title">Use your notebook covers</h2>
+        <p class="muted">The reader stays free. After checkout, paste your license token here.</p>
+        <a class="supporter-buy" href="https://api.sociobot.in/api/v1/products/app-flow-reader/checkout" target="_blank" rel="noreferrer">Buy supporter license — $12</a>
+        <label for="supporter-token">Supporter license token</label>
+        <div class="license-form"><input id="supporter-token" autocomplete="off"><button id="restore-license" type="button">Restore license</button></div>
+        <p id="license-status" class="muted" role="status">No supporter license is stored.</p>
+        <div id="cover-styles" hidden><p>Choose a cover for this extension:</p><button type="button" data-cover="blueprint">Use Blueprint cover</button><button type="button" data-cover="graphite">Use Graphite cover</button><button type="button" data-cover="sunrise">Use Sunrise cover</button></div>
+      </section>
       <p id="announcement" class="sr-only" aria-live="polite"></p>
     </main>
-    <footer><span>Routes stay local</span><span aria-hidden="true">•</span><a href="https://app-flow-reader.sociobot.in/privacy" target="_blank" rel="noreferrer">Privacy</a></footer>
+    <footer><span>Routes stay local</span><span aria-hidden="true">•</span><a href="https://app-flow-reader.sociobot.in/privacy" target="_blank" rel="noreferrer">Privacy</a><span aria-hidden="true">•</span><a href="https://app-flow-reader.sociobot.in/terms" target="_blank" rel="noreferrer">Terms</a></footer>
     <script type="module" src="./main.ts"></script>
   </body>
 </html>

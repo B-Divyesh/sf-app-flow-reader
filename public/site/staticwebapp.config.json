@@ -1,6 +1,6 @@
 {
   "responseOverrides": {
-    "404": { "rewrite": "/index.html" }
+    "404": { "rewrite": "/404.html" }
   },
   "globalHeaders": {
     "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.sociobot.in; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",

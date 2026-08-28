@@ -27,6 +27,8 @@ Georgia supplies the editorial, document-like headings. The system UI stack keep
 
 Route documents use square paper edges, two-pixel rules, offset ink shadows, numbered circles, and one connecting orange line. The current step gains a four-pixel orange outline. The injected reader uses a near-black field, a coral edge, and 48 px or larger Back and Next controls. Buttons press two pixels into their shadows. Removing a step exposes an Undo bar. Notes open from their source step and return focus through the native dialog model.
 
+The optional Blueprint, Graphite, and Sunrise covers now apply to the extension popup itself, after a valid supporter license is restored there. They only change the notebook paper behind the reader controls; route reading, exports, and all accessibility controls remain identical and free.
+
 ## Motion policy
 
 Only the primary button press and current-step scroll use movement. Both describe a state change and finish within 200 ms. `prefers-reduced-motion` removes transforms, smooth scrolling, and transition duration. Nothing loops, flashes, or autoplays.

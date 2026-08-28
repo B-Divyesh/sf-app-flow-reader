@@ -8,6 +8,20 @@ export default defineContentScript({
     let previousOutline = '';
     let readerHost: HTMLElement | null = null;
 
+    // The product return page leaves a short-lived DOM marker so an installed
+    // extension can receive and verify its own license without the website
+    // ever applying a paid style.
+    const receiveReturnedLicense = () => {
+      const returnedLicense = document.querySelector<HTMLElement>('[data-app-flow-reader-license-return]')?.dataset.appFlowReaderLicenseReturn;
+      if (!returnedLicense || location.hostname !== 'app-flow-reader.sociobot.in') return false;
+      void browser.runtime.sendMessage({ type: 'afr:restore-license', token: returnedLicense });
+      return true;
+    };
+    if (!receiveReturnedLicense()) {
+      const licenseObserver = new MutationObserver(() => { if (receiveReturnedLicense()) licenseObserver.disconnect(); });
+      licenseObserver.observe(document.documentElement, { childList: true, subtree: true });
+    }
+
     document.addEventListener('click', (event) => {
       const target = event.target instanceof Element
         ? event.target.closest('button, a, input, select, textarea, [role="button"], [role="link"]')

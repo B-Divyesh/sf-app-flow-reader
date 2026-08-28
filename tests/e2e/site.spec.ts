@@ -5,11 +5,11 @@ test('landing page names the low-vision job and keeps the product skeleton', asy
   const errors: string[] = [];
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
   await page.goto('/');
-  await expect(page).toHaveTitle('App Flow Reader — Follow saved browser routes');
+  await expect(page).toHaveTitle('App Flow Reader — Follow routes in workplace apps');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.locator('main')).toHaveCount(1);
   await expect(page.locator('h1')).toHaveCount(1);
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Follow saved routes through busy web apps');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Follow saved routes through dense workplace apps');
   await expect(page.locator('.lede')).toContainText('progressive low vision');
   await expect(page.getByRole('link', { name: 'Try it with sample data' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Download extension', exact: true })).toHaveAttribute('href', '/downloads/app-flow-reader-chrome.zip');
@@ -19,7 +19,7 @@ test('landing page names the low-vision job and keeps the product skeleton', asy
 test('@claim:no-account completes a guided route action without account setup', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('link', { name: 'Try it with sample data' }).click();
-  await expect(page).toHaveURL(/\/demo$/);
+  await expect(page).toHaveURL(/\?demo=1$/);
   await expect(page.locator('.demo-step')).toHaveCount(5);
   await page.getByRole('button', { name: 'Next' }).click();
   await expect(page.locator('#reader-position')).toHaveText('Step 2 of 5');
@@ -41,7 +41,7 @@ test('@claim:export-files exports the complete sample as Markdown and JSON', asy
   expect(JSON.parse(await (await import('node:fs/promises')).readFile(await json.path() as string, 'utf8')).steps).toHaveLength(5);
 });
 
-test('@claim:demo-isolated changes the sample in memory with no cross-origin request or durable storage', async ({ page }) => {
+test('@claim:demo-isolated changes the sample in memory with no cross-origin request or durable storage, then discards edits on exit and re-entry', async ({ page }) => {
   const external: string[] = [];
   page.on('request', (request) => { if (new URL(request.url()).origin !== 'http://127.0.0.1:4173') external.push(request.url()); });
   await page.goto('/demo');
@@ -51,6 +51,11 @@ test('@claim:demo-isolated changes the sample in memory with no cross-origin req
   await expect(page.getByText('Use the second control in the toolbar.')).toBeVisible();
   expect(await page.evaluate(async () => ({ local: Object.keys(localStorage), session: Object.keys(sessionStorage), databases: await indexedDB.databases() }))).toEqual({ local: [], session: [], databases: [] });
   expect(external).toEqual([]);
+  await page.getByRole('link', { name: 'Leave demo' }).click();
+  await expect(page).toHaveURL('http://127.0.0.1:4173/');
+  await page.getByRole('link', { name: 'Try it with sample data' }).click();
+  await expect(page.locator('.demo-step')).toHaveCount(5);
+  await expect(page.getByText('Use the second control in the toolbar.')).toHaveCount(0);
 });
 
 test('@claim:no-tracking loads public pages without analytics, external fonts, or third-party scripts', async ({ page }) => {
@@ -75,19 +80,12 @@ test('demo editing is bounded, reversible, and resettable', async ({ page }) => 
   await expect(page.locator('#reader-position')).toHaveText('Step 1 of 5');
 });
 
-test('@claim:supporter-license stores, verifies, restores, and applies the optional license', async ({ page }) => {
-  await page.route('https://api.sociobot.in/api/v1/products/app-flow-reader/verify?license=test-token', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '{"valid":true,"reason":"ok","expires_at":null}' }));
+test('@claim:license-return purchase return strips the URL token and tells the visitor where to restore it', async ({ page }) => {
   await page.goto('/?license=test-token');
   await expect(page).toHaveURL('http://127.0.0.1:4173/');
-  await expect(page.getByRole('status').filter({ hasText: 'Supporter styles are active' })).toBeVisible();
-  await page.getByRole('button', { name: 'Graphite' }).click();
-  expect(await page.evaluate(() => ({ token: localStorage.getItem('sb_license:app-flow-reader'), cover: localStorage.getItem('app-flow-reader:cover'), mode: document.documentElement.dataset.cover }))).toEqual({ token: 'test-token', cover: 'graphite', mode: 'graphite' });
+  await expect(page.getByRole('status')).toContainText('Purchase complete. Your installed extension restores this token now.');
+  await expect(page.getByRole('status')).toContainText('test-token');
   await expect(page.getByRole('link', { name: 'Buy supporter license' })).toHaveAttribute('href', 'https://api.sociobot.in/api/v1/products/app-flow-reader/checkout');
-  await page.route('https://api.sociobot.in/api/v1/products/app-flow-reader/verify?license=revoked-token', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '{"valid":false,"reason":"revoked","expires_at":null}' }));
-  await page.getByLabel('Have a license? Paste it here').fill('revoked-token');
-  await page.getByRole('button', { name: 'Restore license' }).click();
-  await expect(page.getByText('This license is no longer active.')).toBeVisible();
-  await expect(page.locator('#supporter-styles')).toBeHidden();
 });
 
 test('keyboard navigation manages route focus and the note dialog', async ({ page, browserName }) => {
@@ -107,22 +105,33 @@ test('keyboard navigation manages route focus and the note dialog', async ({ pag
   await expect(noteButton).toBeFocused();
 });
 
-test('routes update title, history, heading focus, and deployment policy has a real 404 catch-all', async ({ page }) => {
+test('routes update titles, social metadata, history, heading focus, and deployment policy has a real 404 catch-all', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('link', { name: 'Privacy', exact: true }).first().click();
   await expect(page).toHaveTitle('Privacy — App Flow Reader');
   await expect(page.getByRole('heading', { level: 1 })).toBeFocused();
   await page.goBack();
-  await expect(page).toHaveTitle('App Flow Reader — Follow saved browser routes');
+  await expect(page).toHaveTitle('App Flow Reader — Follow routes in workplace apps');
   await page.goto('/missing-path');
   await expect(page).toHaveTitle('Page not found — App Flow Reader');
+  for (const [route, title, description] of [
+    ['/demo', 'Demo — App Flow Reader', 'Follow a five-step expense route with isolated sample data.'],
+    ['/privacy', 'Privacy — App Flow Reader', 'How App Flow Reader keeps flow data in your browser.'],
+    ['/terms', 'Terms — App Flow Reader', 'Terms for using the App Flow Reader browser extension.'],
+  ] as const) {
+    await page.goto(route);
+    await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', title);
+    await expect(page.locator('meta[property="og:description"]')).toHaveAttribute('content', description);
+    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute('content', `https://app-flow-reader.sociobot.in${route}`);
+    await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', title);
+  }
   const config = JSON.parse(await (await import('node:fs/promises')).readFile('public/site/staticwebapp.config.json', 'utf8'));
   expect(config.routes).toEqual(expect.arrayContaining([
     { route: '/demo', rewrite: '/index.html' },
     { route: '/privacy', rewrite: '/index.html' },
     { route: '/terms', rewrite: '/index.html' },
   ]));
-  expect(config.responseOverrides).toEqual({ '404': { rewrite: '/index.html' } });
+  expect(config.responseOverrides).toEqual({ '404': { rewrite: '/404.html' } });
   expect(config.globalHeaders['Content-Security-Policy']).toContain("connect-src 'self' https://api.sociobot.in");
 });
 
