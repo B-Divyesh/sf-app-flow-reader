@@ -28,6 +28,7 @@ button { color: var(--ink); background: var(--surface); border: 1.5px solid var(
 .skip-link:focus { top: 12px; }
 .site-header { position: relative; z-index: 5; min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1240px; margin: auto; padding: 16px 28px; }
 .wordmark { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 850; text-decoration: none; letter-spacing: -.02em; }
+.wordmark, .site-header nav a, .footer-mark, .site-footer nav a { min-height: 44px; display: inline-flex; align-items: center; }
 .wordmark svg { overflow: visible; fill: var(--paper); stroke: var(--blue); stroke-width: 2.5; }
 .wordmark circle:last-child { fill: var(--orange); stroke: var(--orange); }
 .site-header nav { display: flex; align-items: center; gap: 28px; }
