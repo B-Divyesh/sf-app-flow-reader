@@ -77,4 +77,20 @@ Outputs:
 ## Known gaps and next steps
 
 - The extension is distributed as a signed-off ZIP for manual unpacked installation; publishing to a browser store is outside this repository's deployment class.
-- Live deployment and identity verification will be appended after the factory static deployment completes.
+
+## Live deployment
+
+The factory static deploy created `sf-app-flow-reader` in Azure `centralus`, uploaded `dist/site`, configured the custom domain, and issued managed TLS. `https://app-flow-reader.sociobot.in` returned HTTP 200 on 28 August 2026.
+
+Live evidence:
+
+- Factory `verify-url.sh` passed on `/` and `/demo`: correct titles, `lang=en`, one h1, main landmark, zero missing alt text, zero unlabeled buttons, and zero console errors.
+- `/`, `/demo`, `/privacy`, `/terms`, and the styled missing-path route returned 200 with route-specific titles and one h1 each.
+- Live axe found no serious or critical violations on all five routes.
+- Live privacy interception observed no cross-origin requests during the route and demo flow.
+- Live offline reload restored the demo with all five steps.
+- Every internal link returned 200; the external Param Factory catalog returned 200.
+- The live extension download SHA-256 matched the local build: `f4afb743ecc3d2dadc9503fc11b9189dd25455805005a3915456f2a0c19557be`.
+- Security response headers include CSP, HSTS, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, frame denial, and a restrictive Permissions Policy.
+
+Live screenshots and verifier JSON are under `.factory/evidence/live/`.

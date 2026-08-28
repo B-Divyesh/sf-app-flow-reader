@@ -12,6 +12,9 @@ test('landing page has the product identity and required structure', async ({ pa
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Record browser tasks as clear steps');
   await expect(page.getByRole('link', { name: 'Try it with sample data' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Download extension', exact: true })).toHaveAttribute('href', '/downloads/app-flow-reader-chrome.zip');
+  const factoryLink = page.getByRole('link', { name: /Built by Param Factory/ });
+  await expect(factoryLink).toHaveAttribute('href', 'https://hello-factory.sociobot.in');
+  await expect(factoryLink).toHaveAttribute('target', '_blank');
   expect(consoleErrors).toEqual([]);
 });
 

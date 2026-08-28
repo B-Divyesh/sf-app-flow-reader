@@ -148,7 +148,7 @@ function notFound(): string {
 }
 
 function footer(): string {
-  return `<footer class="site-footer"><div><a class="footer-mark" href="/" data-route>App Flow Reader</a><p>Turn browser tasks into readable steps.</p></div><nav aria-label="Footer navigation"><a href="/privacy" data-route>Privacy</a><a href="/terms" data-route>Terms</a><a href="https://param.sociobot.in" rel="noreferrer">Built by Param Factory</a></nav><p class="build">Version 1.0.0 · build 2026.08</p></footer>`;
+  return `<footer class="site-footer"><div><a class="footer-mark" href="/" data-route>App Flow Reader</a><p>Turn browser tasks into readable steps.</p></div><nav aria-label="Footer navigation"><a href="/privacy" data-route>Privacy</a><a href="/terms" data-route>Terms</a><a href="https://hello-factory.sociobot.in" target="_blank" rel="noreferrer" aria-label="Built by Param Factory (opens in a new tab)">Built by Param Factory <span aria-hidden="true">↗</span></a></nav><p class="build">Version 1.0.0 · build 2026.08</p></footer>`;
 }
 
 function bindSharedActions() {
