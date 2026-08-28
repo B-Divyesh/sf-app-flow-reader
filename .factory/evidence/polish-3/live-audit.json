@@ -1,0 +1,123 @@
+{
+  "mobileColdDemo": {
+    "firstScreen": {
+      "heading": "Follow saved routes through dense workplace apps",
+      "audience": "For people with progressive low vision who need one reliable path through dense workplace apps.",
+      "action": "Try it with sample data",
+      "facts": "PRIVATE\nRoutes stay on this device.\nOFFLINE\nThe sample reader works after its first visit.\nFREE\nReader and exports are free; covers cost $12 once.",
+      "actionBottom": 504.84375,
+      "factsBottom": 745.84375
+    },
+    "demo": {
+      "banner": "Demo\nSample data. Nothing is saved.\nReset demo\nLeave demo",
+      "steps": 5,
+      "current": "STEP 1 OF 5",
+      "overflow": false,
+      "smallTargets": []
+    },
+    "isolation": {
+      "editedNoteCount": 0,
+      "storage": {
+        "local": [],
+        "session": [],
+        "databases": []
+      }
+    },
+    "errors": [],
+    "crossOrigin": []
+  },
+  "routesFocus404": {
+    "routes": {
+      "/": {
+        "status": 200,
+        "title": "App Flow Reader — Follow routes in workplace apps",
+        "description": "Save and follow clear routes through dense workplace apps.",
+        "canonical": "https://app-flow-reader.sociobot.in/",
+        "ogTitle": "App Flow Reader — Follow routes in workplace apps",
+        "ogUrl": "https://app-flow-reader.sociobot.in/",
+        "twitterTitle": "App Flow Reader — Follow routes in workplace apps",
+        "h1": 1,
+        "main": 1
+      },
+      "/demo": {
+        "status": 200,
+        "title": "Demo — App Flow Reader",
+        "description": "Follow a five-step expense route with isolated sample data.",
+        "canonical": "https://app-flow-reader.sociobot.in/demo",
+        "ogTitle": "Demo — App Flow Reader",
+        "ogUrl": "https://app-flow-reader.sociobot.in/demo",
+        "twitterTitle": "Demo — App Flow Reader",
+        "h1": 1,
+        "main": 1
+      },
+      "/privacy": {
+        "status": 200,
+        "title": "Privacy — App Flow Reader",
+        "description": "How App Flow Reader keeps flow data in your browser.",
+        "canonical": "https://app-flow-reader.sociobot.in/privacy",
+        "ogTitle": "Privacy — App Flow Reader",
+        "ogUrl": "https://app-flow-reader.sociobot.in/privacy",
+        "twitterTitle": "Privacy — App Flow Reader",
+        "h1": 1,
+        "main": 1
+      },
+      "/terms": {
+        "status": 200,
+        "title": "Terms — App Flow Reader",
+        "description": "Terms for using the App Flow Reader browser extension.",
+        "canonical": "https://app-flow-reader.sociobot.in/terms",
+        "ogTitle": "Terms — App Flow Reader",
+        "ogUrl": "https://app-flow-reader.sociobot.in/terms",
+        "twitterTitle": "Terms — App Flow Reader",
+        "h1": 1,
+        "main": 1
+      }
+    },
+    "privacyFocus": true,
+    "homeFocusAfterBack": true,
+    "missing": {
+      "status": 404,
+      "title": "Page not found — App Flow Reader",
+      "description": "Return to App Flow Reader.",
+      "canonical": "https://app-flow-reader.sociobot.in/404",
+      "ogTitle": "Page not found — App Flow Reader",
+      "ogUrl": "https://app-flow-reader.sociobot.in/404",
+      "twitterTitle": "Page not found — App Flow Reader",
+      "h1": 1,
+      "main": 1,
+      "navigation": [
+        "Demo",
+        "How it works",
+        "Privacy",
+        "Download"
+      ],
+      "appleTouchIcon": "/apple-touch-icon.png",
+      "twitterImage": "https://app-flow-reader.sociobot.in/og-image.png",
+      "themeColors": 2
+    },
+    "axe": {
+      "light": {
+        "/": [],
+        "/demo": [],
+        "/privacy": [],
+        "/terms": [],
+        "/definitely-missing": []
+      },
+      "dark": {
+        "/": [],
+        "/demo": [],
+        "/privacy": [],
+        "/terms": [],
+        "/definitely-missing": []
+      }
+    },
+    "offline": {
+      "steps": 5,
+      "heading": "Follow the monthly expense route"
+    },
+    "packageHashes": {
+      "live": "a2388442b4e94d746f0d397ac6e672647d6625261b3600ab7941a685df058f26",
+      "local": "a2388442b4e94d746f0d397ac6e672647d6625261b3600ab7941a685df058f26"
+    }
+  }
+}
