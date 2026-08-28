@@ -176,12 +176,14 @@ dialog button.primary { color: #fff; background: var(--blue); }
   .site-header nav { display: none; position: absolute; top: 64px; left: 16px; right: 16px; flex-direction: column; align-items: stretch; gap: 0; padding: 10px; background: var(--surface); border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); }
   .site-header nav.open { display: flex; }
   .site-header nav a { min-height: 44px; padding: 11px; }
-  .hero { min-height: auto; grid-template-columns: 1fr; padding: 60px 20px 80px; gap: 60px; }
-  h1 { font-size: clamp(42px, 13vw, 62px); }
-  .hero-actions { align-items: stretch; flex-direction: column; }
+  .hero { min-height: auto; grid-template-columns: 1fr; padding: 36px 20px 80px; gap: 60px; }
+  .hero .kicker { margin-bottom: 12px; }
+  h1 { margin-bottom: 16px; font-size: clamp(40px, 12vw, 56px); }
+  .hero .lede { margin-bottom: 20px; line-height: 1.4; }
+  .hero-actions { align-items: stretch; flex-direction: column; gap: 8px; margin-bottom: 22px; }
   .hero-actions > span { max-width: none; }
   .plain-facts { flex-direction: column; }
-  .plain-facts li { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .plain-facts li { padding: 8px 0; border-bottom: 1px solid var(--line); }
   .plain-facts li + li { padding-left: 0; border-left: 0; }
   .hero-map { padding: 46px 28px 30px; box-shadow: 5px 5px 0 var(--ink); }
   .product-preview, .boundaries { grid-template-columns: 1fr; padding: 76px 20px; gap: 35px; }

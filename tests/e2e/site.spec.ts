@@ -168,7 +168,13 @@ test('390px layout has 44px targets and no horizontal overflow on home and demo'
   test.skip(!isMobile);
   for (const route of ['/', '/demo', '/404.html']) {
     await page.goto(route);
-    if (route === '/') await page.getByRole('button', { name: 'Open navigation' }).click();
+    if (route === '/') {
+      for (const selector of ['.hero-actions', '.plain-facts']) {
+        const box = await page.locator(selector).boundingBox();
+        expect((box?.y ?? Infinity) + (box?.height ?? Infinity), `${selector} must fit in the 844px first screen`).toBeLessThanOrEqual(844);
+      }
+      await page.getByRole('button', { name: 'Open navigation' }).click();
+    }
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     const smallTargets = await page.locator('a:visible, button:visible, input:visible').evaluateAll((elements) => elements.filter((element) => {
       const box = element.getBoundingClientRect();
