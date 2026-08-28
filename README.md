@@ -72,7 +72,7 @@ The build produces `dist/site/`, `dist/extension/`, and the packaged extension a
 
 Deploy `dist/site/` as the static artifact. Azure Static Web Apps reads `staticwebapp.config.json` for known SPA rewrites, a real 404 catch-all, security headers, and cache policy.
 
-Manifest V3 is used for the packaged extension. Route state uses `chrome.storage.local`; the optional license check is the only extension network request and runs after a user pastes a token.
+Manifest V3 is used for the packaged extension. Route state uses `chrome.storage.local`. The extension makes no background network request until a supporter token is restored. Verification then contacts only `api.sociobot.in`.
 
 ## Privacy and legal
 

@@ -6,13 +6,14 @@ import { join, resolve } from 'node:path';
 
 type ExtensionHarness = { context: BrowserContext; worker: Worker; popup: Page; page: Page; userData: string };
 
-async function launchExtension(): Promise<ExtensionHarness> {
+async function launchExtension(prepareContext?: (context: BrowserContext) => Promise<void> | void): Promise<ExtensionHarness> {
   const userData = await mkdtemp(join(tmpdir(), 'afr-extension-'));
   const context = await chromium.launchPersistentContext(userData, {
     headless: true,
     channel: 'chromium',
     args: [`--disable-extensions-except=${resolve('dist/extension')}`, `--load-extension=${resolve('dist/extension')}`],
   });
+  await prepareContext?.(context);
   let worker = context.serviceWorkers()[0];
   if (!worker) worker = await context.waitForEvent('serviceworker');
   const page = await context.newPage();
@@ -133,6 +134,41 @@ test('@claim:local-storage starts and records a route locally without external r
     await expect.poll(async () => (await state(harness.worker)).flow.steps.length).toBe(2);
     expect((await state(harness.worker)).flow.title).toBe('Local route');
     expect(external).toEqual([]);
+  } finally { await closeExtension(harness); }
+});
+
+test('@claim:extension-network waits for a restored supporter token, then contacts only the Sociobot verification endpoint', async ({ browserName }, testInfo) => {
+  test.skip(browserName !== 'chromium' || testInfo.project.name !== 'desktop-chromium');
+  const observed: Array<{ method: string; url: string }> = [];
+  const harness = await launchExtension(async (context) => {
+    context.on('request', (request) => {
+      const url = request.url();
+      if (!url.startsWith('http://127.0.0.1:4173') && !url.startsWith('chrome-extension://')) {
+        observed.push({ method: request.method(), url });
+      }
+    });
+    await context.route('https://api.sociobot.in/api/v1/products/app-flow-reader/verify?license=*', (route) => (
+      route.fulfill({ contentType: 'application/json', body: JSON.stringify({ valid: true, reason: 'ok' }) })
+    ));
+  });
+  try {
+    expect(observed).toEqual([]);
+    await start(harness.popup, 'Private network boundary');
+    await harness.page.bringToFront();
+    await harness.page.getByRole('button', { name: /Edit note for Choose New report/ }).click();
+    await harness.page.keyboard.press('Escape');
+    await expect.poll(async () => (await state(harness.worker)).flow.steps.length).toBe(2);
+    expect(observed).toEqual([]);
+
+    await harness.popup.bringToFront();
+    await harness.popup.getByLabel('Supporter license token').fill('network-boundary-token');
+    await harness.popup.getByRole('button', { name: 'Restore license' }).click();
+    await expect(harness.popup.getByRole('status')).toContainText('Supporter styles are active in this extension.');
+    expect(observed).toHaveLength(1);
+    expect(observed[0]).toEqual({
+      method: 'GET',
+      url: 'https://api.sociobot.in/api/v1/products/app-flow-reader/verify?license=network-boundary-token',
+    });
   } finally { await closeExtension(harness); }
 });
 

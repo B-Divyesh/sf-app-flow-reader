@@ -39,6 +39,15 @@ Audit date: 28 August 2026. Every landing sentence is at or below 22 words. No b
 | Choose Load unpacked, then choose the unzipped folder. | 8 | — |
 | Follow saved routes through dense workplace apps. | 7 | — |
 
+## Public privacy and README claim added in polish round 3
+
+| Copy | Words | Flag |
+| --- | ---: | --- |
+| The extension makes no background network request until you restore a supporter token. | 13 | — |
+| It then contacts only api.sociobot.in to check that token. | 9 | — |
+| The extension makes no background network request until a supporter token is restored. | 13 | — |
+| Verification then contacts only api.sociobot.in. | 6 | — |
+
 ## First-screen read-aloud
 
 “Follow saved routes through dense workplace apps. For people with progressive low vision who need one reliable path through dense workplace apps. Try it with sample data.”

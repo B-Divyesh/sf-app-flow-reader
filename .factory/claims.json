@@ -21,6 +21,13 @@
     "sandbox": "fresh packaged MV3 profile; start and record a real route through the popup and content script while intercepting requests"
   },
   {
+    "id": "extension-network",
+    "claim": "The extension makes no background network request until a supporter token is restored; verification then contacts only api.sociobot.in.",
+    "where": "README development details, privacy",
+    "test": "npm run test:e2e -- --grep @claim:extension-network",
+    "sandbox": "fresh packaged MV3 profile; observe startup and route recording traffic, restore a fixture token, and assert the only request is one GET to the Sociobot verification endpoint"
+  },
+  {
     "id": "route-controls",
     "claim": "A route can be paused, resumed, annotated, exported, and deleted with confirmation.",
     "where": "README, extension popup",
