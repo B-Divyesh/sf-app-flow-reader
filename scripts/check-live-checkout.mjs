@@ -4,6 +4,18 @@ const productApi = process.env.LIVE_PRODUCT_API_BASE ?? 'https://api.sociobot.in
 const slug = 'app-flow-reader';
 const checkoutUrl = `${productApi}/products/${slug}/checkout`;
 const timeout = () => AbortSignal.timeout(20_000);
+const wait = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+async function startCheckout() {
+  let response;
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    response = await fetch(checkoutUrl, { redirect: 'manual', signal: timeout() });
+    if (response.status !== 429 && response.status < 500) return response;
+    await response.arrayBuffer();
+    await wait(500 * (2 ** attempt));
+  }
+  return response;
+}
 
 const catalogResponse = await fetch(`${productApi}/products`, { signal: timeout() });
 assert.equal(catalogResponse.status, 200, 'The live product catalog must be available');
@@ -24,10 +36,7 @@ assert.deepEqual(
   'The live billing record must match the advertised supporter license',
 );
 
-const checkoutResponse = await fetch(checkoutUrl, {
-  redirect: 'manual',
-  signal: timeout(),
-});
+const checkoutResponse = await startCheckout();
 assert.equal(checkoutResponse.status, 303, 'Checkout must redirect to the hosted payment page');
 
 const location = checkoutResponse.headers.get('location');

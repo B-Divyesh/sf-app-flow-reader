@@ -81,6 +81,12 @@ the repair.
   429 responses with `Retry-After: 3`.
 - Mobile Lighthouse: Performance 100, Accessibility 100, Best Practices 100,
   SEO 100; FCP 0.8 s, LCP 0.8 s, TBT 30 ms, CLS 0.
+- One final smoke encountered a brief platform-wide HTTP 500 while the shared
+  gateway logged read-only database connections; unrelated product checkouts
+  failed at the same time. The database recovered within one minute and this
+  product passed again. The live regression retries only 429/5xx responses
+  four times, while permanent catalog/404/configuration failures still fail
+  immediately.
 
 Evidence is under `.factory/evidence/repair-3/live/`.
 
