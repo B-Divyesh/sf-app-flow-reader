@@ -117,7 +117,12 @@ test('routes update title, history, heading focus, and deployment policy has a r
   await page.goto('/missing-path');
   await expect(page).toHaveTitle('Page not found — App Flow Reader');
   const config = JSON.parse(await (await import('node:fs/promises')).readFile('public/site/staticwebapp.config.json', 'utf8'));
-  expect(config.routes).toContainEqual({ route: '/*', rewrite: '/index.html', statusCode: 404 });
+  expect(config.routes).toEqual(expect.arrayContaining([
+    { route: '/demo', rewrite: '/index.html' },
+    { route: '/privacy', rewrite: '/index.html' },
+    { route: '/terms', rewrite: '/index.html' },
+  ]));
+  expect(config.responseOverrides).toEqual({ '404': { rewrite: '/index.html' } });
 });
 
 test('@a11y every route passes axe in light, dark, and reduced-motion modes', async ({ page }) => {
