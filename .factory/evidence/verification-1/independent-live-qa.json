@@ -1,0 +1,139 @@
+{
+  "desktop": {
+    "firstRead": {
+      "title": "App Flow Reader — Record browser tasks as steps",
+      "h1": "Record browser tasks as clear steps",
+      "audience": "For product teams who need to explain a web app without replaying every click.",
+      "primaryAction": "Try it with sample data"
+    },
+    "demoBanner": "Demo\nSample data. Nothing is saved.\nReset demo\nStart for real",
+    "initialSteps": 5,
+    "boundaryNoteLength": 280,
+    "blankNoteCount": 0,
+    "afterRemove": 4,
+    "afterUndo": 5,
+    "markdown": {
+      "filename": "invite-a-teammate-to-northstar.md",
+      "hasFive": true
+    },
+    "json": {
+      "filename": "invite-a-teammate-to-northstar.json",
+      "steps": 5
+    },
+    "storage": {
+      "local": [],
+      "session": [],
+      "indexedDB": []
+    },
+    "axeSeriousCritical": {
+      "/": [],
+      "/demo": [],
+      "/privacy": [],
+      "/terms": [],
+      "/missing-path": []
+    },
+    "layout": {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "smallTargets": [
+        "A:App Flow Reader",
+        "A:Demo",
+        "A:How it works",
+        "A:Privacy",
+        "BUTTON:Reset demo",
+        "A:Start for real",
+        "A:App Flow Reader"
+      ]
+    },
+    "focus": {
+      "text": "Skip to main content",
+      "outlineStyle": "solid",
+      "outlineWidth": "3px",
+      "outlineColor": "rgb(194, 65, 12)"
+    },
+    "serviceWorker": {
+      "active": "https://app-flow-reader.sociobot.in/sw.js",
+      "updateViaCache": "imports"
+    },
+    "offline": {
+      "h1": "Read the teammate invite path",
+      "steps": 5
+    },
+    "consoleErrors": [],
+    "pageErrors": [],
+    "crossOrigin": []
+  },
+  "mobile390": {
+    "firstRead": {
+      "title": "App Flow Reader — Record browser tasks as steps",
+      "h1": "Record browser tasks as clear steps",
+      "audience": "For product teams who need to explain a web app without replaying every click.",
+      "primaryAction": "Try it with sample data"
+    },
+    "demoBanner": "Demo\nSample data. Nothing is saved.\nReset demo\nStart for real",
+    "initialSteps": 5,
+    "boundaryNoteLength": 280,
+    "blankNoteCount": 0,
+    "afterRemove": 4,
+    "afterUndo": 5,
+    "markdown": {
+      "filename": "invite-a-teammate-to-northstar.md",
+      "hasFive": true
+    },
+    "json": {
+      "filename": "invite-a-teammate-to-northstar.json",
+      "steps": 5
+    },
+    "storage": {
+      "local": [],
+      "session": [],
+      "indexedDB": []
+    },
+    "axeSeriousCritical": {
+      "/": [],
+      "/demo": [],
+      "/privacy": [],
+      "/terms": [],
+      "/missing-path": []
+    },
+    "layout": {
+      "viewport": 390,
+      "scrollWidth": 390,
+      "smallTargets": [
+        "BUTTON:Reset demo",
+        "A:Start for real"
+      ]
+    },
+    "focus": {
+      "text": "Skip to main content",
+      "outlineStyle": "solid",
+      "outlineWidth": "3px",
+      "outlineColor": "rgb(194, 65, 12)"
+    },
+    "serviceWorker": {
+      "active": "https://app-flow-reader.sociobot.in/sw.js",
+      "updateViaCache": "imports"
+    },
+    "offline": {
+      "h1": "Read the teammate invite path",
+      "steps": 5
+    },
+    "consoleErrors": [],
+    "pageErrors": [],
+    "crossOrigin": []
+  },
+  "darkReduced": {
+    "axeSeriousCritical": {
+      "/": [
+        "color-contrast:7"
+      ],
+      "/demo": []
+    },
+    "reducedMotion": {
+      "matches": true,
+      "transitionDuration": "1e-05s",
+      "animationDuration": "1e-05s",
+      "scrollBehavior": "auto"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "extensionPath": "/tmp/afr-live-extension.wbo2Kn",
+  "extensionId": "fnfllnncodhmfndohndjpjlmiegjjcie",
+  "afterStart": {
+    "active": true,
+    "title": "Untitled app flow",
+    "steps": 1
+  },
+  "afterNormal": {
+    "active": true,
+    "steps": [
+      "start:Started recording",
+      "click:Edit note for Invite teammate",
+      "navigate:Demo — App Flow Reader"
+    ]
+  },
+  "pause": {
+    "before": 3,
+    "afterClick": 3
+  },
+  "boundary": {
+    "rapidAttemptedClicks": 13,
+    "rapidRecordedSteps": 3,
+    "totalSteps": 19,
+    "recordedAccessibleName": false,
+    "recordedFallbackButton": true,
+    "inspectedPasswordFieldLabel": true,
+    "lastLabels": [
+      "button",
+      "Work password",
+      "Sequential step 1",
+      "Sequential step 2",
+      "Sequential step 3",
+      "Sequential step 4",
+      "Sequential step 5",
+      "Sequential step 6",
+      "Sequential step 7",
+      "Sequential step 8",
+      "Sequential step 9",
+      "Sequential step 10",
+      "Sequential step 11"
+    ]
+  },
+  "popupActions": [
+    "Pause",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Add note",
+    "Export Markdown",
+    "Export JSON",
+    "Clear flow"
+  ],
+  "routeControls": 0,
+  "noteLengths": [
+    280
+  ],
+  "downloads": [
+    "untitled-app-flow.md",
+    "untitled-app-flow.json"
+  ],
+  "clearRecovery": {
+    "cancelRetained": true,
+    "confirmCleared": true
+  },
+  "axeSeriousCritical": {
+    "light": [],
+    "dark": []
+  }
+}

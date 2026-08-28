@@ -1,96 +1,64 @@
-# Handoff — app-flow-reader-repair-1
+# Handoff — independent verification 1
 
 Date: 28 August 2026 UTC
 
-Base candidate: `7906a667831be1d92a55871f9a0c8316dbcb95ed`
+Work order: `app-flow-reader-verify-1`
 
-Artifact class: `browser-extension` (WXT + TypeScript, Chrome MV3)
+Candidate: `5e6e9632d83056f3b64b67fb0b79281fe7697285`
 
-Static deploy input: `dist/site`
+Live URL: `https://app-flow-reader.sociobot.in`
 
 ## Outcome
 
-The failed scaffold is now a complete local-first app-flow recorder. The extension starts, pauses, resumes, annotates, clears, and exports a recording. Its content script turns labeled clicks and page changes into ordered steps stored in `chrome.storage.local`. The static site explains the product, downloads the packaged extension, and provides an isolated five-step demo at `/demo`. `/privacy`, `/terms`, and a styled not-found state are included.
+**FAIL — release blocked.**
 
-The referenced research brief and design thesis were absent from the base commit and work-order evidence. `.factory/brief.json` records the reconstructed, browser-extension-specific scope and its provenance. `.factory/design.md` records the original flow-notebook system and asset provenance.
+The live deployment is healthy and byte-for-byte matches the candidate. The failure is in the product, not deployment.
 
-AI and billing were intentionally omitted. Neither is needed to record or export a browser path, and adding either would weaken the local-only job.
+The candidate implements a local recorder/exporter for product teams after replacing the original researched brief with a reconstructed one. It does not implement the required low-vision route-following product: multiple named 3–10-step routes, current-step and visible-anchor announcements, or large Next/Back controls are absent.
 
-## Root cause and repair
+Additional release blockers found from fresh evidence:
 
-Reproduction at the untouched base:
+- 13 rapid clicks stored only 3 steps in the retained run because background read-modify-write operations race.
+- An `aria-labelledby="Save report"` control was recorded as `button`; a password field click stored its label.
+- Dark landing page has seven serious axe contrast failures.
+- Public claims are missing from `.factory/claims.json`, and two declared claim sandboxes are not exercised end to end.
+- Reset demo and Start for real are only 34 px tall at 390 px.
+- Missing paths return HTTP 200.
+- The researched one-time purchase flow is absent.
 
-```text
-$ npm ci
-npm error code EUSAGE
-npm error The `npm ci` command can only install with an existing package-lock.json ...
-npm_ci_exit=1
-```
+Full evidence, severity, commands, hashes, and measurements are in `.factory/verification.md` and `.factory/evidence/verification-1/`.
 
-The base had no `package.json`, application source, brief, design file, or lockfile. A complete WXT/Vite package was added, then `npm install` generated `package-lock.json` (lockfile version 3, 222 package records). `tests/unit/install-contract.test.ts` and `scripts/check-package.mjs` are the focused regression gates: they require the lockfile, match its root record to `package.json`, and pin Playwright `1.58.2`.
+## Verification summary
 
-## Verification evidence
+- All five exact claim commands: command-level PASS.
+- `npm ci`: PASS, 171 packages, 0 vulnerabilities reported.
+- `npm test`: PASS, 5 unit + 24 Playwright; 6 intentional skips.
+- Typecheck, package contract, copy audit, production build, audit, and ZIP integrity: PASS.
+- Candidate `npm run test:a11y`: PASS in its default-theme scope.
+- Independent live checks: light routes and popup axe PASS; dark landing contrast FAIL.
+- Live demo: normal flow, boundary note, blank input, undo/reset, exports, privacy isolation, keyboard, reduced motion, offline reload, and service-worker update PASS.
+- Live Lighthouse mobile: 99 performance / 100 accessibility / 100 best practices / 100 SEO; LCP 0.9 s, CLS 0, TBT 130 ms.
+- Initial JS/CSS and extension package budgets PASS.
+- Security headers and cache policy PASS.
+- Deployment identity PASS; local/live extension ZIP SHA-256 is `f4afb743ecc3d2dadc9503fc11b9189dd25455805005a3915456f2a0c19557be`.
+- API rate limiting and Entra sign-in: not applicable; this build has no API, unlock call, or sign-in.
 
-The exact work-order command passed from a clean dependency tree:
-
-```text
-npm ci && npm test && npm run build:site
-npm ci: 171 packages installed, 0 vulnerabilities
-Vitest: 2 files, 5 tests passed
-Playwright: 24 passed, 6 intentional project skips
-Vite/WXT/package: passed
-```
-
-The Playwright matrix covers desktop Chromium, Pixel 7 mobile emulation, real unpacked MV3 loading, labeled click capture, Chrome local storage, Markdown and JSON downloads, demo isolation, same-origin privacy, undo/reset, SPA history and focus, keyboard dialog use, 44 px mobile targets, horizontal overflow, offline reload, service-worker updates, manifest permissions/version, and extension package identity.
-
-Additional results:
-
-- `npm run test:claims`: 7 passed, 3 expected mobile skips for desktop-extension cases; all five claim definitions passed.
-- `npm run typecheck`: passed.
-- `npm run check:package`: lockfile version 3 and 222 records matched.
-- `npm run check:copy`: no unresolved long or banned-word flags.
-- `npm audit --audit-level=high`: 0 vulnerabilities.
-- `unzip -t dist/site/downloads/app-flow-reader-chrome.zip`: all 11 files OK.
-- Axe via Playwright: no serious or critical findings across `/`, `/demo`, `/privacy`, `/terms`, the not-found route, and the real extension popup on desktop/mobile.
-- Factory `verify-url.sh` on local `/`: HTTP 200, title/lang present, one h1, main present, zero console errors, zero missing alt text, zero unlabeled buttons.
-- Factory `verify-url.sh` on local `/demo`: same checks passed with one h1 and zero console errors.
-- Lighthouse mobile: Performance 100, Accessibility 100, Best Practices 100, SEO 100; LCP 1.1 s, CLS 0, TBT 30 ms, FCP 1.0 s.
-- Initial site payload: JS 16,159 bytes raw / 5.82 KB gzip; CSS 15,477 bytes raw / 4.21 KB gzip.
-- Packaged Chrome zip: 11,790 bytes; unpacked extension: 21.37 KB.
-
-Raw local evidence is under `.factory/evidence/local/`, including desktop/mobile screenshots, verifier JSON, and the Lighthouse JSON report.
-
-## Build and release
+## Reproduce
 
 ```sh
 npm ci
 npm test
-npm run build:site
+npm run typecheck
+npm run check:package
+npm run check:copy
+npm run build
+npm run test:a11y
+node .factory/evidence/independent-live-qa.mjs
+node .factory/evidence/independent-extension-qa.mjs dist/extension
 ```
 
-Outputs:
+## Required next step
 
-- `dist/site/` — static deployment artifact
-- `dist/site/downloads/app-flow-reader-chrome.zip` — site download
-- `dist/extension/` — unpacked MV3 extension
+Return to product implementation using the original researched brief. Preserve the solid local storage, demo isolation, export, security, and performance work, but do not release until the assistive route-following workflow exists and all findings in `.factory/verification.md` are resolved and retested, including NVDA on Windows.
 
-## Known gaps and next steps
-
-- The extension is distributed as a signed-off ZIP for manual unpacked installation; publishing to a browser store is outside this repository's deployment class.
-
-## Live deployment
-
-The factory static deploy created `sf-app-flow-reader` in Azure `centralus`, uploaded `dist/site`, configured the custom domain, and issued managed TLS. `https://app-flow-reader.sociobot.in` returned HTTP 200 on 28 August 2026.
-
-Live evidence:
-
-- Factory `verify-url.sh` passed on `/` and `/demo`: correct titles, `lang=en`, one h1, main landmark, zero missing alt text, zero unlabeled buttons, and zero console errors.
-- `/`, `/demo`, `/privacy`, `/terms`, and the styled missing-path route returned 200 with route-specific titles and one h1 each.
-- Live axe found no serious or critical violations on all five routes.
-- Live privacy interception observed no cross-origin requests during the route and demo flow.
-- Live offline reload restored the demo with all five steps.
-- Every internal link returned 200; the external Param Factory catalog returned 200.
-- The live extension download SHA-256 matched the local build: `f4afb743ecc3d2dadc9503fc11b9189dd25455805005a3915456f2a0c19557be`.
-- Security response headers include CSP, HSTS, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, frame denial, and a restrictive Permissions Policy.
-
-Live screenshots and verifier JSON are under `.factory/evidence/live/`.
+No product code was modified by the verifier.
