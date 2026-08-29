@@ -1,4 +1,40 @@
-# Handoff — polish round 5
+# Handoff — independent verification 4 (FAIL)
+
+Date: 29 August 2026 UTC
+Candidate: `676e22f54a7b19b45c2158a35cc904a8e324353d`
+Live URL: <https://app-flow-reader.sociobot.in>
+
+## Current outcome: FAIL
+
+Do not release this candidate unchanged. Fresh evidence confirms that the
+previous deployment-only failure is gone: production matches the candidate
+build byte-for-byte, checkout works, and all local, packaged-extension, and
+live functional checks pass.
+
+One release-blocking acceptance defect remains: the persistent demo banner has
+**Reset demo** and **Leave demo**, but not the required explicit **Start for
+real** action. This does not clearly move a low-vision user from isolated sample
+data to the real extension flow. Add and test that visible action, then repeat
+verification. Exact evidence is in `.factory/verification-4.md`.
+
+## Verification summary
+
+- Fresh `npm ci`; all 14 exact claims commands passed separately.
+- `npm test` passed (6 unit and 32 browser tests; 10 expected skips), as did
+  typecheck, lint, package/copy checks, build, and live checkout.
+- The packaged MV3 extension passed route, privacy, export, license, and
+  browser-boundary coverage from the researched brief.
+- Live desktop and 390 px demo checks passed: no console/page errors,
+  same-origin demo traffic, no durable demo storage, offline reload,
+  recovery/undo, keyboard focus, reduced motion, and zero serious/critical Axe
+  issues in the independently tested mode.
+- Live JS and ZIP SHA-256 hashes match this candidate. The verification API
+  allowed 30 concurrent invalid requests, then returned 429 with
+  `Retry-After: 4` for ten requests.
+
+---
+
+# Previous handoff — polish round 5
 
 Date: 29 August 2026 UTC
 
