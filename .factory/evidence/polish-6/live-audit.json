@@ -1,0 +1,194 @@
+{
+  "desktop": {
+    "firstScreen": {
+      "title": "App Flow Reader — Follow routes in workplace apps",
+      "h1": "Follow saved routes through dense workplace apps",
+      "audience": "For people with progressive low vision who need one reliable path through dense workplace apps.",
+      "action": "Try it with sample data",
+      "facts": "PRIVATE\nRoutes stay on this device.\nOFFLINE\nThe sample reader works after its first visit.\nFREE\nReader and exports are free; covers cost $12 once.",
+      "overflow": false,
+      "factsBottom": 897,
+      "viewportHeight": 900
+    },
+    "demo": {
+      "title": "Demo — App Flow Reader",
+      "heading": "Follow the monthly expense route",
+      "banner": "Demo\nSample data. Nothing is saved.\nReset demo\nStart for real\nDiscard sample data and go to the extension download instructions.",
+      "steps": 5,
+      "resetVisible": true,
+      "startForRealVisible": true,
+      "exit": {
+        "url": "https://app-flow-reader.sociobot.in/#install-title",
+        "installVisible": true
+      },
+      "reentryHasTemporaryNote": false,
+      "storage": {
+        "local": [],
+        "session": [],
+        "indexedDb": []
+      },
+      "offline": {
+        "position": "STEP 2 OF 5"
+      }
+    },
+    "focus": {
+      "privacyTitle": "Privacy — App Flow Reader",
+      "privacyHeadingFocused": true,
+      "homeTitle": "App Flow Reader — Follow routes in workplace apps"
+    },
+    "routeMetadata": {
+      "/": {
+        "title": "App Flow Reader — Follow routes in workplace apps",
+        "h1": 1,
+        "main": 1,
+        "canonical": "https://app-flow-reader.sociobot.in/",
+        "ogTitle": "App Flow Reader — Follow routes in workplace apps"
+      },
+      "/demo": {
+        "title": "Demo — App Flow Reader",
+        "h1": 1,
+        "main": 1,
+        "canonical": "https://app-flow-reader.sociobot.in/demo",
+        "ogTitle": "Demo — App Flow Reader"
+      },
+      "/privacy": {
+        "title": "Privacy — App Flow Reader",
+        "h1": 1,
+        "main": 1,
+        "canonical": "https://app-flow-reader.sociobot.in/privacy",
+        "ogTitle": "Privacy — App Flow Reader"
+      },
+      "/terms": {
+        "title": "Terms — App Flow Reader",
+        "h1": 1,
+        "main": 1,
+        "canonical": "https://app-flow-reader.sociobot.in/terms",
+        "ogTitle": "Terms — App Flow Reader"
+      }
+    },
+    "checkout": {
+      "label": "Buy supporter license (opens secure checkout)",
+      "status": 303,
+      "destination": "https://checkout.dodopayments.com/session/cks_0NmRHE1KG0oDn0tYTEAed",
+      "finalUrl": "https://checkout.dodopayments.com/session/cks_0NmRHE1KG0oDn0tYTEAed"
+    },
+    "consoleErrors": [],
+    "pageErrors": [],
+    "publicRequests": []
+  },
+  "mobile390": {
+    "firstScreen": {
+      "title": "App Flow Reader — Follow routes in workplace apps",
+      "h1": "Follow saved routes through dense workplace apps",
+      "audience": "For people with progressive low vision who need one reliable path through dense workplace apps.",
+      "action": "Try it with sample data",
+      "facts": "PRIVATE\nRoutes stay on this device.\nOFFLINE\nThe sample reader works after its first visit.\nFREE\nReader and exports are free; covers cost $12 once.",
+      "overflow": false,
+      "factsBottom": 746,
+      "viewportHeight": 844
+    },
+    "demo": {
+      "title": "Demo — App Flow Reader",
+      "heading": "Follow the monthly expense route",
+      "banner": "Demo\nSample data. Nothing is saved.\nReset demo\nStart for real\nDiscard sample data and go to the extension download instructions.",
+      "steps": 5,
+      "resetVisible": true,
+      "startForRealVisible": true,
+      "exit": {
+        "url": "https://app-flow-reader.sociobot.in/#install-title",
+        "installVisible": true
+      },
+      "reentryHasTemporaryNote": false,
+      "storage": {
+        "local": [],
+        "session": [],
+        "indexedDb": []
+      },
+      "offline": {
+        "position": "STEP 2 OF 5"
+      }
+    },
+    "focus": {
+      "privacyTitle": "Privacy — App Flow Reader",
+      "privacyHeadingFocused": true,
+      "homeTitle": "App Flow Reader — Follow routes in workplace apps"
+    },
+    "routeMetadata": {
+      "/": {
+        "title": "App Flow Reader — Follow routes in workplace apps",
+        "h1": 1,
+        "main": 1,
+        "canonical": "https://app-flow-reader.sociobot.in/",
+        "ogTitle": "App Flow Reader — Follow routes in workplace apps"
+      },
+      "/demo": {
+        "title": "Demo — App Flow Reader",
+        "h1": 1,
+        "main": 1,
+        "canonical": "https://app-flow-reader.sociobot.in/demo",
+        "ogTitle": "Demo — App Flow Reader"
+      },
+      "/privacy": {
+        "title": "Privacy — App Flow Reader",
+        "h1": 1,
+        "main": 1,
+        "canonical": "https://app-flow-reader.sociobot.in/privacy",
+        "ogTitle": "Privacy — App Flow Reader"
+      },
+      "/terms": {
+        "title": "Terms — App Flow Reader",
+        "h1": 1,
+        "main": 1,
+        "canonical": "https://app-flow-reader.sociobot.in/terms",
+        "ogTitle": "Terms — App Flow Reader"
+      }
+    },
+    "checkout": {
+      "label": "Buy supporter license (opens secure checkout)",
+      "status": 303,
+      "destination": "https://checkout.dodopayments.com/session/cks_0NmRHM1Sl8n1YKP17T3ez",
+      "finalUrl": "https://checkout.dodopayments.com/session/cks_0NmRHM1Sl8n1YKP17T3ez"
+    },
+    "consoleErrors": [],
+    "pageErrors": [],
+    "publicRequests": []
+  },
+  "darkReducedAccessibility": {
+    "/": {
+      "status": 200,
+      "seriousOrCritical": []
+    },
+    "/demo": {
+      "status": 200,
+      "seriousOrCritical": []
+    },
+    "/privacy": {
+      "status": 200,
+      "seriousOrCritical": []
+    },
+    "/terms": {
+      "status": 200,
+      "seriousOrCritical": []
+    },
+    "/definitely-missing": {
+      "status": 404,
+      "seriousOrCritical": []
+    }
+  },
+  "notFound": {
+    "title": "Page not found — App Flow Reader",
+    "h1": "This step is not in the flow",
+    "main": 1,
+    "mainNavigation": [
+      "Demo",
+      "How it works",
+      "Privacy",
+      "Download"
+    ],
+    "footerNavigation": [
+      "Privacy",
+      "Terms",
+      "Built by Param Factory ↗"
+    ]
+  }
+}
