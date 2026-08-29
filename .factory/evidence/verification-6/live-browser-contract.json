@@ -1,0 +1,165 @@
+{
+  "cold": {
+    "title": "App Flow Reader — Follow routes in workplace apps",
+    "h1": "Follow saved routes through dense workplace apps",
+    "audience": "For people with progressive low vision who need one reliable path through dense workplace apps.",
+    "action": "Try it with sample data",
+    "viewport": {
+      "width": 390,
+      "scrollWidth": 390
+    }
+  },
+  "oneClickDemo": {
+    "url": "https://app-flow-reader.sociobot.in/?demo=1",
+    "banner": "Demo\nSample data. Nothing is saved.\nReset demo\nStart for real\nDiscard sample data and go to the extension download instructions.",
+    "steps": 5,
+    "position": "STEP 1 OF 5"
+  },
+  "keyboard": {
+    "dialogFocus": true,
+    "dialogReturnFocus": true,
+    "skipFocus": {
+      "text": "Skip to main content",
+      "width": "3px",
+      "style": "solid",
+      "color": "rgb(194, 65, 12)"
+    },
+    "skipTarget": "main"
+  },
+  "storage": {
+    "local": [],
+    "session": [],
+    "indexedDB": [],
+    "cookies": ""
+  },
+  "serviceWorker": {
+    "active": "https://app-flow-reader.sociobot.in/sw.js",
+    "installing": null,
+    "waiting": null
+  },
+  "offline": {
+    "heading": "Follow the monthly expense route",
+    "position": "STEP 2 OF 5",
+    "steps": 5
+  },
+  "reducedMotion": {
+    "matches": true,
+    "transitionDuration": "1e-05s",
+    "animationDuration": "1e-05s",
+    "scrollBehavior": "auto"
+  },
+  "textResize": {
+    "viewport": 390,
+    "scrollWidth": 390,
+    "actionVisible": true
+  },
+  "links": [
+    {
+      "href": "https://api.sociobot.in/api/v1/products/app-flow-reader/checkout",
+      "status": "checkout-covered-separately"
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/",
+      "status": 200,
+      "finalUrl": "https://app-flow-reader.sociobot.in/"
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/#how-it-works",
+      "status": 200,
+      "finalUrl": "https://app-flow-reader.sociobot.in/#how-it-works"
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/#install-title",
+      "status": 200,
+      "finalUrl": "https://app-flow-reader.sociobot.in/#install-title"
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/#main",
+      "status": 200,
+      "finalUrl": "https://app-flow-reader.sociobot.in/#main"
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/404.html#main",
+      "status": 200,
+      "finalUrl": "https://app-flow-reader.sociobot.in/404.html#main"
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/?demo=1",
+      "status": 200,
+      "finalUrl": "https://app-flow-reader.sociobot.in/?demo=1"
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/demo#main",
+      "status": 200,
+      "finalUrl": "https://app-flow-reader.sociobot.in/demo#main"
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/downloads/app-flow-reader-chrome.zip",
+      "status": 200,
+      "finalUrl": "https://app-flow-reader.sociobot.in/downloads/app-flow-reader-chrome.zip"
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/privacy",
+      "status": 200,
+      "finalUrl": "https://app-flow-reader.sociobot.in/privacy"
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/privacy#main",
+      "status": 200,
+      "finalUrl": "https://app-flow-reader.sociobot.in/privacy#main"
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/terms",
+      "status": 200,
+      "finalUrl": "https://app-flow-reader.sociobot.in/terms"
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/terms#main",
+      "status": 200,
+      "finalUrl": "https://app-flow-reader.sociobot.in/terms#main"
+    },
+    {
+      "href": "https://hello-factory.sociobot.in/",
+      "status": 200,
+      "finalUrl": "https://hello-factory.sociobot.in/"
+    },
+    {
+      "href": "mailto:privacy@sociobot.in",
+      "status": "mailto"
+    },
+    {
+      "href": "mailto:support@sociobot.in",
+      "status": "mailto"
+    }
+  ],
+  "axeSeriousCritical": {
+    "light:/": [],
+    "light:/demo": [],
+    "light:/privacy": [],
+    "light:/terms": [],
+    "light:/definitely-missing": [],
+    "dark:/": [],
+    "dark:/demo": [],
+    "dark:/privacy": [],
+    "dark:/terms": [],
+    "dark:/definitely-missing": []
+  },
+  "requests": [
+    "https://app-flow-reader.sociobot.in/",
+    "https://app-flow-reader.sociobot.in/assets/index-Btwexh82.js",
+    "https://app-flow-reader.sociobot.in/assets/index-Bdr1bwPJ.css",
+    "https://app-flow-reader.sociobot.in/?demo=1",
+    "https://app-flow-reader.sociobot.in/demo",
+    "https://app-flow-reader.sociobot.in/privacy",
+    "https://app-flow-reader.sociobot.in/terms",
+    "https://app-flow-reader.sociobot.in/404.html",
+    "https://app-flow-reader.sociobot.in/404.css",
+    "https://app-flow-reader.sociobot.in/definitely-missing"
+  ],
+  "crossOriginRequests": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()"
+  ],
+  "pageErrors": []
+}

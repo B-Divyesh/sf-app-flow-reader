@@ -1,0 +1,116 @@
+{
+  "extensionId": "kcacakfbmgkoofkioibckookfdefocan",
+  "manifest": {
+    "manifest_version": 3,
+    "name": "App Flow Reader",
+    "description": "Save and follow clear routes through dense workplace apps.",
+    "version": "1.1.0",
+    "icons": {
+      "16": "icon-16.png",
+      "32": "icon-32.png",
+      "48": "icon-48.png",
+      "128": "icon-128.png"
+    },
+    "permissions": [
+      "storage",
+      "activeTab"
+    ],
+    "host_permissions": [
+      "https://api.sociobot.in/*"
+    ],
+    "action": {
+      "default_title": "App Flow Reader — Follow a saved browser route",
+      "default_popup": "popup.html"
+    },
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "http://*/*",
+          "https://*/*"
+        ],
+        "js": [
+          "content-scripts/content.js"
+        ]
+      }
+    ]
+  },
+  "firstRoute": {
+    "title": "Approve monthly expenses",
+    "stepCount": 10,
+    "activeAfterCap": false,
+    "labels": [
+      "Start here",
+      "Save report",
+      "Boundary step 1",
+      "Boundary step 2",
+      "Boundary step 3",
+      "Boundary step 4",
+      "Boundary step 5",
+      "Boundary step 6",
+      "Boundary step 7",
+      "Boundary step 8"
+    ],
+    "passwordLabelStored": false,
+    "typedPasswordStored": false,
+    "screenshotFieldPresent": false
+  },
+  "readerState": {
+    "text": "Approve monthly expenses. Step 2 of 10. Target highlighted.\n\nSave report\n\nBack\nNext\nStop following",
+    "saveOutlineWidth": "4px",
+    "controls": [
+      {
+        "name": "Back",
+        "width": 112,
+        "height": 48
+      },
+      {
+        "name": "Next",
+        "width": 112,
+        "height": 48
+      }
+    ],
+    "focus": {
+      "outline": "rgb(16, 25, 35) none 0px",
+      "boxShadow": "none",
+      "border": "2px solid rgb(255, 255, 255)"
+    },
+    "keyboardFocus": {
+      "focused": true,
+      "outline": "rgb(194, 65, 12) solid 3px",
+      "boxShadow": "none",
+      "border": "2px solid rgb(255, 255, 255)"
+    }
+  },
+  "emptyLicenseRecovery": "Paste a supporter license token first.",
+  "invalidLicenseRecovery": "This license is not active.",
+  "secondRoute": {
+    "title": "Approve weekly timesheet",
+    "stepCount": 3,
+    "routeCount": 2
+  },
+  "exports": {
+    "markdown": "approve-weekly-timesheet.md",
+    "json": "approve-weekly-timesheet.json",
+    "jsonSteps": 3
+  },
+  "deletionRecovery": {
+    "cancelRetained": true,
+    "confirmCleared": true
+  },
+  "axeSeriousCritical": {
+    "light": [],
+    "dark": []
+  },
+  "recordingExternalRequests": [],
+  "externalRequests": [
+    "https://api.sociobot.in/api/v1/products/app-flow-reader/verify?license=independent-invalid-1788003995316"
+  ],
+  "consoleErrors": [],
+  "pageErrors": []
+}
