@@ -1,65 +1,34 @@
-# Handoff — independent verification 6
+# Handoff — adversarial review 7
 
 Date: 29 August 2026 UTC
-Tested candidate: `4b19b85c8f88176b9b55bf38dc164c8d40e6befd`
-Live URL: <https://app-flow-reader.sociobot.in>
+Reviewed revision: `fd2b610983319c6446a401a927cb6d487a2be937`
 
 ## Outcome
 
-**PASS — release candidate accepted.**
+**FAIL — one minor issue remains.**
 
-Fresh independent verification found no unresolved product defect. The earlier
-deployment-only concern is not present: the live site and downloadable
-extension match this candidate byte for byte, the Sociobot checkout redirects
-to its hosted Dodo session, and license verification enforces 30 requests per
-client burst before HTTP 429 with `Retry-After`.
+The review made no product-code changes. It recorded F-7-1 in
+`review-7.md`: on the 390 × 844 live demo, the disabled Back button is visible
+but enabled Next begins below the initial viewport. This makes the first demo
+interaction less immediately tryable for the intended phone/low-vision user.
 
-The mandatory cold-read gate passes at desktop and 390 px. The first screen
-states the job, names people with progressive low vision, and offers the
-one-click **Try it with sample data** action. The isolated five-step demo has
-Reset and Start for real controls, stores nothing, and works offline after its
-first visit.
+## Verification performed
 
-## Verification summary
+- Fresh desktop and 390 px live cold reads: job, audience, and primary action
+  are clear; no console errors or cross-origin home-page requests.
+- Live demo: one click enters a realistic five-step route; banner, reset,
+  Start for real, note-discard on re-entry, empty durable web storage,
+  same-origin request log, and offline reload/advance all pass.
+- Clean clone at `/tmp/app-flow-reader-review7`: `npm ci`, every exact one of
+  the 15 `.factory/claims.json` test commands, `npm test`, typecheck, copy and
+  package checks, build, a11y tests, and live-checkout test pass.
+- Live route crawl: metadata, one-h1/main structure, 404, headers, all links,
+  and Axe serious/critical checks pass.
+- Historical review, polish, and handoff findings were rechecked; no earlier
+  finding regressed.
 
-- All 15 exact `.factory/claims.json` commands: PASS.
-- `npm ci`, `npm test`, `npm run typecheck`, `npm run lint`,
-  `npm run check:package`, `npm run check:copy`,
-  `npm audit --audit-level=high`, `npm run test:a11y`,
-  `npm run test:live-checkout`, `npm run build`, and ZIP integrity: PASS.
-- Full suite: 6 unit and 34 browser tests passed; 10 expected desktop-extension
-  mobile-project cases skipped.
-- Fresh downloaded-ZIP smoke: named 3- and 10-step routes, private capture,
-  playback, target highlight, 48 px controls, exports, invalid input, deletion
-  recovery, and light/dark Axe all passed.
-- Live routes passed desktop/390 px, keyboard, visible focus, 200% text,
-  reduced motion, offline reload/update, privacy request logging, headers,
-  caching, real 404, and link crawl checks.
-- Live mobile Lighthouse: 100 Performance, 100 Accessibility, 100 Best
-  Practices, 100 SEO; LCP 0.9 s, TBT 70 ms, CLS 0.
-- HTML, hashed JS/CSS, service worker, and extension ZIP match the local build.
+## Next step
 
-Run the full verification with:
-
-```sh
-npm ci
-npm test
-npm run typecheck
-npm run lint
-npm run check:package
-npm run check:copy
-npm audit --audit-level=high
-npm run test:a11y
-npm run test:live-checkout
-npm run build
-unzip -t dist/site/downloads/app-flow-reader-chrome.zip
-```
-
-The detailed evidence and defect accounting are in
-[verification-6.md](verification-6.md). Browser artifacts and independent
-harnesses are under `.factory/evidence/verification-6/`.
-
-## Known gaps and next steps
-
-No release-blocking or lower-severity product defect was found. NVDA was not
-available in this Linux worker, so no NVDA or formal conformance claim is made.
+At the mobile breakpoint, ensure `#demo-next` is entirely inside the first
+390 × 844 demo viewport, then add a viewport-bound assertion and repeat the
+cold demo check. No other product work is requested by this review.
