@@ -7,7 +7,7 @@
 - Main action: use the 52 px **Back** and **Next** controls to read one instruction at a time. The current route step has a thick outline.
 - Other actions: edit a note, remove and undo a step, reset, export Markdown, or export JSON.
 - Reset: select **Reset demo** in the persistent yellow demo banner.
-- Leave: select **Leave demo** to discard sample changes and return home.
+- Start for real: select **Start for real** to discard sample changes and open the extension download instructions.
 - Direct entry: `?demo=1` and `/demo` both start from the first sample step in a fresh page.
 
-The demo state exists only in the page's JavaScript memory. It never reads or writes the extension namespace, localStorage, sessionStorage, IndexedDB, or a backend. Reloading or leaving discards every demo change.
+The demo state exists only in the page's JavaScript memory. It never reads or writes the extension namespace, localStorage, sessionStorage, IndexedDB, or a backend. Reloading or starting for real discards every demo change.

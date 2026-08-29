@@ -50,10 +50,10 @@
   },
   {
     "id": "demo-isolated",
-    "claim": "Demo changes stay in memory, never touch durable or real extension data, and are discarded when leaving the demo.",
+    "claim": "Demo changes stay in memory, never touch durable or real extension data, and are discarded when starting for real.",
     "where": "demo banner, demo guide, privacy",
     "test": "npm run test:e2e -- --grep @claim:demo-isolated",
-    "sandbox": "fresh /demo; edit sample data and inspect localStorage, sessionStorage, IndexedDB, and all requests"
+    "sandbox": "fresh /demo; edit sample data, inspect localStorage, sessionStorage, IndexedDB, and all requests, then use Start for real and re-enter the demo"
   },
   {
     "id": "offline-reload",

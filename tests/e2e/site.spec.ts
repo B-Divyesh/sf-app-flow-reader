@@ -45,7 +45,7 @@ test('@claim:export-files exports the complete sample as Markdown and JSON', asy
   expect(JSON.parse(await (await import('node:fs/promises')).readFile(await json.path() as string, 'utf8')).steps).toHaveLength(5);
 });
 
-test('@claim:demo-isolated changes the sample in memory with no cross-origin request or durable storage, then discards edits on exit and re-entry', async ({ page }) => {
+test('@claim:demo-isolated changes the sample in memory with no cross-origin request or durable storage, then Start for real discards edits and opens the extension install flow', async ({ page }) => {
   const external: string[] = [];
   page.on('request', (request) => { if (new URL(request.url()).origin !== 'http://127.0.0.1:4173') external.push(request.url()); });
   await page.goto('/demo');
@@ -55,8 +55,14 @@ test('@claim:demo-isolated changes the sample in memory with no cross-origin req
   await expect(page.getByText('Use the second control in the toolbar.')).toBeVisible();
   expect(await page.evaluate(async () => ({ local: Object.keys(localStorage), session: Object.keys(sessionStorage), databases: await indexedDB.databases() }))).toEqual({ local: [], session: [], databases: [] });
   expect(external).toEqual([]);
-  await page.getByRole('link', { name: 'Leave demo' }).click();
-  await expect(page).toHaveURL('http://127.0.0.1:4173/');
+  const startForReal = page.getByRole('link', { name: 'Start for real', exact: true });
+  await expect(startForReal).toBeVisible();
+  await expect(startForReal).toHaveAttribute('href', '/#install-title');
+  await startForReal.click();
+  await expect(page).toHaveURL('http://127.0.0.1:4173/#install-title');
+  await expect(page.locator('.demo-banner')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Keep the route reader in your toolbar' })).toBeInViewport();
+  await expect(page.getByRole('link', { name: 'Download extension', exact: true })).toBeVisible();
   await page.getByRole('link', { name: 'Try it with sample data' }).click();
   await expect(page.locator('.demo-step')).toHaveCount(5);
   await expect(page.getByText('Use the second control in the toolbar.')).toHaveCount(0);
@@ -99,6 +105,13 @@ test('keyboard navigation manages route focus and the note dialog', async ({ pag
   await expect(page.getByRole('link', { name: 'Skip to main content' })).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page.locator('#main')).toBeFocused();
+  await page.goto('/demo');
+  const startForReal = page.getByRole('link', { name: 'Start for real', exact: true });
+  await startForReal.focus();
+  await expect(startForReal).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL('http://127.0.0.1:4173/#install-title');
+  await expect(page.getByRole('heading', { name: 'Keep the route reader in your toolbar' })).toBeInViewport();
   await page.goto('/demo');
   const noteButton = page.getByRole('button', { name: /Edit note for Choose New report/ });
   await noteButton.focus();

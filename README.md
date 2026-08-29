@@ -21,7 +21,7 @@ The free reader, exports, and accessibility features need no account. Public pag
 
 ## Try the isolated sample route
 
-Open `?demo=1` and use Back and Next to follow a five-step monthly expense route. Changes stay in page memory and do not touch real extension data. **Reset demo** restores the sample. **Leave demo** discards edits before returning home.
+Open `?demo=1` and use Back and Next to follow a five-step monthly expense route. Changes stay in page memory and do not touch real extension data. **Reset demo** restores the sample. **Start for real** discards edits and opens the extension download instructions.
 
 ## Install the extension
 
