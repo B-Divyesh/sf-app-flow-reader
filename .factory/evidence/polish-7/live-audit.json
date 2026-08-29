@@ -1,0 +1,295 @@
+{
+  "checkedAt": "2026-08-29T12:41:52.828Z",
+  "origin": "https://app-flow-reader.sociobot.in",
+  "consoleErrors": [],
+  "requestFailures": [],
+  "crossOriginPageRequests": [],
+  "routes": {
+    "home": {
+      "title": "App Flow Reader — Follow routes in workplace apps",
+      "description": "Save and follow clear routes through dense workplace apps.",
+      "canonical": "https://app-flow-reader.sociobot.in/",
+      "ogTitle": "App Flow Reader — Follow routes in workplace apps",
+      "twitterTitle": "App Flow Reader — Follow routes in workplace apps",
+      "h1": [
+        "Follow saved routes through dense workplace apps"
+      ],
+      "mains": 1,
+      "header": true,
+      "footer": true,
+      "focused": "BODY",
+      "links": [
+        "https://app-flow-reader.sociobot.in/#main",
+        "https://app-flow-reader.sociobot.in/",
+        "https://app-flow-reader.sociobot.in/?demo=1",
+        "https://app-flow-reader.sociobot.in/#how-it-works",
+        "https://app-flow-reader.sociobot.in/privacy",
+        "https://app-flow-reader.sociobot.in/downloads/app-flow-reader-chrome.zip",
+        "https://app-flow-reader.sociobot.in/?demo=1",
+        "https://api.sociobot.in/api/v1/products/app-flow-reader/checkout",
+        "https://app-flow-reader.sociobot.in/downloads/app-flow-reader-chrome.zip",
+        "https://app-flow-reader.sociobot.in/",
+        "https://app-flow-reader.sociobot.in/privacy",
+        "https://app-flow-reader.sociobot.in/terms",
+        "https://hello-factory.sociobot.in/"
+      ],
+      "status": 200
+    },
+    "demo": {
+      "title": "Demo — App Flow Reader",
+      "description": "Follow a five-step expense route with isolated sample data.",
+      "canonical": "https://app-flow-reader.sociobot.in/demo",
+      "ogTitle": "Demo — App Flow Reader",
+      "twitterTitle": "Demo — App Flow Reader",
+      "h1": [
+        "Follow the monthly expense route"
+      ],
+      "mains": 1,
+      "header": true,
+      "footer": true,
+      "focused": "BODY",
+      "links": [
+        "https://app-flow-reader.sociobot.in/demo#main",
+        "https://app-flow-reader.sociobot.in/",
+        "https://app-flow-reader.sociobot.in/?demo=1",
+        "https://app-flow-reader.sociobot.in/#how-it-works",
+        "https://app-flow-reader.sociobot.in/privacy",
+        "https://app-flow-reader.sociobot.in/downloads/app-flow-reader-chrome.zip",
+        "https://app-flow-reader.sociobot.in/#install-title",
+        "https://app-flow-reader.sociobot.in/",
+        "https://app-flow-reader.sociobot.in/privacy",
+        "https://app-flow-reader.sociobot.in/terms",
+        "https://hello-factory.sociobot.in/"
+      ],
+      "status": 200
+    },
+    "privacy": {
+      "title": "Privacy — App Flow Reader",
+      "description": "How App Flow Reader keeps flow data in your browser.",
+      "canonical": "https://app-flow-reader.sociobot.in/privacy",
+      "ogTitle": "Privacy — App Flow Reader",
+      "twitterTitle": "Privacy — App Flow Reader",
+      "h1": [
+        "Privacy without a cloud account"
+      ],
+      "mains": 1,
+      "header": true,
+      "footer": true,
+      "focused": "BODY",
+      "links": [
+        "https://app-flow-reader.sociobot.in/privacy#main",
+        "https://app-flow-reader.sociobot.in/",
+        "https://app-flow-reader.sociobot.in/?demo=1",
+        "https://app-flow-reader.sociobot.in/#how-it-works",
+        "https://app-flow-reader.sociobot.in/privacy",
+        "https://app-flow-reader.sociobot.in/downloads/app-flow-reader-chrome.zip",
+        "mailto:privacy@sociobot.in",
+        "https://app-flow-reader.sociobot.in/",
+        "https://app-flow-reader.sociobot.in/privacy",
+        "https://app-flow-reader.sociobot.in/terms",
+        "https://hello-factory.sociobot.in/"
+      ],
+      "status": 200
+    },
+    "terms": {
+      "title": "Terms — App Flow Reader",
+      "description": "Terms for using the App Flow Reader browser extension.",
+      "canonical": "https://app-flow-reader.sociobot.in/terms",
+      "ogTitle": "Terms — App Flow Reader",
+      "twitterTitle": "Terms — App Flow Reader",
+      "h1": [
+        "Terms for using App Flow Reader"
+      ],
+      "mains": 1,
+      "header": true,
+      "footer": true,
+      "focused": "BODY",
+      "links": [
+        "https://app-flow-reader.sociobot.in/terms#main",
+        "https://app-flow-reader.sociobot.in/",
+        "https://app-flow-reader.sociobot.in/?demo=1",
+        "https://app-flow-reader.sociobot.in/#how-it-works",
+        "https://app-flow-reader.sociobot.in/privacy",
+        "https://app-flow-reader.sociobot.in/downloads/app-flow-reader-chrome.zip",
+        "mailto:support@sociobot.in",
+        "https://app-flow-reader.sociobot.in/",
+        "https://app-flow-reader.sociobot.in/privacy",
+        "https://app-flow-reader.sociobot.in/terms",
+        "https://hello-factory.sociobot.in/"
+      ],
+      "status": 200
+    },
+    "definitely-missing": {
+      "title": "Page not found — App Flow Reader",
+      "description": "Return to App Flow Reader.",
+      "canonical": "https://app-flow-reader.sociobot.in/404",
+      "ogTitle": "Page not found — App Flow Reader",
+      "twitterTitle": "Page not found — App Flow Reader",
+      "h1": [
+        "This step is not in the flow"
+      ],
+      "mains": 1,
+      "header": true,
+      "footer": true,
+      "focused": "BODY",
+      "links": [
+        "https://app-flow-reader.sociobot.in/definitely-missing#main",
+        "https://app-flow-reader.sociobot.in/",
+        "https://app-flow-reader.sociobot.in/?demo=1",
+        "https://app-flow-reader.sociobot.in/#how-it-works",
+        "https://app-flow-reader.sociobot.in/privacy",
+        "https://app-flow-reader.sociobot.in/downloads/app-flow-reader-chrome.zip",
+        "https://app-flow-reader.sociobot.in/",
+        "https://app-flow-reader.sociobot.in/",
+        "https://app-flow-reader.sociobot.in/privacy",
+        "https://app-flow-reader.sociobot.in/terms",
+        "https://hello-factory.sociobot.in/"
+      ],
+      "status": 404
+    }
+  },
+  "axe": {
+    "home": [],
+    "demo": [],
+    "privacy": [],
+    "terms": [],
+    "definitely-missing": []
+  },
+  "historyAndFocus": {
+    "afterLink": {
+      "url": "https://app-flow-reader.sociobot.in/privacy",
+      "title": "Privacy — App Flow Reader",
+      "activeElement": "H1"
+    },
+    "afterBack": {
+      "url": "https://app-flow-reader.sociobot.in/",
+      "title": "App Flow Reader — Follow routes in workplace apps",
+      "activeElement": "H1"
+    }
+  },
+  "links": [
+    {
+      "href": "https://api.sociobot.in/api/v1/products/app-flow-reader/checkout",
+      "status": 303
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/",
+      "status": 200
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/#how-it-works",
+      "status": 200
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/#install-title",
+      "status": 200
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/#main",
+      "status": 200
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/?demo=1",
+      "status": 200
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/definitely-missing#main",
+      "status": 404
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/demo#main",
+      "status": 200
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/downloads/app-flow-reader-chrome.zip",
+      "status": 200
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/privacy",
+      "status": 200
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/privacy#main",
+      "status": 200
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/terms",
+      "status": 200
+    },
+    {
+      "href": "https://app-flow-reader.sociobot.in/terms#main",
+      "status": 200
+    },
+    {
+      "href": "https://hello-factory.sociobot.in/",
+      "status": 200
+    }
+  ],
+  "demo": {
+    "banner": "DemoSample data. Nothing is saved.Reset demoStart for realDiscard sample data and go to the extension download instructions.",
+    "reset": "Reset demo",
+    "startForReal": "Start for real",
+    "steps": 5,
+    "nextLabel": "Next",
+    "backDisabled": true
+  },
+  "demoIsolation": {
+    "temporaryNoteVisible": false,
+    "localStorageKeys": [],
+    "sessionStorageKeys": [],
+    "indexedDatabases": []
+  },
+  "offline": {
+    "url": "https://app-flow-reader.sociobot.in/?demo=1",
+    "nextStep": "Step 2 of 5",
+    "heading": "Follow the monthly expense route"
+  },
+  "mobileDemo": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "bodyScrollWidth": 390,
+    "nextEnabled": true,
+    "backDisabled": true,
+    "banner": "DemoSample data. Nothing is saved.Reset demoStart for realDiscard sample data and go to the extension download instructions.",
+    "nextBox": {
+      "x": 205,
+      "y": 785.453125,
+      "width": 149,
+      "height": 52
+    },
+    "backBox": {
+      "x": 44,
+      "y": 785.453125,
+      "width": 149,
+      "height": 52
+    },
+    "nextInsideFirstViewport": true,
+    "backInsideFirstViewport": true
+  },
+  "mobileHome": {
+    "h1": "Follow saved routes through dense workplace apps",
+    "action": "Try it with sample data",
+    "facts": [
+      "Private",
+      "Offline",
+      "Free"
+    ],
+    "bodyScrollWidth": 390
+  },
+  "checkout": {
+    "status": 303,
+    "location": "https://checkout.dodopayments.com/session/cks_0NmRaCypIWKFybWsh9Ohl",
+    "httpsHostedCheckout": true
+  },
+  "package": {
+    "status": 200,
+    "liveSha256": "9ab35b1a212fc16e7e09f96e1413425f51ccae90aaed64bae6b14dc7063f3b0a",
+    "localSha256": "9ab35b1a212fc16e7e09f96e1413425f51ccae90aaed64bae6b14dc7063f3b0a",
+    "matchesLocal": true
+  },
+  "result": {
+    "pass": true
+  }
+}
