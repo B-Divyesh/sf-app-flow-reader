@@ -1,10 +1,10 @@
 # Landing-page copy audit
 
-Audit date: 28 August 2026. Every landing sentence is at or below 22 words. No banned word appears.
+Audit date: 29 August 2026. Every landing sentence is at or below 22 words. No banned word or metaphorical slogan appears.
 
 | Copy | Words | Flag |
 | --- | ---: | --- |
-| A steady path through dense workplace apps | 7 | — |
+| Browser extension for progressive low vision | 6 | — |
 | Follow saved routes through dense workplace apps | 7 | — |
 | For people with progressive low vision who need one reliable path through dense workplace apps. | 15 | — |
 | Try it with sample data | 5 | — |

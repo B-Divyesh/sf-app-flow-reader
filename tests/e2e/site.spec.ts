@@ -9,6 +9,8 @@ test('landing page names the low-vision job and keeps the product skeleton', asy
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.locator('main')).toHaveCount(1);
   await expect(page.locator('h1')).toHaveCount(1);
+  await expect(page.locator('.hero .kicker')).toHaveText('Browser extension for progressive low vision');
+  await expect(page.getByText('A steady path through dense workplace apps')).toHaveCount(0);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Follow saved routes through dense workplace apps');
   await expect(page.locator('.lede')).toContainText('progressive low vision');
   await expect(page.getByRole('link', { name: 'Try it with sample data' })).toBeVisible();

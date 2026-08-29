@@ -64,7 +64,7 @@ function home(): string {
   return `<main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="kicker">A steady path through dense workplace apps</p>
+        <p class="kicker">Browser extension for progressive low vision</p>
         <h1 id="hero-title">Follow saved routes through dense workplace apps</h1>
         <p class="lede">For people with progressive low vision who need one reliable path through dense workplace apps.</p>
         <div class="hero-actions">
@@ -165,7 +165,7 @@ function notFound(): string {
 }
 
 function footer(): string {
-  return `<footer class="site-footer"><div><a class="footer-mark" href="/" data-route>App Flow Reader</a><p>Follow saved routes through dense workplace apps.</p></div><nav aria-label="Footer navigation"><a href="/privacy" data-route>Privacy</a><a href="/terms" data-route>Terms</a><a href="https://hello-factory.sociobot.in" target="_blank" rel="noreferrer" aria-label="Built by Param Factory (opens in a new tab)">Built by Param Factory <span aria-hidden="true">↗</span></a></nav><p class="build">Version 1.1.0 · build 2026.08.28</p></footer>`;
+  return `<footer class="site-footer"><div><a class="footer-mark" href="/" data-route>App Flow Reader</a><p>Follow saved routes through dense workplace apps.</p></div><nav aria-label="Footer navigation"><a href="/privacy" data-route>Privacy</a><a href="/terms" data-route>Terms</a><a href="https://hello-factory.sociobot.in" target="_blank" rel="noreferrer" aria-label="Built by Param Factory (opens in a new tab)">Built by Param Factory <span aria-hidden="true">↗</span></a></nav><p class="build">Version 1.1.0 · build 2026.08.29</p></footer>`;
 }
 
 function bindSharedActions() {
