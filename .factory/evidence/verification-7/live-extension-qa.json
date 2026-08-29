@@ -1,0 +1,88 @@
+{
+  "extensionId": "blkenknjbldoopjghdohghhaadgibgck",
+  "manifest": {
+    "version": "1.1.1",
+    "manifest_version": 3,
+    "permissions": [
+      "storage",
+      "activeTab"
+    ],
+    "host_permissions": [
+      "https://api.sociobot.in/*"
+    ],
+    "matches": [
+      "http://*/*",
+      "https://*/*"
+    ]
+  },
+  "blankTitle": "Untitled app route",
+  "minRoute": {
+    "title": "Submit monthly expenses",
+    "steps": 4,
+    "routes": 1,
+    "accessibleName": true,
+    "passwordLabel": false,
+    "passwordValue": false
+  },
+  "maxRoute": {
+    "title": "Ten step boundary",
+    "steps": 10,
+    "routes": 2,
+    "active": false
+  },
+  "routeChoices": [
+    "Submit monthly expenses4 steps",
+    "Ten step boundary10 steps"
+  ],
+  "reader": {
+    "initialReader": "Ten step boundary. Step 1 of 10. Target is not visible on this page.\n\nStart here\n\nBack\nNext\nStop following",
+    "afterNext": "Ten step boundary. Step 2 of 10. Target highlighted.\n\nBoundary 1\n\nBack\nNext\nStop following",
+    "highlighted": "4px",
+    "controlBoxes": {
+      "Back": {
+        "w": 112,
+        "h": 48
+      },
+      "Next": {
+        "w": 112,
+        "h": 48
+      }
+    }
+  },
+  "noteBoundary": {
+    "noteLength": 280,
+    "popupLayout": {
+      "innerWidth": 400,
+      "scrollWidth": 2561,
+      "bodyWidth": 2561,
+      "noteBox": {
+        "x": 66,
+        "w": 2495.453125,
+        "right": 2561.453125
+      }
+    }
+  },
+  "exports": {
+    "md": "ten-step-boundary.md",
+    "mdHasTen": true,
+    "json": "ten-step-boundary.json",
+    "jsonSteps": 10
+  },
+  "emptyLicense": "Paste a supporter license token first.",
+  "firstFocus": {
+    "text": "Skip to routes",
+    "outline": "rgb(239, 91, 42) solid 3px"
+  },
+  "axe": {
+    "light": [],
+    "dark": []
+  },
+  "network": {
+    "external": []
+  },
+  "storageKeys": [
+    "app-flow-reader:state"
+  ],
+  "consoleErrors": [],
+  "pageErrors": []
+}

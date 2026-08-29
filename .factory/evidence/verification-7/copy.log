@@ -1,0 +1,5 @@
+
+> app-flow-reader@1.1.1 check:copy
+> node scripts/check-copy-audit.mjs
+
+Copy audit OK: no unresolved long-sentence or banned-word flags

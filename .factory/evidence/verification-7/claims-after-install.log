@@ -1,0 +1,1074 @@
+
+===== RUN CLAIM guided-route: npm run test:e2e -- --grep @claim:guided-route =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:guided-route
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 256ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.088 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.286 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.067 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 38 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.334 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  -  2 [mobile-chromium] › tests/e2e/extension.spec.ts:44:1 › @claim:guided-route keeps multiple named routes, caps burst input, announces and highlights each current step, and follows with large Back and Next controls
+  ✓  1 [desktop-chromium] › tests/e2e/extension.spec.ts:44:1 › @claim:guided-route keeps multiple named routes, caps burst input, announces and highlights each current step, and follows with large Back and Next controls (4.8s)
+
+  1 skipped
+  1 passed (14.9s)
+CLAIM_PASS guided-route
+
+===== RUN CLAIM private-capture: npm run test:e2e -- --grep @claim:private-capture =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:private-capture
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 281ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[K[?25h[WebServer] [success] Built extension in 1.110 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.316 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[WebServer] [?25h[K[?25h[WebServer] [success] Built extension in 1.079 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 17 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.296 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  -  1 [mobile-chromium] › tests/e2e/extension.spec.ts:93:1 › @claim:private-capture uses accessible names, ignores password controls, and stores no typed values or screenshots
+  ✓  2 [desktop-chromium] › tests/e2e/extension.spec.ts:93:1 › @claim:private-capture uses accessible names, ignores password controls, and stores no typed values or screenshots (2.5s)
+
+  1 skipped
+  1 passed (12.2s)
+CLAIM_PASS private-capture
+
+===== RUN CLAIM local-storage: npm run test:e2e -- --grep @claim:local-storage =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:local-storage
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 266ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[K[?25h[WebServer] [success] Built extension in 1.065 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.272 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.064 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 17 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.291 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  -  2 [mobile-chromium] › tests/e2e/extension.spec.ts:122:1 › @claim:local-storage starts and records a route locally without external requests
+  ✓  1 [desktop-chromium] › tests/e2e/extension.spec.ts:122:1 › @claim:local-storage starts and records a route locally without external requests (2.6s)
+
+  1 skipped
+  1 passed (12.3s)
+CLAIM_PASS local-storage
+
+===== RUN CLAIM extension-network: npm run test:e2e -- --grep @claim:extension-network =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:extension-network
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 234ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.092 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.292 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[K[?25h[WebServer] [success] Built extension in 1.080 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 16 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.343 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  -  2 [mobile-chromium] › tests/e2e/extension.spec.ts:140:1 › @claim:extension-network waits for a restored supporter token, then contacts only the Sociobot verification endpoint
+  ✓  1 [desktop-chromium] › tests/e2e/extension.spec.ts:140:1 › @claim:extension-network waits for a restored supporter token, then contacts only the Sociobot verification endpoint (2.9s)
+
+  1 skipped
+  1 passed (12.7s)
+CLAIM_PASS extension-network
+
+===== RUN CLAIM route-controls: npm run test:e2e -- --grep @claim:route-controls =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:route-controls
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 236ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.006 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.286 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[K[?25h[WebServer] [success] Built extension in 1.086 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 15 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.310 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  -  2 [mobile-chromium] › tests/e2e/extension.spec.ts:175:1 › @claim:route-controls supports pause, resume, notes, exports, and confirmed deletion
+  ✓  1 [desktop-chromium] › tests/e2e/extension.spec.ts:175:1 › @claim:route-controls supports pause, resume, notes, exports, and confirmed deletion (3.0s)
+
+  1 skipped
+  1 passed (12.7s)
+CLAIM_PASS route-controls
+
+===== RUN CLAIM export-files: npm run test:e2e -- --grep @claim:export-files =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:export-files
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 252ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.057 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.302 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[K[?25h[WebServer] [success] Built extension in 1.102 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 40 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.344 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  ✓  2 [desktop-chromium] › tests/e2e/site.spec.ts:33:1 › @claim:export-files exports the complete sample as Markdown and JSON (1.6s)
+  ✓  1 [mobile-chromium] › tests/e2e/site.spec.ts:33:1 › @claim:export-files exports the complete sample as Markdown and JSON (1.8s)
+
+  2 passed (12.1s)
+CLAIM_PASS export-files
+
+===== RUN CLAIM no-account: npm run test:e2e -- --grep @claim:no-account =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:no-account
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 266ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[K[?25h[WebServer] [success] Built extension in 1.042 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.292 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.089 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 16 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.315 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  ✓  2 [desktop-chromium] › tests/e2e/site.spec.ts:23:1 › @claim:no-account completes a guided route action without account setup (2.0s)
+  ✓  1 [mobile-chromium] › tests/e2e/site.spec.ts:23:1 › @claim:no-account completes a guided route action without account setup (2.4s)
+
+  2 passed (12.5s)
+CLAIM_PASS no-account
+
+===== RUN CLAIM demo-isolated: npm run test:e2e -- --grep @claim:demo-isolated =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:demo-isolated
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 248ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.046 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.266 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.104 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 16 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.328 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  ✓  2 [desktop-chromium] › tests/e2e/site.spec.ts:48:1 › @claim:demo-isolated changes the sample in memory with no cross-origin request or durable storage, then Start for real discards edits and opens the extension install flow (3.9s)
+  ✓  1 [mobile-chromium] › tests/e2e/site.spec.ts:48:1 › @claim:demo-isolated changes the sample in memory with no cross-origin request or durable storage, then Start for real discards edits and opens the extension install flow (4.3s)
+
+  2 passed (14.2s)
+CLAIM_PASS demo-isolated
+
+===== RUN CLAIM offline-reload: npm run test:e2e -- --grep @claim:offline-reload =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:offline-reload
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 269ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[K[?25h[WebServer] [success] Built extension in 1.042 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.265 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[K[?25h[WebServer] [success] Built extension in 1.096 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 17 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.345 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  ✓  1 [desktop-chromium] › tests/e2e/site.spec.ts:230:1 › @claim:offline-reload site and demo work offline after the first visit (2.5s)
+  ✓  2 [mobile-chromium] › tests/e2e/site.spec.ts:230:1 › @claim:offline-reload site and demo work offline after the first visit (2.5s)
+
+  2 passed (12.6s)
+CLAIM_PASS offline-reload
+
+===== RUN CLAIM no-tracking: npm run test:e2e -- --grep @claim:no-tracking =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:no-tracking
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 231ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.043 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.252 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠼[39m [2m[1/3][22m background[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠦[39m [2m[2/3][22m content[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [36m⠇[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.103 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 20 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.347 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  ✓  1 [mobile-chromium] › tests/e2e/site.spec.ts:71:1 › @claim:no-tracking loads public pages without analytics, external fonts, or third-party scripts (2.2s)
+  ✓  2 [desktop-chromium] › tests/e2e/site.spec.ts:71:1 › @claim:no-tracking loads public pages without analytics, external fonts, or third-party scripts (2.0s)
+
+  2 passed (12.5s)
+CLAIM_PASS no-tracking
+
+===== RUN CLAIM supporter-license: npm run test:e2e -- --grep @claim:supporter-license =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:supporter-license
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 241ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.105 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.336 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.069 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 22 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.294 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  -  2 [mobile-chromium] › tests/e2e/extension.spec.ts:218:1 › @claim:supporter-license restores valid licenses in the packaged extension, applies all covers, rejects revoked licenses, and leaves the reader free
+  ✓  1 [desktop-chromium] › tests/e2e/extension.spec.ts:218:1 › @claim:supporter-license restores valid licenses in the packaged extension, applies all covers, rejects revoked licenses, and leaves the reader free (3.2s)
+
+  1 skipped
+  1 passed (12.9s)
+CLAIM_PASS supporter-license
+
+===== RUN CLAIM supporter-checkout: npm run test:e2e -- --grep @claim:supporter-checkout =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:supporter-checkout
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 261ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.137 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.438 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.127 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 38 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.371 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  ✓  2 [desktop-chromium] › tests/e2e/site.spec.ts:101:1 › @claim:supporter-checkout labels the external checkout and follows the live HTTPS redirect (9.5s)
+  ✓  1 [mobile-chromium] › tests/e2e/site.spec.ts:101:1 › @claim:supporter-checkout labels the external checkout and follows the live HTTPS redirect (10.3s)
+
+  2 passed (20.4s)
+CLAIM_PASS supporter-checkout
+
+===== RUN CLAIM browser-page-boundaries: npm run test:e2e -- --grep @claim:browser-page-boundaries =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:browser-page-boundaries
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 244ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.090 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.302 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[K[?25h[WebServer] [success] Built extension in 1.045 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 14 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.265 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  -  2 [mobile-chromium] › tests/e2e/extension.spec.ts:210:1 › @claim:browser-page-boundaries does not run on browser settings pages
+  ✓  1 [desktop-chromium] › tests/e2e/extension.spec.ts:210:1 › @claim:browser-page-boundaries does not run on browser settings pages (10ms)
+
+  1 skipped
+  1 passed (9.9s)
+CLAIM_PASS browser-page-boundaries
+
+===== RUN CLAIM mv3-package: npm run test:e2e -- --grep @claim:mv3-package =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:mv3-package
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 262ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [36m⠇[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[K[WebServer] [?25h[WebServer] [success] Built extension in 1.108 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.361 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.087 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 29 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.305 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  -  1 [mobile-chromium] › tests/e2e/extension.spec.ts:200:1 › @claim:mv3-package builds a versioned Manifest V3 package for Chrome, Edge, Brave, and similar browsers with only the license verification host
+  ✓  2 [desktop-chromium] › tests/e2e/extension.spec.ts:200:1 › @claim:mv3-package builds a versioned Manifest V3 package for Chrome, Edge, Brave, and similar browsers with only the license verification host (13ms)
+
+  1 skipped
+  1 passed (10.1s)
+CLAIM_PASS mv3-package
+
+===== RUN CLAIM license-return: npm run test:e2e -- --grep @claim:license-return =====
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test --grep @claim:license-return
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 249ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.030 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.240 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.077 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 23 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.333 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 2 tests using 2 workers
+
+  ✓  2 [desktop-chromium] › tests/e2e/site.spec.ts:93:1 › @claim:license-return purchase return strips the URL token and tells the visitor where to restore it (1.4s)
+  ✓  1 [mobile-chromium] › tests/e2e/site.spec.ts:93:1 › @claim:license-return purchase return strips the URL token and tells the visitor where to restore it (1.7s)
+
+  2 passed (11.8s)
+CLAIM_PASS license-return
+CLAIM_SUMMARY total=15 failed=0 passed=15

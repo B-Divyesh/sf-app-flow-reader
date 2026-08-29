@@ -1,0 +1,152 @@
+
+> app-flow-reader@1.1.1 test
+> npm run test:unit && npm run test:e2e
+
+
+> app-flow-reader@1.1.1 test:unit
+> vitest run --config vitest.config.ts
+
+
+ RUN  v3.2.7 /work/repo
+
+ ✓ tests/unit/install-contract.test.ts (2 tests) 55ms
+ ✓ tests/unit/flow.test.ts (4 tests) 8ms
+
+ Test Files  2 passed (2)
+      Tests  6 passed (6)
+   Start at  12:59:15
+   Duration  1.29s (transform 220ms, setup 0ms, collect 271ms, tests 63ms, environment 1ms, prepare 555ms)
+
+
+> app-flow-reader@1.1.1 test:e2e
+> playwright test
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] (node:5452) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 290ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] (node:5484) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.133 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.332 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] (node:5504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.100 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 15 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.326 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer] (node:5535) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 46 tests using 2 workers
+
+(node:5553) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:5554) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:5553) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:5554) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [desktop-chromium] › tests/e2e/site.spec.ts:4:1 › landing page names the low-vision job and keeps the product skeleton (2.3s)
+  ✓   3 [desktop-chromium] › tests/e2e/site.spec.ts:23:1 › @claim:no-account completes a guided route action without account setup (2.0s)
+  ✓   4 [desktop-chromium] › tests/e2e/site.spec.ts:33:1 › @claim:export-files exports the complete sample as Markdown and JSON (1.5s)
+  ✓   1 [desktop-chromium] › tests/e2e/extension.spec.ts:44:1 › @claim:guided-route keeps multiple named routes, caps burst input, announces and highlights each current step, and follows with large Back and Next controls (7.6s)
+  ✓   5 [desktop-chromium] › tests/e2e/site.spec.ts:48:1 › @claim:demo-isolated changes the sample in memory with no cross-origin request or durable storage, then Start for real discards edits and opens the extension install flow (4.9s)
+  ✓   6 [desktop-chromium] › tests/e2e/extension.spec.ts:93:1 › @claim:private-capture uses accessible names, ignores password controls, and stores no typed values or screenshots (4.3s)
+  ✓   7 [desktop-chromium] › tests/e2e/site.spec.ts:71:1 › @claim:no-tracking loads public pages without analytics, external fonts, or third-party scripts (1.7s)
+  ✓   9 [desktop-chromium] › tests/e2e/site.spec.ts:79:1 › demo editing is bounded, reversible, and resettable (2.7s)
+  ✓  10 [desktop-chromium] › tests/e2e/site.spec.ts:93:1 › @claim:license-return purchase return strips the URL token and tells the visitor where to restore it (1.1s)
+  ✓   8 [desktop-chromium] › tests/e2e/extension.spec.ts:122:1 › @claim:local-storage starts and records a route locally without external requests (5.0s)
+  ✓  12 [desktop-chromium] › tests/e2e/extension.spec.ts:140:1 › @claim:extension-network waits for a restored supporter token, then contacts only the Sociobot verification endpoint (3.9s)
+  ✓  11 [desktop-chromium] › tests/e2e/site.spec.ts:101:1 › @claim:supporter-checkout labels the external checkout and follows the live HTTPS redirect (5.7s)
+  ✓  14 [desktop-chromium] › tests/e2e/site.spec.ts:117:1 › keyboard navigation manages route focus and the note dialog (3.6s)
+  ✓  13 [desktop-chromium] › tests/e2e/extension.spec.ts:175:1 › @claim:route-controls supports pause, resume, notes, exports, and confirmed deletion (6.1s)
+  ✓  16 [desktop-chromium] › tests/e2e/extension.spec.ts:200:1 › @claim:mv3-package builds a versioned Manifest V3 package for Chrome, Edge, Brave, and similar browsers with only the license verification host (5ms)
+  ✓  17 [desktop-chromium] › tests/e2e/extension.spec.ts:210:1 › @claim:browser-page-boundaries does not run on browser settings pages (6ms)
+  ✓  15 [desktop-chromium] › tests/e2e/site.spec.ts:141:1 › routes update titles, social metadata, history, heading focus, and deployment policy has a real 404 catch-all (3.7s)
+  ✓  18 [desktop-chromium] › tests/e2e/extension.spec.ts:218:1 › @claim:supporter-license restores valid licenses in the packaged extension, applies all covers, rejects revoked licenses, and leaves the reader free (5.6s)
+  ✓  20 [desktop-chromium] › tests/e2e/extension.spec.ts:257:1 › @a11y extension popup passes axe in light and dark themes with keyboard focus (8.3s)
+(node:6704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:6704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  21 [mobile-chromium] › tests/e2e/extension.spec.ts:44:1 › @claim:guided-route keeps multiple named routes, caps burst input, announces and highlights each current step, and follows with large Back and Next controls
+  -  22 [mobile-chromium] › tests/e2e/extension.spec.ts:93:1 › @claim:private-capture uses accessible names, ignores password controls, and stores no typed values or screenshots
+  -  23 [mobile-chromium] › tests/e2e/extension.spec.ts:122:1 › @claim:local-storage starts and records a route locally without external requests
+  -  24 [mobile-chromium] › tests/e2e/extension.spec.ts:140:1 › @claim:extension-network waits for a restored supporter token, then contacts only the Sociobot verification endpoint
+  -  25 [mobile-chromium] › tests/e2e/extension.spec.ts:175:1 › @claim:route-controls supports pause, resume, notes, exports, and confirmed deletion
+  -  26 [mobile-chromium] › tests/e2e/extension.spec.ts:200:1 › @claim:mv3-package builds a versioned Manifest V3 package for Chrome, Edge, Brave, and similar browsers with only the license verification host
+  -  27 [mobile-chromium] › tests/e2e/extension.spec.ts:210:1 › @claim:browser-page-boundaries does not run on browser settings pages
+  -  28 [mobile-chromium] › tests/e2e/extension.spec.ts:218:1 › @claim:supporter-license restores valid licenses in the packaged extension, applies all covers, rejects revoked licenses, and leaves the reader free
+  -  29 [mobile-chromium] › tests/e2e/extension.spec.ts:257:1 › @a11y extension popup passes axe in light and dark themes with keyboard focus
+  ✓  30 [mobile-chromium] › tests/e2e/site.spec.ts:4:1 › landing page names the low-vision job and keeps the product skeleton (1.7s)
+  ✓  31 [mobile-chromium] › tests/e2e/site.spec.ts:23:1 › @claim:no-account completes a guided route action without account setup (1.5s)
+  ✓  32 [mobile-chromium] › tests/e2e/site.spec.ts:33:1 › @claim:export-files exports the complete sample as Markdown and JSON (1.4s)
+  ✓  33 [mobile-chromium] › tests/e2e/site.spec.ts:48:1 › @claim:demo-isolated changes the sample in memory with no cross-origin request or durable storage, then Start for real discards edits and opens the extension install flow (3.0s)
+  ✓  34 [mobile-chromium] › tests/e2e/site.spec.ts:71:1 › @claim:no-tracking loads public pages without analytics, external fonts, or third-party scripts (1.5s)
+  ✓  35 [mobile-chromium] › tests/e2e/site.spec.ts:79:1 › demo editing is bounded, reversible, and resettable (2.0s)
+  ✓  19 [desktop-chromium] › tests/e2e/site.spec.ts:186:1 › @a11y every route passes axe in light, dark, and reduced-motion modes (27.8s)
+  -  37 [desktop-chromium] › tests/e2e/site.spec.ts:198:1 › 390px layout has 44px targets and no horizontal overflow on home and demo
+  -  38 [desktop-chromium] › tests/e2e/site.spec.ts:218:1 › 390px demo keeps the enabled Next action inside the first viewport
+  ✓  36 [mobile-chromium] › tests/e2e/site.spec.ts:93:1 › @claim:license-return purchase return strips the URL token and tells the visitor where to restore it (1.2s)
+  ✓  39 [desktop-chromium] › tests/e2e/site.spec.ts:230:1 › @claim:offline-reload site and demo work offline after the first visit (1.5s)
+  ✓  40 [mobile-chromium] › tests/e2e/site.spec.ts:101:1 › @claim:supporter-checkout labels the external checkout and follows the live HTTPS redirect (4.1s)
+  ✓  41 [mobile-chromium] › tests/e2e/site.spec.ts:117:1 › keyboard navigation manages route focus and the note dialog (2.3s)
+  ✓  42 [mobile-chromium] › tests/e2e/site.spec.ts:141:1 › routes update titles, social metadata, history, heading focus, and deployment policy has a real 404 catch-all (1.4s)
+  ✓  43 [mobile-chromium] › tests/e2e/site.spec.ts:186:1 › @a11y every route passes axe in light, dark, and reduced-motion modes (10.1s)
+  ✓  44 [mobile-chromium] › tests/e2e/site.spec.ts:198:1 › 390px layout has 44px targets and no horizontal overflow on home and demo (947ms)
+  ✓  45 [mobile-chromium] › tests/e2e/site.spec.ts:218:1 › 390px demo keeps the enabled Next action inside the first viewport (564ms)
+  ✓  46 [mobile-chromium] › tests/e2e/site.spec.ts:230:1 › @claim:offline-reload site and demo work offline after the first visit (841ms)
+
+  11 skipped
+  35 passed (1.5m)

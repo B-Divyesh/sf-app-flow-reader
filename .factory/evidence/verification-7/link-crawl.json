@@ -1,0 +1,130 @@
+[
+  {
+    "href": "https://app-flow-reader.sociobot.in/#main",
+    "text": "Skip to main content",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": 200
+  },
+  {
+    "href": "https://app-flow-reader.sociobot.in/",
+    "text": "App Flow Reader",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": 200
+  },
+  {
+    "href": "https://app-flow-reader.sociobot.in/?demo=1",
+    "text": "Demo",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": 200
+  },
+  {
+    "href": "https://app-flow-reader.sociobot.in/#how-it-works",
+    "text": "How it works",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": 200
+  },
+  {
+    "href": "https://app-flow-reader.sociobot.in/privacy",
+    "text": "Privacy",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": 200
+  },
+  {
+    "href": "https://app-flow-reader.sociobot.in/downloads/app-flow-reader-chrome.zip",
+    "text": "Download",
+    "target": "",
+    "aria": null,
+    "download": true,
+    "status": 200
+  },
+  {
+    "href": "https://api.sociobot.in/api/v1/products/app-flow-reader/checkout",
+    "text": "Buy supporter license (opens secure checkout)",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": 303
+  },
+  {
+    "href": "https://app-flow-reader.sociobot.in/terms",
+    "text": "Terms",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": 200
+  },
+  {
+    "href": "https://hello-factory.sociobot.in/",
+    "text": "Built by Param Factory ↗",
+    "target": "_blank",
+    "aria": "Built by Param Factory (opens in a new tab)",
+    "download": false,
+    "status": 200
+  },
+  {
+    "href": "https://app-flow-reader.sociobot.in/demo#main",
+    "text": "Skip to main content",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": 200
+  },
+  {
+    "href": "https://app-flow-reader.sociobot.in/#install-title",
+    "text": "Start for real",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": 200
+  },
+  {
+    "href": "https://app-flow-reader.sociobot.in/privacy#main",
+    "text": "Skip to main content",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": 200
+  },
+  {
+    "href": "mailto:privacy@sociobot.in",
+    "text": "privacy@sociobot.in",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": "skipped-mailto"
+  },
+  {
+    "href": "https://app-flow-reader.sociobot.in/terms#main",
+    "text": "Skip to main content",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": 200
+  },
+  {
+    "href": "mailto:support@sociobot.in",
+    "text": "support@sociobot.in",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": "skipped-mailto"
+  },
+  {
+    "href": "https://app-flow-reader.sociobot.in/404.html#main",
+    "text": "Skip to main content",
+    "target": "",
+    "aria": null,
+    "download": false,
+    "status": 200
+  }
+]

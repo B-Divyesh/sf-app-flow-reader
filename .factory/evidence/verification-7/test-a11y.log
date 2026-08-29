@@ -1,0 +1,91 @@
+
+> app-flow-reader@1.1.1 test:a11y
+> playwright test --grep @a11y
+
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 build:site
+[WebServer] > vite build --config vite.config.ts && npm run package:extension
+[WebServer]
+[WebServer] (node:10967) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] vite v7.3.6 building client environment for production...
+[WebServer] transforming...
+[WebServer] ✓ 6 modules transformed.
+[WebServer] rendering chunks...
+[WebServer] computing gzip size...
+[WebServer] ../dist/site/index.html                  1.98 kB │ gzip: 0.72 kB
+[WebServer] ../dist/site/assets/index-otP4ZuKq.css  17.70 kB │ gzip: 4.68 kB
+[WebServer] ../dist/site/assets/index-B-JF3TR4.js   19.57 kB │ gzip: 6.79 kB │ map: 38.41 kB
+[WebServer] ✓ built in 278ms
+[WebServer]
+[WebServer] > app-flow-reader@1.1.1 package:extension
+[WebServer] > wxt build && wxt zip && node scripts/package-extension.mjs
+[WebServer]
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] (node:10999) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[2/3][22m content[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [36m⠧[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[K[?25h[WebServer] [success] Built extension in 1.132 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [success] Finished in 1.350 s
+[WebServer] [log]
+[WebServer] [90mWXT[39m [1m[90m0.21.4[39m[22m
+[WebServer] (node:11018) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [info] Building [36mchrome-mv3[39m for [36mproduction[39m with [32mVite 7.3.6[39m
+[WebServer] [?25l[WebServer] [36m⠋[39m Preparing...[K[WebServer] [36m⠋[39m [2m[1/3][22m background[K[WebServer] [36m⠙[39m [2m[1/3][22m background[K[WebServer] [36m⠹[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[1/3][22m background[K[WebServer] [36m⠸[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[2/3][22m content[K[WebServer] [36m⠼[39m [2m[3/3][22m popup[K[WebServer] [36m⠴[39m [2m[3/3][22m popup[K[WebServer] [36m⠦[39m [2m[3/3][22m popup[K[WebServer] [K[?25h[WebServer] [K[?25h[WebServer] [success] Built extension in 1.032 s
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34mmanifest.json[39m               [2m652 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[32mpopup.html[39m                  [2m4.28 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mbackground.js[39m               [2m6.05 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mchunks/popup-B_C5izjM.js[39m    [2m7.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[36mcontent-scripts/content.js[39m  [2m8.04 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[35massets/popup-DgPbpsBm.css[39m   [2m6.39 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-128.png[39m                [2m1.14 kB[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-16.png[39m                 [2m499 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-32.png[39m                 [2m779 B[22m
+[WebServer] [90m  ├─[39m [2m.output/chrome-mv3/[22m[34micon-48.png[39m                 [2m821 B[22m
+[WebServer] [90m  └─[39m [2m.output/chrome-mv3/[22m[34micon.svg[39m                    [2m415 B[22m
+[WebServer] [36mΣ Total size:[39m 36.45 kB
+[WebServer] [info] Zipping extension...
+[WebServer] [success] Zipped extension in 42 ms
+[WebServer] [90m  └─[39m [2m.output/[22m[33mapp-flow-reader-1.1.1-chrome.zip[39m  [2m16.65 kB[22m
+[WebServer] [36mΣ Total size:[39m 16.65 kB
+[WebServer] [success] Finished in 1.282 s
+[WebServer] Packaged extension: dist/extension and dist/site/downloads/app-flow-reader-chrome.zip
+[WebServer] (node:11048) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer]   ➜  Local:   http://127.0.0.1:4173/
+
+Running 4 tests using 2 workers
+
+(node:11067) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11066) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11067) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11066) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop-chromium] › tests/e2e/extension.spec.ts:257:1 › @a11y extension popup passes axe in light and dark themes with keyboard focus (9.1s)
+(node:11330) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11330) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  3 [mobile-chromium] › tests/e2e/extension.spec.ts:257:1 › @a11y extension popup passes axe in light and dark themes with keyboard focus
+  ✓  2 [desktop-chromium] › tests/e2e/site.spec.ts:186:1 › @a11y every route passes axe in light, dark, and reduced-motion modes (26.0s)
+  ✓  4 [mobile-chromium] › tests/e2e/site.spec.ts:186:1 › @a11y every route passes axe in light, dark, and reduced-motion modes (17.8s)
+
+  1 skipped
+  3 passed (41.4s)

@@ -1,0 +1,10 @@
+{
+  "title": "Exact three steps",
+  "steps": 3,
+  "labels": [
+    "Start here",
+    "First action",
+    "Second action"
+  ],
+  "reader": "Exact three steps. Step 1 of 3. Target is not visible on this page.\n\nStart here\n\nBack\nNext\nStop following"
+}

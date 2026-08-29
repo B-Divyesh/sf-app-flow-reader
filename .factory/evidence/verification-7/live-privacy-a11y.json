@@ -1,0 +1,44 @@
+{
+  "desktop": {
+    "axe": {
+      "light/": [],
+      "light/demo": [],
+      "light/privacy": [],
+      "light/terms": [],
+      "dark/": [],
+      "dark/demo": [],
+      "dark/privacy": [],
+      "dark/terms": []
+    },
+    "crossOrigin": [],
+    "storage": {
+      "cookies": "",
+      "local": [],
+      "session": [],
+      "idb": []
+    },
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  "mobile390": {
+    "axe": {
+      "light/": [],
+      "light/demo": [],
+      "light/privacy": [],
+      "light/terms": [],
+      "dark/": [],
+      "dark/demo": [],
+      "dark/privacy": [],
+      "dark/terms": []
+    },
+    "crossOrigin": [],
+    "storage": {
+      "cookies": "",
+      "local": [],
+      "session": [],
+      "idb": []
+    },
+    "consoleErrors": [],
+    "pageErrors": []
+  }
+}

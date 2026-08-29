@@ -1,0 +1,113 @@
+candidate=4fea5a8afce75905e5091db80385214b285ba5eb
+index.html match=yes sha256=4336294792b7f15d7f2890b6787f80375487101b57cac6682ab5bbef1aadb579
+assets/index-B-JF3TR4.js match=yes sha256=0395ddfa80720b0a9336292b2139b99e8825c1539a4049bb36466e493c98fe85
+assets/index-otP4ZuKq.css match=yes sha256=0fdf6e7c730bdad9cf289696d2c8bf32faccc96877f47e1899f25bf67541aa4d
+sw.js match=yes sha256=de8ef9a504c883bc9999831b9e35f939d74f7aab2744142acb517aeda4e6b256
+downloads/app-flow-reader-chrome.zip match=yes sha256=9ab35b1a212fc16e7e09f96e1413425f51ccae90aaed64bae6b14dc7063f3b0a
+
+URL /
+HTTP/2 200
+content-type: text/html
+date: Sat, 29 Aug 2026 13:15:16 GMT
+cache-control: public, must-revalidate, max-age=30
+etag: "74425749"
+last-modified: Sat, 29 Aug 2026 12:45:17 GMT
+content-length: 1980
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-dns-prefetch-control: off
+content-security-policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.sociobot.in; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+x-frame-options: DENY
+permissions-policy: camera=(), microphone=(), geolocation=()
+
+
+URL /assets/index-B-JF3TR4.js
+HTTP/2 200
+content-type: text/javascript
+date: Sat, 29 Aug 2026 13:15:17 GMT
+cache-control: public, max-age=31536000, immutable
+etag: "74425749"
+last-modified: Sat, 29 Aug 2026 12:45:17 GMT
+content-length: 19566
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-dns-prefetch-control: off
+content-security-policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.sociobot.in; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+x-frame-options: DENY
+permissions-policy: camera=(), microphone=(), geolocation=()
+
+
+URL /assets/index-otP4ZuKq.css
+HTTP/2 200
+content-type: text/css
+date: Sat, 29 Aug 2026 13:15:17 GMT
+cache-control: public, max-age=31536000, immutable
+etag: "74425749"
+last-modified: Sat, 29 Aug 2026 12:45:17 GMT
+content-length: 17704
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-dns-prefetch-control: off
+content-security-policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.sociobot.in; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+x-frame-options: DENY
+permissions-policy: camera=(), microphone=(), geolocation=()
+
+
+URL /sw.js
+HTTP/2 200
+content-type: text/javascript
+date: Sat, 29 Aug 2026 13:15:17 GMT
+cache-control: no-cache
+etag: "74425749"
+last-modified: Sat, 29 Aug 2026 12:45:17 GMT
+content-length: 1121
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-dns-prefetch-control: off
+content-security-policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.sociobot.in; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+x-frame-options: DENY
+permissions-policy: camera=(), microphone=(), geolocation=()
+
+
+URL /downloads/app-flow-reader-chrome.zip
+HTTP/2 200
+content-type: application/zip
+date: Sat, 29 Aug 2026 13:15:17 GMT
+cache-control: public, max-age=3600
+etag: "74425749"
+last-modified: Sat, 29 Aug 2026 12:45:17 GMT
+content-length: 16646
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-dns-prefetch-control: off
+content-security-policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.sociobot.in; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+x-frame-options: DENY
+permissions-policy: camera=(), microphone=(), geolocation=()
+
+
+URL /definitely-missing
+HTTP/2 404
+content-type: text/html
+date: Sat, 29 Aug 2026 13:15:18 GMT
+cache-control: public, must-revalidate, max-age=30
+etag: "74425749"
+last-modified: Sat, 29 Aug 2026 12:45:17 GMT
+content-length: 2865
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-dns-prefetch-control: off
+content-security-policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.sociobot.in; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+x-frame-options: DENY
+permissions-policy: camera=(), microphone=(), geolocation=()

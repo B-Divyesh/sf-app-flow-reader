@@ -1,0 +1,13 @@
+Archive:  dist/site/downloads/app-flow-reader-chrome.zip
+    testing: assets/popup-DgPbpsBm.css   OK
+    testing: background.js            OK
+    testing: chunks/popup-B_C5izjM.js   OK
+    testing: content-scripts/content.js   OK
+    testing: icon-128.png             OK
+    testing: icon-16.png              OK
+    testing: icon-32.png              OK
+    testing: icon-48.png              OK
+    testing: icon.svg                 OK
+    testing: manifest.json            OK
+    testing: popup.html               OK
+No errors detected in compressed data of dist/site/downloads/app-flow-reader-chrome.zip.

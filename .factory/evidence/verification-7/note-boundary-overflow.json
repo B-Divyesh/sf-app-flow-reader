@@ -1,0 +1,26 @@
+{
+  "desktop": {
+    "accepted": 280,
+    "noteLength": 280,
+    "layout": {
+      "innerWidth": 1440,
+      "innerHeight": 900,
+      "visualWidth": 1440,
+      "visualHeight": 900,
+      "scrollWidth": 2988,
+      "bodyWidth": 2988
+    }
+  },
+  "mobile390": {
+    "accepted": 280,
+    "noteLength": 280,
+    "layout": {
+      "innerWidth": 1560,
+      "innerHeight": 3376,
+      "visualWidth": 390,
+      "visualHeight": 844,
+      "scrollWidth": 2766,
+      "bodyWidth": 2766
+    }
+  }
+}

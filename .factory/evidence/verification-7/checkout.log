@@ -1,0 +1,5 @@
+
+> app-flow-reader@1.1.1 test:live-checkout
+> node scripts/check-live-checkout.mjs
+
+Live checkout passed: https://api.sociobot.in/api/v1/products/app-flow-reader/checkout -> https://checkout.dodopayments.com/session/cks_0NmRdnqCkKQ7F3qWB39aT
