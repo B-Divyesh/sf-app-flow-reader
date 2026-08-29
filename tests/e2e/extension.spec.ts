@@ -223,7 +223,7 @@ test('@claim:supporter-license restores valid licenses in the packaged extension
     await route.fulfill({ contentType: 'application/json', body: JSON.stringify(token === 'valid-token' ? { valid: true, reason: 'ok' } : { valid: false, reason: 'revoked' }) });
   });
   try {
-    await expect(harness.popup.getByRole('link', { name: 'Buy supporter license — $12' })).toBeVisible();
+    await expect(harness.popup.getByRole('link', { name: 'Buy supporter license — $12 (opens secure checkout in a new tab)' })).toBeVisible();
     await harness.popup.getByLabel('Supporter license token').fill('valid-token');
     await harness.popup.getByRole('button', { name: 'Restore license' }).click();
     await expect(harness.popup.getByRole('status')).toContainText('Supporter styles are active in this extension.');

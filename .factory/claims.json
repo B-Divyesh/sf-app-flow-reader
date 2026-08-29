@@ -77,6 +77,13 @@
     "sandbox": "fresh packaged MV3 profile with recorded Sociobot verification fixtures; restore valid and revoked tokens, apply each cover, and start a free route"
   },
   {
+    "id": "supporter-checkout",
+    "claim": "The $12 supporter purchase action says that it opens a secure external checkout and redirects there over HTTPS.",
+    "where": "landing supporter action, extension popup purchase action",
+    "test": "npm run test:e2e -- --grep @claim:supporter-checkout",
+    "sandbox": "fresh browser context; activate the landing purchase link and assert its visible label, HTTPS 303 response, and hosted external checkout destination"
+  },
+  {
     "id": "browser-page-boundaries",
     "claim": "Browser settings pages cannot be read.",
     "where": "landing boundaries",

@@ -35,7 +35,7 @@ Name a route in the toolbar popup and select **Start recording**. Complete 3–1
 
 ## Optional supporter license
 
-A $12 one-time supporter license adds Blueprint, Graphite, and Sunrise notebook covers in the extension. It never gates the reader, exports, privacy controls, or accessibility features. After checkout, an installed extension restores the returned token; you can also paste it into **Supporter styles**.
+A $12 one-time supporter license adds Blueprint, Graphite, and Sunrise notebook covers in the extension. It never gates the reader, exports, privacy controls, or accessibility features. **Buy supporter license** opens a secure checkout outside App Flow Reader. After checkout, an installed extension restores the returned token; you can also paste it into **Supporter styles**.
 
 ## Develop locally
 

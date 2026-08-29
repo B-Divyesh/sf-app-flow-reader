@@ -30,6 +30,7 @@ Audit date: 29 August 2026. Every landing sentence is at or below 22 words. No b
 | A supporter license adds three decorative cover styles in the extension. | 10 | — |
 | After checkout, an installed extension restores the returned token. | 9 | — |
 | You can also paste it into Supporter styles. | 8 | — |
+| Buy supporter license (opens secure checkout) | 6 | —; covered by `supporter-checkout` |
 | Use in Chrome, Edge, Brave, and similar browsers | 8 | — |
 | Keep the route reader in your toolbar | 7 | — |
 | Download the package, unzip it, then load the folder from the browser extensions page. | 14 | — |
@@ -47,6 +48,7 @@ Audit date: 29 August 2026. Every landing sentence is at or below 22 words. No b
 | It then contacts only api.sociobot.in to check that token. | 9 | — |
 | The extension makes no background network request until a supporter token is restored. | 13 | — |
 | Verification then contacts only api.sociobot.in. | 6 | — |
+| Buy supporter license opens a secure checkout outside App Flow Reader. | 10 | —; covered by `supporter-checkout` |
 
 ## First-screen read-aloud
 

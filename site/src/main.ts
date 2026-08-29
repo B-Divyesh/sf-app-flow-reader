@@ -121,7 +121,7 @@ function home(): string {
       <h2 id="supporter-title">Add notebook cover styles for $12 once</h2>
       <p>The route reader, exports, and every accessibility feature remain free. A supporter license adds three decorative cover styles in the extension.</p>
       <p>After checkout, an installed extension restores the returned token. You can also paste it into Supporter styles.</p>
-      <a class="button secondary" href="https://api.sociobot.in/api/v1/products/app-flow-reader/checkout">Buy supporter license</a>
+      <a class="button secondary" data-supporter-checkout href="https://api.sociobot.in/api/v1/products/app-flow-reader/checkout">Buy supporter license (opens secure checkout)</a>
       ${returnedLicenseNotice()}
     </section>
 

@@ -95,7 +95,23 @@ test('@claim:license-return purchase return strips the URL token and tells the v
   await expect(page).toHaveURL('http://127.0.0.1:4173/');
   await expect(page.getByRole('status')).toContainText('Purchase complete. Your installed extension restores this token now.');
   await expect(page.getByRole('status')).toContainText('test-token');
-  await expect(page.getByRole('link', { name: 'Buy supporter license' })).toHaveAttribute('href', 'https://api.sociobot.in/api/v1/products/app-flow-reader/checkout');
+  await expect(page.getByRole('link', { name: 'Buy supporter license (opens secure checkout)' })).toHaveAttribute('href', 'https://api.sociobot.in/api/v1/products/app-flow-reader/checkout');
+});
+
+test('@claim:supporter-checkout labels the external checkout and follows the live HTTPS redirect', async ({ page }) => {
+  const checkoutUrl = 'https://api.sociobot.in/api/v1/products/app-flow-reader/checkout';
+  await page.goto('/');
+  const checkout = page.getByRole('link', { name: 'Buy supporter license (opens secure checkout)' });
+  await expect(checkout).toBeVisible();
+  await expect(checkout).toHaveAttribute('href', checkoutUrl);
+
+  const checkoutResponse = page.waitForResponse((response) => response.url() === checkoutUrl && response.status() === 303);
+  await checkout.click();
+  const response = await checkoutResponse;
+  const destination = response.headers().location;
+  expect(destination).toBeTruthy();
+  expect(new URL(destination!).origin).toBe('https://checkout.dodopayments.com');
+  await expect(page).toHaveURL(/^https:\/\/checkout\.dodopayments\.com\/session\/cks_[A-Za-z0-9]+/);
 });
 
 test('keyboard navigation manages route focus and the note dialog', async ({ page, browserName }) => {
