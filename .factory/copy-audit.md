@@ -52,6 +52,12 @@ Audit date: 29 August 2026. Every landing sentence is at or below 22 words. No b
 
 “Follow saved routes through dense workplace apps. For people with progressive low vision who need one reliable path through dense workplace apps. Try it with sample data.”
 
+## Catalog description
+
+| Copy | Words | Flag |
+| --- | ---: | --- |
+| Follow saved routes through dense workplace apps, one clear step at a time. | 13 | —; covered by `guided-route` |
+
 ## Terminology
 
 | Concept | One term |
