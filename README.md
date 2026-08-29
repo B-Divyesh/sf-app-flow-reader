@@ -11,6 +11,7 @@ Sample-data demo: <https://app-flow-reader.sociobot.in/?demo=1>
 ## What App Flow Reader does
 
 - Keeps multiple named routes on this device.
+- Outlines each route target and waits for you; it never activates page controls.
 - Uses accessible control names before visible text fallbacks.
 - Ignores password controls and never stores typed values or screenshots.
 - Pauses, resumes, annotates, exports, and deletes routes.

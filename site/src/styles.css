@@ -140,7 +140,8 @@ h3 { font-size: 23px; }
 .demo-step h2 { margin: 5px 0 7px; font-size: 25px; }
 .step-kind { color: var(--orange); }
 .step-url { margin-bottom: 8px; color: var(--muted); font: 13px ui-monospace, monospace; word-break: break-all; }
-.note { max-width: 68ch; margin: 10px 0 0; padding-left: 12px; border-left: 3px solid var(--yellow); }
+.demo-step-copy { min-width: 0; }
+.note, .reader-note { max-width: 68ch; margin: 10px 0 0; padding-left: 12px; border-left: 3px solid var(--yellow); overflow-wrap: anywhere; word-break: break-word; }
 .step-actions { display: flex; gap: 8px; align-items: start; }
 .icon-button { color: var(--blue); background: transparent; border: 0; text-decoration: underline; text-underline-offset: 4px; }
 .remove-step { color: var(--danger); }

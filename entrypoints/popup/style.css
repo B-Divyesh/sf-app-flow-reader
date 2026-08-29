@@ -1,6 +1,6 @@
 :root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #132031; background: #f4f0e6; }
 * { box-sizing: border-box; }
-body { margin: 0; width: 410px; min-height: 560px; background: radial-gradient(#c7c1b4 0.8px, transparent 0.8px) 0 0/16px 16px, #f4f0e6; font-size: 16px; }
+body { margin: 0; width: min(410px, 100%); min-height: 560px; background: radial-gradient(#c7c1b4 0.8px, transparent 0.8px) 0 0/16px 16px, #f4f0e6; font-size: 16px; }
 button, a { font: inherit; }
 button { min-height: 44px; border: 1px solid #52616f; border-radius: 4px; padding: 10px 14px; background: #fffdf7; color: #132031; cursor: pointer; font-weight: 700; }
 button:hover { background: #e8e2d4; }
@@ -38,12 +38,13 @@ h2 { font-size: 23px; }
 .record-button { min-width: 88px; }
 .step-list { list-style: none; margin: 12px 0 20px; padding: 0; }
 .step-list li { position: relative; min-height: 58px; display: flex; gap: 12px; padding-bottom: 13px; }
+.step-list li > div { min-width: 0; flex: 1; }
 .step-list li:not(:last-child)::after { content: ''; position: absolute; left: 15px; top: 31px; bottom: 0; border-left: 2px solid #b9af9b; }
 .step-number { position: relative; z-index: 1; display: grid; place-items: center; width: 32px; height: 32px; flex: 0 0 32px; border: 2px solid #1d4f91; border-radius: 50%; background: #f4f0e6; font: 800 13px ui-monospace, monospace; }
 .step-list strong, .step-list small { display: block; }
 .step-list strong { line-height: 1.35; }
 .step-list small { margin-top: 3px; color: #53616d; }
-.step-note { margin: 7px 0 2px; padding-left: 8px; border-left: 3px solid #f7cc53; font-size: 14px; line-height: 1.4; }
+.step-note { margin: 7px 0 2px; padding-left: 8px; border-left: 3px solid #f7cc53; overflow-wrap: anywhere; word-break: break-word; font-size: 14px; line-height: 1.4; }
 .supporter-panel { margin: 22px 18px; padding: 18px; border: 2px solid #132031; background: #fffdf7; }
 .supporter-panel h2 { margin: 0 0 10px; font-size: 24px; }
 .supporter-panel label { display: block; margin: 14px 0 6px; font-weight: 700; }

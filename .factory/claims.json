@@ -7,6 +7,13 @@
     "sandbox": "fresh packaged MV3 profile; burst-record a ten-step route, add a second named route, start following, and operate the injected reader"
   },
   {
+    "id": "playback-waits",
+    "claim": "Following a route outlines its matching page control and waits for you; it never activates page controls.",
+    "where": "landing live preview, README",
+    "test": "npm run test:e2e -- --grep @claim:playback-waits",
+    "sandbox": "fresh packaged MV3 profile; record two page buttons with activation listeners, start playback, move to the first button, and assert both listeners remain unfired"
+  },
+  {
     "id": "private-capture",
     "claim": "Uses accessible control names, never stores typed values or screenshots, and ignores password controls completely.",
     "where": "landing boundaries, privacy, README",

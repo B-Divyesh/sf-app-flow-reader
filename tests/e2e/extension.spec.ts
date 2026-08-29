@@ -90,6 +90,56 @@ test('@claim:guided-route keeps multiple named routes, caps burst input, announc
   } finally { await closeExtension(harness); }
 });
 
+test('@claim:playback-waits outlines a matching page control but never activates it', async ({ browserName }, testInfo) => {
+  test.skip(browserName !== 'chromium' || testInfo.project.name !== 'desktop-chromium');
+  const harness = await launchExtension();
+  try {
+    await start(harness.popup, 'Wait for the worker');
+    await harness.page.bringToFront();
+    await harness.page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'non-activation-targets';
+      document.querySelector('main')!.prepend(host);
+      for (const label of ['Wait target one', 'Wait target two']) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = label;
+        button.dataset.activations = '0';
+        button.addEventListener('click', () => {
+          button.dataset.activations = String(Number(button.dataset.activations) + 1);
+        });
+        host.append(button);
+        button.click();
+        button.dataset.activations = '0';
+      }
+    });
+    await expect.poll(async () => (await state(harness.worker)).flow.steps.length).toBe(3);
+    const route = await state(harness.worker);
+    const tabId = await harness.worker.evaluate(async () => (await (globalThis as any).chrome.tabs.query({ active: true, currentWindow: true }))[0]?.id);
+    await harness.popup.evaluate(async ({ id, tabId }) => (globalThis as any).chrome.runtime.sendMessage({ type: 'afr:follow', id, tabId }), { id: route.flow.id, tabId });
+    const reader = harness.page.getByRole('complementary', { name: 'App Flow Reader controls' });
+    await expect(reader).toContainText('Step 1 of 3');
+    await reader.getByRole('button', { name: 'Next' }).click();
+    await expect(harness.page.getByRole('button', { name: 'Wait target one', exact: true })).toHaveCSS('outline-width', '4px');
+    await expect.poll(() => harness.page.locator('#non-activation-targets button').evaluateAll((buttons) => buttons.map((button) => button.getAttribute('data-activations')))).toEqual(['0', '0']);
+  } finally { await closeExtension(harness); }
+});
+
+test('a maximum-length unbroken popup note stays inside a 400px popup viewport', async ({ browserName }, testInfo) => {
+  test.skip(browserName !== 'chromium' || testInfo.project.name !== 'desktop-chromium');
+  const harness = await launchExtension();
+  try {
+    await harness.popup.setViewportSize({ width: 400, height: 844 });
+    await start(harness.popup, 'Wrapped note route');
+    harness.popup.once('dialog', (dialog) => dialog.accept('x'.repeat(280)));
+    await harness.popup.getByRole('button', { name: 'Add note' }).first().click();
+    const note = harness.popup.locator('.step-note');
+    await expect(note).toHaveText('x'.repeat(280));
+    expect(await harness.popup.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    expect(await note.evaluate((element) => element.getBoundingClientRect().right <= window.innerWidth)).toBe(true);
+  } finally { await closeExtension(harness); }
+});
+
 test('@claim:private-capture uses accessible names, ignores password controls, and stores no typed values or screenshots', async ({ browserName }, testInfo) => {
   test.skip(browserName !== 'chromium' || testInfo.project.name !== 'desktop-chromium');
   const harness = await launchExtension();

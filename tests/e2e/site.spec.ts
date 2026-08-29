@@ -76,12 +76,14 @@ test('@claim:no-tracking loads public pages without analytics, external fonts, o
   expect(await page.locator('script[src^="http"], link[href^="http"][rel="stylesheet"]').count()).toBe(0);
 });
 
-test('demo editing is bounded, reversible, and resettable', async ({ page }) => {
+test('a maximum-length unbroken demo note stays within the desktop and 390px viewport, then remains reversible and resettable', async ({ page }) => {
   await page.goto('/demo');
   await page.getByRole('button', { name: /Edit note for Choose New report/ }).click();
   await page.getByRole('textbox', { name: 'Note' }).fill('x'.repeat(280));
   await page.getByRole('button', { name: 'Save note' }).click();
   await expect(page.locator('.demo-step').filter({ hasText: 'Choose New report' }).locator('.note')).toHaveText('x'.repeat(280));
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  expect(await page.locator('.reader-note').evaluate((note) => note.getBoundingClientRect().right <= window.innerWidth)).toBe(true);
   await page.getByRole('button', { name: 'Remove Choose New report' }).evaluate((element: HTMLButtonElement) => element.click());
   await expect(page.locator('.demo-step')).toHaveCount(4);
   await page.getByRole('button', { name: 'Undo' }).click();
