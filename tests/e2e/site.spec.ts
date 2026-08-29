@@ -215,6 +215,18 @@ test('390px layout has 44px targets and no horizontal overflow on home and demo'
   }
 });
 
+test('390px demo keeps the enabled Next action inside the first viewport', async ({ page, isMobile }) => {
+  test.skip(!isMobile);
+  await page.goto('/?demo=1');
+  await expect(page.locator('.demo-banner')).toContainText('Sample data. Nothing is saved.');
+  await expect(page.locator('.demo-step')).toHaveCount(5);
+  await expect(page.locator('#demo-back')).toBeDisabled();
+  await expect(page.locator('#demo-next')).toBeEnabled();
+  const next = await page.locator('#demo-next').boundingBox();
+  expect(next, 'Next must have a measurable box').not.toBeNull();
+  expect(Math.ceil(next!.y + next!.height), 'Next must fit in the 844px first screen').toBeLessThanOrEqual(844);
+});
+
 test('@claim:offline-reload site and demo work offline after the first visit', async ({ page, context }) => {
   await page.goto('/demo');
   await page.evaluate(async () => { await navigator.serviceWorker.ready; });

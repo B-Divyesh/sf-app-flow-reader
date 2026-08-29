@@ -201,7 +201,7 @@ test('@claim:mv3-package builds a versioned Manifest V3 package for Chrome, Edge
   test.skip(browserName !== 'chromium' || testInfo.project.name !== 'desktop-chromium');
   const manifest = JSON.parse(await (await import('node:fs/promises')).readFile('dist/extension/manifest.json', 'utf8'));
   expect(manifest.manifest_version).toBe(3);
-  expect(manifest.version).toBe('1.1.0');
+  expect(manifest.version).toBe('1.1.1');
   expect(manifest.permissions.sort()).toEqual(['activeTab', 'storage'].sort());
   expect(manifest.host_permissions).toEqual(['https://api.sociobot.in/*']);
   expect(manifest.permissions.sort()).toEqual(['activeTab', 'storage'].sort());
@@ -218,6 +218,10 @@ test('@claim:browser-page-boundaries does not run on browser settings pages', as
 test('@claim:supporter-license restores valid licenses in the packaged extension, applies all covers, rejects revoked licenses, and leaves the reader free', async ({ browserName }, testInfo) => {
   test.skip(browserName !== 'chromium' || testInfo.project.name !== 'desktop-chromium');
   const harness = await launchExtension();
+  const verificationRequests: string[] = [];
+  harness.context.on('request', (request) => {
+    if (request.url().startsWith('https://api.sociobot.in/api/v1/products/app-flow-reader/verify?license=')) verificationRequests.push(request.url());
+  });
   await harness.context.route('https://api.sociobot.in/api/v1/products/app-flow-reader/verify?license=*', async (route) => {
     const token = new URL(route.request().url()).searchParams.get('license');
     await route.fulfill({ contentType: 'application/json', body: JSON.stringify(token === 'valid-token' ? { valid: true, reason: 'ok' } : { valid: false, reason: 'revoked' }) });
@@ -232,10 +236,19 @@ test('@claim:supporter-license restores valid licenses in the packaged extension
       await expect.poll(async () => (await storage(harness.worker))['app-flow-reader:cover']).toBe(cover);
       await expect(harness.popup.locator('html')).toHaveAttribute('data-cover', cover);
     }
-    await harness.popup.getByLabel('Supporter license token').fill('revoked-token');
-    await harness.popup.getByRole('button', { name: 'Restore license' }).click();
+    expect(verificationRequests).toHaveLength(1);
+    await harness.popup.reload();
+    await expect(harness.popup.getByRole('status')).toContainText('Supporter styles are active in this extension.');
+    expect(verificationRequests).toHaveLength(1);
+
+    await harness.worker.evaluate(async () => (globalThis as any).chrome.storage.local.set({
+      'app-flow-reader:license': { token: 'revoked-token', valid: true, checkedAt: 0 },
+      'app-flow-reader:cover': 'blueprint',
+    }));
+    await harness.popup.reload();
     await expect(harness.popup.getByRole('status')).toContainText('This license is no longer active.');
     await expect(harness.popup.locator('#cover-styles')).toBeHidden();
+    expect(verificationRequests).toHaveLength(2);
     await start(harness.popup, 'Still free after a revoked license');
     await expect.poll(async () => (await state(harness.worker)).flow.title).toBe('Still free after a revoked license');
   } finally { await closeExtension(harness); }

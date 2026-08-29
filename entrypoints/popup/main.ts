@@ -63,8 +63,8 @@ document.querySelectorAll<HTMLButtonElement>('button[data-cover]').forEach((butt
 
 async function refresh() {
   current = normalizeState(await browser.runtime.sendMessage({ type: 'afr:get-state' }));
-  applyLicense(await browser.runtime.sendMessage({ type: 'afr:get-license' }));
   render();
+  applyLicense(await browser.runtime.sendMessage({ type: 'afr:get-license' }));
 }
 
 function applyLicense(result: { license?: LicenseRecord | null; cover?: unknown }) {

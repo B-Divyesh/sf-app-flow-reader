@@ -1,9 +1,9 @@
 {
   "name": "app-flow-reader",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "type": "module",
-  "description": "A local-first browser extension for following saved routes through dense apps.",
+  "description": "Follow saved routes through dense workplace apps.",
   "scripts": {
     "postinstall": "wxt prepare",
     "dev": "wxt",

@@ -25,7 +25,7 @@ export default defineBackground(() => {
       return true;
     }
     if (message?.type === 'afr:get-license') {
-      getLicense().then(sendResponse);
+      respondLicense(sendResponse, refreshLicenseIfDue);
       return true;
     }
     if (message?.type === 'afr:restore-license') {
@@ -184,6 +184,12 @@ async function restoreLicense(token: string, force: boolean): Promise<{ license:
   } catch {
     return existing;
   }
+}
+
+async function refreshLicenseIfDue(): Promise<{ license: LicenseRecord | null; cover: string | null }> {
+  const current = await getLicense();
+  if (!current.license?.token || Date.now() - current.license.checkedAt < LICENSE_CHECK_INTERVAL) return current;
+  return restoreLicense(current.license.token, false);
 }
 
 async function activeTabId(): Promise<number | undefined> {

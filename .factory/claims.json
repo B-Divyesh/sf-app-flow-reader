@@ -74,7 +74,7 @@
     "claim": "A $12 one-time supporter license restores in the extension, adds Blueprint, Graphite, and Sunrise covers there, and leaves the reader free.",
     "where": "landing supporter section, extension popup, README, terms",
     "test": "npm run test:e2e -- --grep @claim:supporter-license",
-    "sandbox": "fresh packaged MV3 profile with recorded Sociobot verification fixtures; restore valid and revoked tokens, apply each cover, and start a free route"
+    "sandbox": "fresh packaged MV3 profile with recorded Sociobot verification fixtures; restore a valid token, reuse its fresh cached verdict, recheck a stale revoked token, apply each cover, and start a free route"
   },
   {
     "id": "supporter-checkout",
