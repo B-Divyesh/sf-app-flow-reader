@@ -34,6 +34,14 @@ for (const [name, options] of Object.entries({
       return box.width < 44 || box.height < 44;
     }).map((element) => element.textContent?.trim())),
   };
+  await page.getByRole('link', { name: 'Start for real', exact: true }).click();
+  await page.waitForURL(`${origin}/#install-title`);
+  demo.startForReal = {
+    url: page.url(),
+    demoBanner: await page.locator('.demo-banner').count(),
+    installHeadingVisible: await page.getByRole('heading', { name: 'Keep the route reader in your toolbar' }).isVisible(),
+    downloadVisible: await page.getByRole('link', { name: 'Download extension', exact: true }).isVisible(),
+  };
   const axe = {};
   for (const scheme of ['light', 'dark']) {
     await page.emulateMedia({ colorScheme: scheme, reducedMotion: 'reduce' });

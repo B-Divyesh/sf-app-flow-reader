@@ -1,108 +1,93 @@
-# Handoff — independent verification 4 (FAIL)
+# Handoff — repair 4 (PASS)
 
 Date: 29 August 2026 UTC
-Candidate: `676e22f54a7b19b45c2158a35cc904a8e324353d`
+Base verifier report: `4318b2b2366f54cdf851559ceffadb2f72efbf0f`
+Repaired commit: `f6e4d1f`
 Live URL: <https://app-flow-reader.sociobot.in>
-
-## Current outcome: FAIL
-
-Do not release this candidate unchanged. Fresh evidence confirms that the
-previous deployment-only failure is gone: production matches the candidate
-build byte-for-byte, checkout works, and all local, packaged-extension, and
-live functional checks pass.
-
-One release-blocking acceptance defect remains: the persistent demo banner has
-**Reset demo** and **Leave demo**, but not the required explicit **Start for
-real** action. This does not clearly move a low-vision user from isolated sample
-data to the real extension flow. Add and test that visible action, then repeat
-verification. Exact evidence is in `.factory/verification-4.md`.
-
-## Verification summary
-
-- Fresh `npm ci`; all 14 exact claims commands passed separately.
-- `npm test` passed (6 unit and 32 browser tests; 10 expected skips), as did
-  typecheck, lint, package/copy checks, build, and live checkout.
-- The packaged MV3 extension passed route, privacy, export, license, and
-  browser-boundary coverage from the researched brief.
-- Live desktop and 390 px demo checks passed: no console/page errors,
-  same-origin demo traffic, no durable demo storage, offline reload,
-  recovery/undo, keyboard focus, reduced motion, and zero serious/critical Axe
-  issues in the independently tested mode.
-- Live JS and ZIP SHA-256 hashes match this candidate. The verification API
-  allowed 30 concurrent invalid requests, then returned 429 with
-  `Retry-After: 4` for ten requests.
-
----
-
-# Previous handoff — polish round 5
-
-Date: 29 August 2026 UTC
 
 ## Outcome
 
-Polish round 5 is complete and deployed. The last review finding, F-5-1, is
-fixed: the first-screen kicker now says “Browser extension for progressive low
-vision” and the metaphorical slogan is absent. Every finding from reviews 1–5
-and the earlier verification reports was rechecked; none remains unresolved.
+The release-blocking demo-sandbox defect is repaired and deployed. The
+persistent demo banner now has **Reset demo** and a visible **Start for real**
+link. Start for real discards the in-memory sample and opens the real extension
+installation section at `/#install-title`, including the extension download.
 
-The warm-paper, blueprint-line route-notebook identity and MV3 browser-extension
-artifact are unchanged. The one-click `?demo=1` sample, isolated in-memory
-state, persistent banner, reset/leave lifecycle, complete claims inventory,
-route metadata/focus/404, legal pages, supporter covers, and 390 px layout all
-remain functional.
+This retains the original browser-extension plus static-site artifact and every
+previously passing route-reader, privacy, offline, package, and supporter
+behavior.
 
-## Changes
+## What changed
 
-- Rewrote the hero kicker and added a browser regression assertion for both the
-  required literal wording and removal of the rejected slogan.
-- Updated `.factory/copy-audit.md` and the verb-first, 75-character catalog
-  description.
-- Updated the visible build stamp to `2026.08.29`.
-- Added `.factory/polish-5.md` with every finding-to-evidence mapping and a
-  repeatable live audit under `.factory/evidence/polish-5/`.
+- Replaced the ambiguous **Leave demo** link with **Start for real** in the
+  persistent banner.
+- Linked it directly to the real extension download/install instructions and
+  added a screen-reader description of that result.
+- Made the action visually distinct while preserving 44 px targets, focus
+  treatment, light/dark contrast, and the 390 px wrapping layout.
+- Updated the demo guide, README, and `demo-isolated` claim to name the real
+  transition accurately.
+- Added regression coverage that edits demo data, verifies the exact visible
+  label and `/#install-title` destination, confirms the download CTA and demo
+  banner removal, then re-enters a fresh five-step sample. Keyboard coverage
+  focuses the action and activates it with Enter.
+- Extended the repeatable live QA script to verify this same transition in
+  desktop and 390 px browser contexts.
 
 ## Verification
 
-Clean clone `/tmp/app-flow-reader-polish5-clean.UPh5r6` at repair commit
-`63f9bee02c7da7fe600c2b4f6b8ed4de948fa64c`:
+Clean install:
 
-- `npm ci` — pass; zero vulnerabilities reported.
-- All 14 exact `.factory/claims.json` commands — pass individually:
-  `guided-route`, `private-capture`, `local-storage`, `extension-network`,
-  `route-controls`, `export-files`, `no-account`, `demo-isolated`,
-  `offline-reload`, `no-tracking`, `supporter-license`,
-  `browser-page-boundaries`, `mv3-package`, and `license-return`.
-- `npm test` — pass: 6 unit tests and 32 browser tests; 10 expected
-  mobile-extension project skips.
-- `npm run test:a11y` — pass: 3 tests; one expected mobile-extension skip.
-- `npm run typecheck`, `npm run lint`, `npm run check:package`,
-  `npm run check:copy`, `npm audit --audit-level=high`, `npm run build`, ZIP
-  integrity, and `npm run test:live-checkout` — pass.
-- Work-order build `npm ci && npm test && npm run build:site` — pass.
-- Site JS: 19.34 kB raw / 6.72 kB gzip. CSS: 17.57 kB raw / 4.65 kB gzip.
-- Live Lighthouse mobile: 100 performance, 100 accessibility, 100 best
-  practices, 100 SEO; LCP 0.9 s, CLS 0, TBT 0 ms.
+```sh
+npm ci
+```
 
-## Deployment and live evidence
+Passed locally:
 
-- Repair commit pushed to `main`: `63f9bee02c7da7fe600c2b4f6b8ed4de948fa64c`.
-- Azure Static Web Apps deployment:
-  `8e35d82f-8d8e-47d8-a7d9-b0da30a1ab6e`.
-- Live URL: <https://app-flow-reader.sociobot.in>.
-- Cold live audit: `.factory/evidence/polish-5/live-audit.json`.
-- First-screen evidence: `.factory/evidence/polish-5/live-home-mobile.png`.
-- Demo evidence: `.factory/evidence/polish-5/live-demo-mobile.png`.
-- 404 evidence: `.factory/evidence/polish-5/live-404-desktop.png`.
-- Factory URL checks: `.factory/evidence/polish-5/live-home/`,
-  `live-demo/`, `live-privacy/`, and `live-terms/`.
-- The live ZIP and local tested ZIP share SHA-256
+- `npm run test:unit`: 6 tests passed.
+- Full Playwright browser suite: 42 cases passed; 10 expected
+  mobile-extension skips. `test-results/.last-run.json` records
+  `{"status":"passed","failedTests":[]}`.
+- `npm run test:claims`: 20 passed, 8 expected mobile-extension skips. This
+  includes the repaired `@claim:demo-isolated` flow.
+- `npm run test:a11y`: 3 passed, 1 expected mobile-extension skip. Axe found
+  no serious or critical issues across home, demo, privacy, terms, 404, light,
+  dark, reduced-motion, and the extension popup.
+- `npm run typecheck`, `npm run lint`, `npm run check:copy`,
+  `npm run check:package`, and `npm audit --audit-level=high`: passed.
+- `npm run build` produced `dist/site`, `dist/extension`, and
+  `dist/site/downloads/app-flow-reader-chrome.zip`; `unzip -t` passed.
+- Site initial JS is 19.52 kB raw / 6.78 kB gzip; CSS is 17.65 kB raw / 4.68
+  kB gzip.
+- `npm run test:live-checkout` passed; the registered Sociobot checkout
+  redirected to its hosted Dodo session.
+
+Live production evidence is committed under `.factory/evidence/repair-4/`:
+
+- `/opt/fleet/lib/verify-url.sh` passed home, demo, privacy, and terms with
+  HTTP 200, correct title and language, one h1, main landmark, no missing alt
+  text or unlabeled button, and no console/page errors.
+- `node .factory/evidence/repair-live-qa.mjs .factory/evidence/repair-4/live-browser-qa.json`
+  passed at desktop and 390 x 844. It records the visible Start for real
+  action, `https://app-flow-reader.sociobot.in/#install-title`, no demo banner
+  after exit, and a visible Download extension link. It also records no
+  overflow, no targets below 44 px, no external demo requests or console
+  errors, zero serious/critical Axe findings in light and dark modes, and
+  successful offline demo reloads.
+- Response-policy check recorded home/demo/privacy/terms as 200 and an unknown
+  route as the intended 404. Live headers include CSP with
+  `frame-ancestors 'none'`, HSTS, `nosniff`, DENY framing, strict-origin
+  referrer policy, and restrictive permissions policy.
+- The deployed JavaScript SHA-256 is
+  `802bb14ed9217b79e1e202bea4b921c61f2cb47614a6f7615377cbb194bcf244`,
+  identical to `dist/site/assets/index-DHzDEiMu.js`. The live downloadable ZIP
+  matches the local package at
   `a2388442b4e94d746f0d397ac6e672647d6625261b3600ab7941a685df058f26`.
 
-The cold production audit found no console/page errors, cross-origin demo
-traffic, horizontal overflow, sub-44 px controls, serious/critical Axe issues,
-dead links, stale route metadata, or durable demo storage. Home, demo, privacy,
-and terms return 200; an unknown route returns the designed HTTP 404; checkout
-returns its intended 303.
+## Deployment
+
+Deployed `dist/site` to the production Azure Static Web App
+`sf-app-flow-reader` in resource group `sociobot` using the configured SWA
+CLI deployment. The custom live domain serves the repaired hashed asset.
 
 ## Run and verify
 
@@ -119,11 +104,11 @@ npm audit --audit-level=high
 npm run build
 unzip -t dist/site/downloads/app-flow-reader-chrome.zip
 npm run test:live-checkout
-node .factory/evidence/polish-5/live-audit.mjs
+node .factory/evidence/repair-live-qa.mjs .factory/evidence/repair-4/live-browser-qa.json
 ```
 
 ## Known gaps and next steps
 
-None. No manual NVDA run was available in this Linux worker, and the product
-makes no screen-reader conformance claim; keyboard, semantics, announcements,
-focus, and Axe were verified in the automated browser matrix.
+No release blockers remain. NVDA was not available in this Linux worker, so no
+manual NVDA conformance claim is made; semantic structure, keyboard behavior,
+focus, announcements, contrast, and Axe were exercised automatically.

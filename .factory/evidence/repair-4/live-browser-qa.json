@@ -1,0 +1,73 @@
+{
+  "desktop": {
+    "demo": {
+      "title": "Demo — App Flow Reader",
+      "heading": "Follow the monthly expense route",
+      "position": "STEP 2 OF 5",
+      "liveAnnouncement": "Step 2 of 5. Choose New report",
+      "currentMarkers": 1,
+      "steps": 5,
+      "overflow": false,
+      "smallTargets": [],
+      "startForReal": {
+        "url": "https://app-flow-reader.sociobot.in/#install-title",
+        "demoBanner": 0,
+        "installHeadingVisible": true,
+        "downloadVisible": true
+      }
+    },
+    "axe": {
+      "light": [],
+      "dark": []
+    },
+    "offline": {
+      "heading": "Follow the monthly expense route",
+      "steps": 5
+    },
+    "external": [],
+    "errors": []
+  },
+  "mobile390": {
+    "demo": {
+      "title": "Demo — App Flow Reader",
+      "heading": "Follow the monthly expense route",
+      "position": "STEP 2 OF 5",
+      "liveAnnouncement": "Step 2 of 5. Choose New report",
+      "currentMarkers": 1,
+      "steps": 5,
+      "overflow": false,
+      "smallTargets": [],
+      "startForReal": {
+        "url": "https://app-flow-reader.sociobot.in/#install-title",
+        "demoBanner": 0,
+        "installHeadingVisible": true,
+        "downloadVisible": true
+      }
+    },
+    "axe": {
+      "light": [],
+      "dark": []
+    },
+    "offline": {
+      "heading": "Follow the monthly expense route",
+      "steps": 5
+    },
+    "external": [],
+    "errors": []
+  },
+  "policy": {
+    "statuses": {
+      "/": 200,
+      "/demo": 200,
+      "/privacy": 200,
+      "/terms": 200,
+      "/definitely-missing": 404
+    },
+    "notFound": {
+      "title": "Page not found — App Flow Reader",
+      "heading": "This step is not in the flow"
+    },
+    "licenseRequests": [],
+    "strippedLicense": true
+  }
+}
