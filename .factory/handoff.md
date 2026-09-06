@@ -1,48 +1,69 @@
-# Handoff — adversarial first-read review 8
+# Handoff — seven-day independent review 9
 
-Date: 29 August 2026 UTC
-Reviewed revision: `327a8937f53e303158d2b20f0468943110c29fd1`
+Date: 6 September 2026 UTC
+
 Live URL: <https://app-flow-reader.sociobot.in>
+
+Implementation candidate: `83326ef0d6740214f2096d29eaf0def996063b08`
+
+Documentation reviewed: `d39ded489c4fe18ea3e249fdc1223fb52ffc1219`
 
 ## Outcome
 
-**PASS — zero findings.** This review made no product-code changes. It added
-the review record only.
+**PASS — zero findings and zero untested claims.** Product code was not
+changed. This handoff and `.factory/review-9.md` are the only repository
+changes.
 
-## What was done and verified
+## What was verified
 
-- Cold-loaded the live product in fresh 390 × 844 and 1440 × 900 Chromium
-  contexts. The first screen clearly states the job, audience, and one-click
-  first action.
-- Exercised the live demo: advanced the expense route, saved a note, left via
-  Start for real, re-entered, and confirmed the note had been discarded.
-  Browser local/session storage was empty and observed requests were
-  same-origin.
-- Cloned the repository to a fresh temporary directory, ran `npm ci`, then
-  ran every one of the 16 exact claim commands in `.factory/claims.json`
-  separately. All passed. The complete clean-clone `npm test` suite also
-  passed (6 unit tests plus the 50-test Playwright matrix), followed by copy
-  and production-build checks.
-- Rechecked all previous review, polish, verification, and handoff findings
-  against the live deployment and current code. All are fixed; none regressed.
-- Checked public-route metadata, 404 behavior, links, back/focus handling,
-  checkout redirect, and Axe serious/critical violations in light/dark
-  reduced-motion 390 px contexts. No issue remained.
+- Fresh 390 × 844 phone and 1440 × 900 desktop browsers showed the job,
+  progressive-low-vision audience, one-click sample action, and three product
+  facts before scrolling.
+- The live five-step sample, persistent demo label, Back/Next announcement,
+  note editing, maximum-length note, reset, exports, Start for real, and clean
+  re-entry all passed. No cookie or durable browser storage was written, and
+  no cross-origin request occurred.
+- All 16 exact `.factory/claims.json` commands passed separately from a clean
+  clone after `npm ci`. The full suite, typecheck, lint, copy/package checks,
+  accessibility suite, checkout smoke, audit, build, and ZIP check passed.
+- The packaged MV3 extension ran in fresh Chromium profiles. Tests covered
+  route recording and playback, passive highlighting, password exclusion,
+  burst limits, route controls, export, supporter-license states, and popup
+  accessibility.
+- Live light/dark/reduced-motion route scans found no serious or critical Axe
+  issue. Keyboard, focus return, 200% text, 44 px targets, offline reload,
+  service-worker update, legal pages, route titles, security headers, and the
+  designed HTTP 404 passed.
+- Mobile Lighthouse: Performance 100, Accessibility 100, Best Practices 100,
+  SEO 100; LCP 0.9 s, TBT 0 ms, CLS 0.
+- Live HTML, JS, CSS, service worker, and extension ZIP match the clean build
+  byte for byte. Commits after the implementation candidate contain only
+  `.factory` documentation.
+- Every finding from earlier review, polish, and verification records,
+  including minor findings and the verification-7 note overflow and passive
+  playback defects, was rechecked and remains fixed.
 
-## How to reproduce
+## Reproduce
 
 ```sh
 npm ci
 npm test
+npm run typecheck
+npm run lint
 npm run test:claims
+npm run test:a11y
+npm run test:live-checkout
+npm run check:package
 npm run check:copy
+npm audit --audit-level=high
 npm run build
+unzip -t dist/site/downloads/app-flow-reader-chrome.zip
 ```
 
-See [review-8.md](/work/repo/.factory/review-8.md) for the complete copy
-inventory, claim results, history audit, and evidence.
+The complete result is in `.factory/review-9.md`. Supporting browser, claim,
+build, and Lighthouse evidence is under `/work/.evidence/review-9/`.
 
-## Known gaps / next steps
+## Known gaps
 
-No in-scope gap was found. Future changes should retain the isolated demo and
-run the listed claims before release.
+None in scope. This product has no backend, account system, or tenant store, so
+backend-only tenant, health, SQLite restart, and 429 checks do not apply.
